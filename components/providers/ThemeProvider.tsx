@@ -17,17 +17,17 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  theme: "light",
+  theme: "dark",
   toggle: () => {},
-  isDark: false,
+  isDark: true,
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     const stored = localStorage.getItem("asta-theme") as Theme | null;
-    const initial: Theme = stored === "dark" ? "dark" : "light";
+    const initial: Theme = stored === "light" ? "light" : "dark";
     applyTheme(initial);
     setTheme(initial);
   }, []);
