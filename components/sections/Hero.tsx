@@ -4,16 +4,14 @@ import { cn } from "@/lib/cn";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const VITALS = [
-  { label: "Heart Rate",   value: "78",     unit: "bpm",  color: "#4F8CFF", spark: "ecg"  },
-  { label: "SpO\u2082",    value: "97",     unit: "%",    color: "#28D7B5", spark: "sine" },
-  { label: "Resp Rate",    value: "18",     unit: "/min", color: "#A78BFF", spark: "slow" },
-  { label: "Blood Press.", value: "124/78", unit: "mmHg", color: "#49C6FF", spark: "bp"   },
+  { label: "Heart Rate",  value: "78",     unit: "bpm",  color: "#4F8CFF", spark: "ecg"  },
+  { label: "SpO\u2082",   value: "97",     unit: "%",    color: "#28D7B5", spark: "sine" },
+  { label: "Blood Press", value: "124/78", unit: "mmHg", color: "#49C6FF", spark: "bp"   },
 ];
 
 const SPARK: Record<string, string> = {
   ecg:  "M0,8 L4,8 L5,6 L6,8 L9,8 L10,11 L11,1 L12,15 L13,8 L18,8 L28,8 L32,8 L33,6 L34,8 L37,8 L38,11 L39,1 L40,15 L41,8 L46,8 L56,8",
   sine: "M0,8 C7,3 14,13 21,8 C28,3 35,13 42,8 C49,3 56,13 56,8",
-  slow: "M0,8 C16,4 38,12 56,8",
   bp:   "M0,11 L3,11 L4,4 L5,11 L10,11 L11,7 L12,11 L21,11 L22,4 L23,11 L32,11 L33,7 L34,11 L43,11 L44,4 L45,11 L54,11 L55,7 L56,11",
 };
 
@@ -31,14 +29,6 @@ const STATUS_ITEMS = [
   { label: "Active",                color: "#4F8CFF" },
 ];
 
-// ─── Floating mid-field monitoring nodes (desktop xl+) ────────────────────────
-const FIELD_NODES = [
-  { left: "21%", top: "28%",  label: "BED-04", value: "78 bpm",        color: "#4F8CFF" },
-  { left: "22%", top: "62%",  label: "CAM-03", value: "18 \u2215 min", color: "#A78BFF" },
-  { left: "65%", top: "28%",  label: "ZONE-A", value: "SpO\u2082 97%", color: "#28D7B5" },
-  { left: "64%", top: "62%",  label: "BED-07", value: "124 \u2215 78", color: "#49C6FF" },
-];
-
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 export function Hero() {
   return (
@@ -49,14 +39,13 @@ export function Hero() {
     >
       {/* ── BG glows ── */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-[350px] -top-[150px] h-[1100px] w-[1100px] rounded-full bg-brand-500/[0.12] blur-[210px]" />
-        <div className="absolute -right-[150px] top-[6%] h-[900px] w-[900px] rounded-full bg-violet-600/[0.09] blur-[190px]" />
-        <div className="absolute left-[22%] bottom-[-6%] h-[800px] w-[800px] rounded-full bg-cyan-400/[0.06] blur-[190px]" />
-        <div className="absolute left-1/2 top-[46%] h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/[0.06] blur-[160px]" />
+        <div className="absolute -left-[20vw] -top-[10vh] h-[80vw] w-[80vw] max-h-[1000px] max-w-[1000px] rounded-full bg-brand-500/[0.10] blur-[200px]" />
+        <div className="absolute -right-[10vw] top-[5vh] h-[65vw] w-[65vw] max-h-[900px] max-w-[900px] rounded-full bg-violet-600/[0.08] blur-[190px]" />
+        <div className="absolute left-[15vw] bottom-0 h-[55vw] w-[55vw] max-h-[700px] max-w-[700px] rounded-full bg-cyan-400/[0.05] blur-[190px]" />
+        <div className="absolute left-1/2 top-[46%] h-[40vw] w-[40vw] max-h-[600px] max-w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/[0.05] blur-[160px]" />
         <div className="absolute inset-0 bg-grid-fine bg-[length:52px_52px] opacity-100" />
-        {/* Faint horizontal scan-line texture */}
         <div
-          className="absolute inset-0 opacity-[0.025]"
+          className="absolute inset-0 opacity-[0.012]"
           style={{
             backgroundImage:
               "repeating-linear-gradient(0deg,rgba(255,255,255,0.9) 0px,rgba(255,255,255,0.9) 1px,transparent 1px,transparent 4px)",
@@ -64,98 +53,97 @@ export function Hero() {
         />
       </div>
 
-      {/* ── Pulse rings ── */}
-      <PulseRings />
+      {/* ── Directional flow lines ── */}
+      <FlowLines />
 
-      {/* ── Connector lines (desktop) ── */}
-      <ConnectorLines />
+      {/* ════ DESKTOP — 3-column flex fills full viewport ════ */}
+      <div
+        className="pointer-events-none absolute inset-0 hidden lg:flex items-center"
+        style={{
+          paddingTop:    "clamp(64px, 7vh, 96px)",
+          paddingBottom: "clamp(88px, 10vh, 120px)",
+          paddingLeft:   "clamp(12px, 2vw, 40px)",
+          paddingRight:  "clamp(12px, 2vw, 40px)",
+        }}
+      >
 
-      {/* ════ DESKTOP ════ */}
-      <div className="pointer-events-none hidden lg:block">
+        {/* ── LEFT COLUMN: HR vital + signal source ── */}
+        <div
+          className="flex h-full flex-col items-start justify-center"
+          style={{ width: "clamp(180px, 26vw, 340px)", gap: "clamp(20px, 4vh, 56px)" }}
+        >
+          <DataChannel {...VITALS[0]} idx={0} align="right" />
+          <SignalSource />
+        </div>
 
-        {/* Orb + AI pill + arcs */}
-        <div className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2">
-          <div className="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 backdrop-blur-sm">
+        {/* ── CENTER COLUMN: AI pill + orb ── */}
+        <div className="flex flex-1 flex-col items-center justify-center" style={{ gap: "clamp(12px, 2vh, 24px)" }}>
+          {/* AI active pill */}
+          <div className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1.5 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
             <span className="whitespace-nowrap text-[0.55rem] font-semibold uppercase tracking-[0.18em] text-frost/45">
-              AI active
+              ASTA · AI active
             </span>
           </div>
-          <div className="relative h-[480px] w-[480px]">
-            <OrbArcs />
-            <OrbCore />
+          {/* Orb — fills center, capped by both vw and vh */}
+          <div
+            className="relative"
+            style={{
+              width:       "min(38vw, 58vh, 560px)",
+              aspectRatio: "1 / 1",
+            }}
+          >
+            <IntelligenceCore />
           </div>
         </div>
 
-        {/* Vitals — NW */}
-        <div className="absolute left-[10%] top-[16%]">
-          <DataChannel {...VITALS[0]} idx={0} align="right" />
-        </div>
-        {/* Vitals — NE */}
-        <div className="absolute right-[10%] top-[16%]">
+        {/* ── RIGHT COLUMN: SpO₂ + alert output + BP ── */}
+        <div
+          className="flex h-full flex-col items-end justify-between"
+          style={{
+            width:         "clamp(180px, 26vw, 340px)",
+            paddingTop:    "clamp(8px, 3vh, 40px)",
+            paddingBottom: "clamp(8px, 3vh, 40px)",
+          }}
+        >
           <DataChannel {...VITALS[1]} idx={1} align="left" />
-        </div>
-        {/* Vitals — SW */}
-        <div className="absolute left-[10%] top-[54%]">
-          <DataChannel {...VITALS[2]} idx={2} align="right" />
-        </div>
-        {/* Vitals — SE */}
-        <div className="absolute right-[10%] top-[54%]">
-          <DataChannel {...VITALS[3]} idx={3} align="left" />
+          <AlertOutput />
+          <DataChannel {...VITALS[2]} idx={2} align="left" />
         </div>
 
-        {/* Floating mid-field nodes (xl+ only) */}
-        {FIELD_NODES.map((n) => (
-          <div key={n.label} className="absolute hidden xl:block" style={{ left: n.left, top: n.top }}>
-            <div
-              className="flex items-center gap-2 rounded-xl border border-white/[0.07] bg-white/[0.025] px-2.5 py-1.5 backdrop-blur-sm"
-              style={{ boxShadow: `0 0 20px ${n.color}0a` }}
-            >
-              <span
-                className="h-1.5 w-1.5 animate-pulse rounded-full flex-none"
-                style={{ background: n.color, boxShadow: `0 0 5px ${n.color}` }}
-              />
-              <span
-                className="font-mono text-[0.58rem] tracking-[0.10em]"
-                style={{ color: `${n.color}88` }}
-              >
-                {n.label}
-              </span>
-              <span className="h-3 w-px bg-white/[0.10]" />
-              <span
-                className="font-mono text-[0.63rem] font-bold"
-                style={{ color: n.color }}
-              >
-                {n.value}
-              </span>
-            </div>
-            {/* Glow behind node */}
-            <div
-              className="pointer-events-none absolute inset-0 rounded-xl blur-md opacity-40"
-              style={{ background: `${n.color}18` }}
-            />
-          </div>
-        ))}
       </div>
 
       {/* ════ MOBILE ════ */}
-      <div className="flex min-h-dvh flex-col items-center justify-center gap-8 px-6 pb-36 pt-16 lg:hidden">
+      <div className="flex min-h-dvh flex-col items-center justify-center gap-6 px-5 pb-36 pt-20 lg:hidden">
         <div className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
           <span className="text-[0.55rem] font-semibold uppercase tracking-[0.18em] text-frost/45">
-            AI active
+            ASTA · AI active
           </span>
         </div>
-        <div className="relative">
-          <div className="absolute inset-0 rounded-full bg-brand-500/[0.15] blur-[90px]" />
-          <div className="relative h-[300px] w-[300px]">
-            <OrbArcs mobile />
-            <OrbCore />
+        <div className="relative" style={{ width: "min(80vw, 72vh, 300px)", aspectRatio: "1" }}>
+          <div className="absolute inset-0 rounded-full bg-brand-500/[0.15] blur-[80px]" />
+          <div className="relative h-full w-full">
+            <IntelligenceCore />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-x-10 gap-y-7">
+        {/* Mobile signal → action strip */}
+        <div className="flex w-full max-w-[320px] items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 rounded-lg border border-white/[0.08] bg-white/[0.03] px-2.5 py-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#4F8CFF]" style={{ boxShadow: "0 0 5px #4F8CFF" }} />
+            <span className="font-mono text-[0.56rem] text-[#4F8CFF99]">BED-04 · Existing monitor</span>
+          </div>
+          <svg width="24" height="8" viewBox="0 0 24 8" fill="none" aria-hidden>
+            <path d="M0 4 L18 4 M14 1.5 L21 4 L14 6.5" stroke="rgba(73,198,255,0.4)" strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
+          <div className="flex items-center gap-1.5 rounded-lg border border-amber-500/[0.22] bg-amber-500/[0.07] px-2.5 py-1.5">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-400" />
+            <span className="font-mono text-[0.56rem] text-amber-400/80">Alert · Ward 3</span>
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-x-7 gap-y-5">
           {VITALS.map((v, i) => (
-            <DataChannel key={v.label} {...v} idx={i} align={i % 2 === 0 ? "right" : "left"} />
+            <DataChannel key={v.label} {...v} idx={i} align="left" />
           ))}
         </div>
       </div>
@@ -163,38 +151,27 @@ export function Hero() {
       {/* ── Scroll hint ── */}
       <div aria-hidden className="pointer-events-none absolute bottom-[110px] left-1/2 -translate-x-1/2">
         <svg className="h-5 w-5 animate-bounce text-frost/20" viewBox="0 0 20 20" fill="none">
-          <path
-            d="M10 5 L10 13 M6.5 9.5 L10 13 L13.5 9.5"
-            stroke="currentColor"
-            strokeWidth="1.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <path d="M10 5 L10 13 M6.5 9.5 L10 13 L13.5 9.5"
+            stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
 
       {/* ── ECG strip ── */}
-      <div className="pointer-events-none absolute bottom-[68px] left-0 right-0 h-[32px] overflow-hidden opacity-45">
+      <div className="pointer-events-none absolute bottom-[68px] left-0 right-0 h-[32px] overflow-hidden opacity-[0.28]">
         <ECGScrollStrip />
       </div>
 
       {/* ── Status chips ── */}
       <div className="pointer-events-none absolute bottom-[18px] left-1/2 z-10 -translate-x-1/2 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
         {STATUS_ITEMS.map((item) => (
-          <span
-            key={item.label}
-            className="flex items-center gap-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-frost/55"
-          >
-            <span
-              className="block h-1.5 w-1.5 rounded-full"
-              style={{ background: item.color, boxShadow: `0 0 5px ${item.color}` }}
-            />
+          <span key={item.label} className="flex items-center gap-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-frost/55">
+            <span className="block h-1.5 w-1.5 rounded-full" style={{ background: item.color, boxShadow: `0 0 5px ${item.color}` }} />
             {item.label}
           </span>
         ))}
       </div>
 
-      {/* ── Icon CTAs — bottom right ── */}
+      {/* ── Icon CTAs ── */}
       <div className="absolute bottom-[18px] right-8 z-20 flex items-center gap-2">
         <a
           href={hero.primaryCta.href}
@@ -228,34 +205,8 @@ export function Hero() {
   );
 }
 
-// ─── Expanding pulse rings ────────────────────────────────────────────────────
-function PulseRings() {
-  return (
-    <div className="pointer-events-none hidden lg:block" aria-hidden>
-      {[0, 1, 2, 3].map((i) => (
-        <div
-          key={i}
-          className="absolute left-1/2 top-[46%] h-[520px] w-[520px] rounded-full"
-          style={{
-            border: i % 2 === 0
-              ? "1px solid rgba(79,107,255,0.28)"
-              : "1px solid rgba(73,198,255,0.22)",
-            animation: `ring-pulse 4.2s ${i * 1.05}s ease-out infinite`,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-// ─── Connector lines: vitals → orb ───────────────────────────────────────────
-function ConnectorLines() {
-  const lines = [
-    { id: "hl-0", x1: 19, y1: 20, x2: 46, y2: 43, color: "#4F8CFF" }, // HR NW
-    { id: "hl-1", x1: 81, y1: 20, x2: 54, y2: 43, color: "#28D7B5" }, // SpO₂ NE
-    { id: "hl-2", x1: 19, y1: 58, x2: 46, y2: 49, color: "#A78BFF" }, // RR SW
-    { id: "hl-3", x1: 81, y1: 58, x2: 54, y2: 49, color: "#49C6FF" }, // BP SE
-  ];
+// ─── Directional flow lines: Signal source → Core → Alert ─────────────────────
+function FlowLines() {
   return (
     <svg
       className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
@@ -264,259 +215,271 @@ function ConnectorLines() {
       aria-hidden
     >
       <defs>
-        {lines.map((l) => (
-          <linearGradient
-            key={l.id} id={l.id}
-            x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2}
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop offset="0%"   stopColor={l.color} stopOpacity="0.55" />
-            <stop offset="70%"  stopColor={l.color} stopOpacity="0.06" />
-            <stop offset="100%" stopColor={l.color} stopOpacity="0"    />
-          </linearGradient>
-        ))}
+        <linearGradient id="fl-l" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stopColor="#4F8CFF" stopOpacity="0.50" />
+          <stop offset="60%"  stopColor="#4F8CFF" stopOpacity="0.10" />
+          <stop offset="100%" stopColor="#4F8CFF" stopOpacity="0"    />
+        </linearGradient>
+        <linearGradient id="fl-r" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stopColor="#28D7B5" stopOpacity="0"    />
+          <stop offset="40%"  stopColor="#28D7B5" stopOpacity="0.10" />
+          <stop offset="100%" stopColor="#FBBF24" stopOpacity="0.48" />
+        </linearGradient>
       </defs>
-      {lines.map((l) => (
-        <line
-          key={l.id}
-          x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2}
-          stroke={`url(#${l.id})`}
-          strokeWidth="0.22"
-          strokeDasharray="1.2 1.5"
-          style={{ animation: `conn-flow 5s ${lines.indexOf(l) * 1.25}s linear infinite` }}
-        />
-      ))}
+      {/* Left: signal source → orb */}
+      <line x1="21" y1="50" x2="39" y2="50"
+        stroke="url(#fl-l)" strokeWidth="0.48" strokeDasharray="1.8 1.2"
+        style={{ animation: "conn-flow 2.6s linear infinite" }} />
+      {/* Arrow head at orb entry */}
+      <path d="M37.5 48.8 L39.5 50 L37.5 51.2" fill="none" stroke="#4F8CFF" strokeWidth="0.35" strokeOpacity="0.55" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Right: orb → alert output */}
+      <line x1="61" y1="50" x2="79" y2="50"
+        stroke="url(#fl-r)" strokeWidth="0.48" strokeDasharray="1.8 1.2"
+        style={{ animation: "conn-flow 2.6s 0.5s linear infinite" }} />
+      {/* Arrow head at alert entry */}
+      <path d="M77.5 48.8 L79.5 50 L77.5 51.2" fill="none" stroke="#FBBF24" strokeWidth="0.35" strokeOpacity="0.55" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Entry / exit ticks */}
+      <line x1="39" y1="48.5" x2="39" y2="51.5" stroke="#4F8CFF" strokeWidth="0.28" strokeOpacity="0.50" />
+      <line x1="61" y1="48.5" x2="61" y2="51.5" stroke="#28D7B5" strokeWidth="0.28" strokeOpacity="0.50" />
     </svg>
   );
 }
 
-// ─── Colored arc segments around orb ─────────────────────────────────────────
-function OrbArcs({ mobile = false }: { mobile?: boolean }) {
-  const size  = mobile ? 300 : 480;
-  const cx    = size / 2;
-  const cy    = size / 2;
-  const r     = size / 2 + 24; // just outside outer orbit ring
-
-  function pt(deg: number) {
-    const rad = (deg * Math.PI) / 180;
-    return { x: cx + r * Math.sin(rad), y: cy - r * Math.cos(rad) };
-  }
-
-  function arcD(s: number, e: number) {
-    const sp = pt(s), ep = pt(e);
-    return `M ${sp.x.toFixed(1)} ${sp.y.toFixed(1)} A ${r} ${r} 0 0 1 ${ep.x.toFixed(1)} ${ep.y.toFixed(1)}`;
-  }
-
-  const arcs = [
-    { s: -72, e: -22, color: "#4F8CFF", id: "oa-0" },  // HR  — NE
-    { s: -158,e: -108,color: "#28D7B5", id: "oa-1" },  // SpO₂ — NW
-    { s:  108, e: 158, color: "#A78BFF", id: "oa-2" },  // RR  — SW
-    { s:  22,  e: 72,  color: "#49C6FF", id: "oa-3" },  // BP  — SE
-  ];
-
+// ─── Left: bedside signal source ─────────────────────────────────────────────
+function SignalSource() {
   return (
-    <svg
-      className="pointer-events-none absolute inset-0 h-full w-full"
-      viewBox={`0 0 ${size} ${size}`}
-      style={{ overflow: "visible" }}
-      aria-hidden
-    >
-      <defs>
-        {arcs.map((a) => {
-          const sp = pt(a.s), ep = pt(a.e);
-          return (
-            <linearGradient key={a.id} id={a.id}
-              x1={sp.x} y1={sp.y} x2={ep.x} y2={ep.y}
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0%"   stopColor={a.color} stopOpacity="0"    />
-              <stop offset="30%"  stopColor={a.color} stopOpacity="0.80" />
-              <stop offset="70%"  stopColor={a.color} stopOpacity="0.80" />
-              <stop offset="100%" stopColor={a.color} stopOpacity="0"    />
-            </linearGradient>
-          );
-        })}
-      </defs>
+    <div className="pointer-events-none select-none flex flex-col items-end gap-3 w-full">
 
-      {arcs.map((a) => (
-        <g key={a.id}>
-          {/* Main arc */}
+      {/* Section header */}
+      <div className="flex items-center gap-2 self-start">
+        <span className="h-px flex-1 w-8 bg-gradient-to-r from-[#4F8CFF] to-transparent" style={{ minWidth: "28px" }} />
+        <span className="text-[0.52rem] font-bold uppercase tracking-[0.22em]" style={{ color: "#4F8CFF88" }}>Signal input</span>
+      </div>
+
+      {/* Monitor — scales with column width */}
+      <div className="relative w-full" style={{ maxWidth: "clamp(150px, 18vw, 260px)" }}>
+        <svg
+          viewBox="0 0 148 94"
+          className="w-full h-auto"
+          fill="none"
+          aria-hidden
+        >
+          {/* Body */}
+          <rect x="1" y="1" width="146" height="78" rx="7"
+            stroke="rgba(79,140,255,0.32)" strokeWidth="1"
+            fill="rgba(79,140,255,0.03)" />
+          {/* Screen */}
+          <rect x="8" y="8" width="132" height="64" rx="4"
+            fill="rgba(4,8,22,0.90)" />
+          {/* Grid lines inside screen */}
+          <line x1="8" y1="40" x2="140" y2="40" stroke="rgba(79,140,255,0.07)" strokeWidth="0.5" />
+          <line x1="74" y1="8"  x2="74"  y2="72" stroke="rgba(79,140,255,0.07)" strokeWidth="0.5" />
+          {/* ECG waveform */}
           <path
-            d={arcD(a.s, a.e)}
-            stroke={`url(#${a.id})`}
-            strokeWidth="1.8"
-            fill="none"
-            strokeLinecap="round"
-          />
-          {/* Soft glow duplicate, thicker + lower opacity */}
+            d="M8,40 L24,40 L28,31 L32,40 L38,40 L41,49 L43,25 L45,55 L47,40 L70,40 L86,40 L90,31 L94,40 L100,40 L103,49 L105,25 L107,55 L109,40 L140,40"
+            stroke="#4F8CFF" strokeWidth="1.5" fill="none"
+            strokeLinecap="round" strokeLinejoin="round" opacity="0.82" />
+          {/* SpO2 sine inside screen */}
           <path
-            d={arcD(a.s, a.e)}
-            stroke={a.color}
-            strokeWidth="4"
-            fill="none"
-            strokeLinecap="round"
-            strokeOpacity="0.10"
-          />
-          {/* Endpoint dots */}
-          <circle cx={pt(a.s).x} cy={pt(a.s).y} r="2.5" fill={a.color} fillOpacity="0.55" />
-          <circle cx={pt(a.e).x} cy={pt(a.e).y} r="2.5" fill={a.color} fillOpacity="0.55" />
-          {/* Dot glow halos */}
-          <circle cx={pt(a.s).x} cy={pt(a.s).y} r="5"   fill={a.color} fillOpacity="0.12" />
-          <circle cx={pt(a.e).x} cy={pt(a.e).y} r="5"   fill={a.color} fillOpacity="0.12" />
-        </g>
-      ))}
-    </svg>
+            d="M8,58 C22,53 36,63 50,58 C64,53 78,63 92,58 C106,53 120,63 140,58"
+            stroke="#28D7B5" strokeWidth="1" fill="none"
+            strokeLinecap="round" opacity="0.42" />
+          {/* Live dot top-left */}
+          <circle cx="16" cy="17" r="3"   fill="#28D7B5" fillOpacity="0.85" />
+          <circle cx="16" cy="17" r="5.5" fill="#28D7B5" fillOpacity="0.12" />
+          {/* HR readout top-right */}
+          <text x="126" y="21" fontSize="9" fontFamily="monospace" fill="#4F8CFF" fillOpacity="0.80" textAnchor="end">78</text>
+          <text x="140" y="21" fontSize="7" fontFamily="monospace" fill="#4F8CFF" fillOpacity="0.48" textAnchor="end">bpm</text>
+          {/* Stand */}
+          <line x1="74" y1="79" x2="74" y2="88" stroke="rgba(79,140,255,0.22)" strokeWidth="1.5" />
+          <line x1="52" y1="88" x2="96" y2="88" stroke="rgba(79,140,255,0.22)" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+        <div className="pointer-events-none absolute inset-0 rounded-xl blur-2xl opacity-12"
+          style={{ background: "rgba(79,140,255,0.5)" }} />
+      </div>
+
+      {/* BED-04 chip */}
+      <div
+        className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 backdrop-blur-sm"
+        style={{ boxShadow: "0 0 18px rgba(79,140,255,0.06)" }}
+      >
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full flex-none bg-[#4F8CFF]"
+          style={{ boxShadow: "0 0 5px #4F8CFF" }} />
+        <span className="font-mono text-[0.60rem] tracking-[0.10em]" style={{ color: "#4F8CFF88" }}>BED-04</span>
+        <span className="h-3 w-px bg-white/10" />
+        <span className="font-mono text-[0.65rem] font-bold" style={{ color: "#4F8CFF" }}>HR · 78 bpm</span>
+      </div>
+
+      {/* Source label */}
+      <div className="rounded-full border border-white/[0.06] bg-white/[0.02] px-3 py-1 text-[0.56rem] font-semibold uppercase tracking-[0.16em] text-frost/28">
+        Existing monitor feed
+      </div>
+
+    </div>
   );
 }
 
-// ─── Glass orb ────────────────────────────────────────────────────────────────
-function OrbCore() {
+// ─── Right: clinical action output (unified operational card) ────────────────
+function AlertOutput() {
+  return (
+    <div className="pointer-events-none select-none flex flex-col items-end gap-3 w-full">
+
+      {/* Section header */}
+      <div className="flex items-center gap-2 self-end">
+        <span className="text-[0.52rem] font-bold uppercase tracking-[0.22em]" style={{ color: "#FBBF2488" }}>Clinical action</span>
+        <span className="h-px w-8 bg-gradient-to-l from-[#FBBF24] to-transparent" style={{ minWidth: "28px" }} />
+      </div>
+
+      {/* Unified alert card */}
+      <div
+        className="w-full overflow-hidden rounded-xl border border-amber-500/[0.30] bg-[#0a0a0f]/70 backdrop-blur-sm"
+        style={{
+          maxWidth: "clamp(170px, 19vw, 252px)",
+          boxShadow: "0 0 28px rgba(251,191,36,0.08), inset 0 1px 0 rgba(251,191,36,0.10)",
+        }}
+      >
+        {/* Alert header row */}
+        <div className="flex items-center gap-2 border-b border-amber-500/[0.15] px-3 py-2">
+          <span className="h-2 w-2 flex-none animate-pulse rounded-full bg-amber-400"
+            style={{ boxShadow: "0 0 8px rgba(251,191,36,0.85)" }} />
+          <span className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-amber-400">Escalation active</span>
+        </div>
+
+        {/* Alert data */}
+        <div className="border-b border-white/[0.05] px-3 py-2.5">
+          <div className="flex items-center justify-between">
+            <span className="text-[0.58rem] text-frost/45">SpO₂ · Bed 04</span>
+            <span className="font-mono text-[0.70rem] font-bold text-amber-300">89%</span>
+          </div>
+          <div className="mt-1 flex items-center gap-1">
+            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden>
+              <path d="M4 1 L4 7 M1.5 4.5 L4 7 L6.5 4.5" stroke="#F87171" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="font-mono text-[0.56rem] text-red-400/70">Below threshold · −8%</span>
+          </div>
+        </div>
+
+        {/* Routing row */}
+        <div className="border-b border-white/[0.05] px-3 py-2.5">
+          <div className="flex items-center gap-1.5">
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden>
+              <path d="M0 4 L7 4 M5 1.5 L8.5 4 L5 6.5" stroke="#28D7B5" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="text-[0.58rem] font-semibold" style={{ color: "#28D7B5CC" }}>Nurse on duty notified</span>
+          </div>
+          <div className="mt-1 font-mono text-[0.54rem]" style={{ color: "#28D7B544" }}>
+            Ward 3 · Role-aware · Context attached
+          </div>
+        </div>
+
+        {/* Ward context footer */}
+        <div className="flex items-center justify-between px-3 py-2">
+          <div className="flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#7C5CFF]"
+              style={{ boxShadow: "0 0 4px #7C5CFF" }} />
+            <span className="font-mono text-[0.56rem]" style={{ color: "#7C5CFF99" }}>Zone A</span>
+          </div>
+          <span className="font-mono text-[0.56rem]" style={{ color: "#7C5CFF66" }}>24 beds monitored</span>
+        </div>
+      </div>
+
+    </div>
+  );
+}
+
+// ─── Intelligence core ────────────────────────────────────────────────────────
+function IntelligenceCore() {
   return (
     <div className="relative h-full w-full">
-      <div className="absolute inset-[8%]  rounded-full bg-brand-500/[0.28] blur-[60px]" />
-      <div className="absolute inset-[22%] rounded-full bg-violet-500/[0.22] blur-[44px]" />
-      <div className="absolute inset-[37%] rounded-full bg-cyan-400/[0.26] blur-[30px]" />
 
-      {/* 3D perspective ring — Saturn style */}
-      <div style={{ perspective: "700px" }} className="pointer-events-none absolute inset-0 rounded-full">
-        <div
-          className="absolute inset-[-22px] rounded-full"
-          style={{
-            border: "1.5px solid rgba(73,198,255,0.28)",
-            transform: "rotateX(72deg)",
-            boxShadow: "0 0 18px rgba(73,198,255,0.12)",
-          }}
-        />
-      </div>
-
-      {/* Outer dashed orbit */}
-      <div
-        className="absolute inset-[-14px] animate-orb-cw rounded-full"
-        style={{ border: "1px dashed rgba(79,107,255,0.30)" }}
-      />
-
-      {/* Second outer orbit — slow CCW */}
-      <div
-        className="absolute inset-[-28px] animate-orb-ccw-slow rounded-full opacity-35"
-        style={{ border: "1px dashed rgba(40,215,181,0.40)" }}
-      />
-
-      {/* Orbital dot — cyan, fast */}
-      <div className="absolute inset-[-5px] animate-orb-cw rounded-full">
-        <span
-          className="absolute left-1/2 top-0.5 h-3 w-3 -translate-x-1/2 rounded-full bg-cyan-400"
-          style={{ boxShadow: "0 0 14px rgba(73,198,255,0.95), 0 0 30px rgba(73,198,255,0.50)" }}
-        />
-      </div>
-
-      {/* Orbital dot — teal, slow CCW */}
-      <div className="absolute inset-0 animate-orb-ccw-slow rounded-full">
-        <span
-          className="absolute bottom-4 right-3 h-2.5 w-2.5 rounded-full bg-teal-400"
-          style={{ boxShadow: "0 0 12px rgba(40,215,181,0.90), 0 0 24px rgba(40,215,181,0.40)" }}
-        />
-      </div>
+      <div className="absolute inset-[6%]  rounded-full bg-brand-500/[0.22] blur-[55px]" />
+      <div className="absolute inset-[20%] rounded-full bg-violet-500/[0.18] blur-[40px]" />
+      <div className="absolute inset-[36%] rounded-full bg-cyan-400/[0.20] blur-[28px]" />
 
       {/* Glass sphere */}
       <div
         className="absolute inset-0 rounded-full"
         style={{
           background:
-            "radial-gradient(circle at 33% 28%, rgba(255,255,255,0.30) 0%, rgba(79,107,255,0.08) 28%, rgba(5,9,22,0.93) 70%)",
+            "radial-gradient(circle at 33% 28%, rgba(255,255,255,0.26) 0%, rgba(79,107,255,0.08) 28%, rgba(5,9,22,0.94) 70%)",
           boxShadow:
-            "0 0 100px rgba(79,107,255,0.35), inset 0 1px 0 rgba(255,255,255,0.28), inset 0 0 80px rgba(79,107,255,0.09)",
-          border: "1px solid rgba(255,255,255,0.15)",
+            "0 0 80px rgba(79,107,255,0.28), inset 0 1px 0 rgba(255,255,255,0.24), inset 0 0 70px rgba(79,107,255,0.07)",
+          border: "1px solid rgba(255,255,255,0.13)",
         }}
       >
-        <div className="absolute inset-[16px] rounded-full" style={{ border: "1px solid rgba(255,255,255,0.08)" }} />
-        <div className="absolute inset-[38px] rounded-full" style={{ border: "1px solid rgba(73,198,255,0.18)" }} />
+        <div className="absolute inset-[36px] rounded-full" style={{ border: "1px solid rgba(73,198,255,0.13)" }} />
 
-        {/* Radar scan */}
+        {/* Hex grid */}
+        <div
+          className="absolute inset-[18%] rounded-full overflow-hidden"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='20' viewBox='0 0 24 20'%3E%3Cpath d='M12 0 L24 7 L24 13 L12 20 L0 13 L0 7 Z' fill='none' stroke='%2349C6FF' stroke-width='0.4' stroke-opacity='0.18'/%3E%3C/svg%3E\")",
+            backgroundSize: "24px 20px",
+          }}
+        />
+
+        {/* Radar scan sweep */}
         <div
           className="absolute inset-[8px] animate-scan-sweep rounded-full"
           style={{
             background:
-              "conic-gradient(from 0deg, transparent 0deg, rgba(73,198,255,0.22) 22deg, transparent 44deg)",
+              "conic-gradient(from 0deg, transparent 0deg, rgba(73,198,255,0.16) 22deg, transparent 44deg)",
           }}
         />
 
-        {/* Vertical crosshair */}
-        <div
-          className="absolute inset-y-8 left-1/2 w-px -translate-x-1/2"
-          style={{ background: "linear-gradient(to bottom, transparent, rgba(79,107,255,0.45), transparent)" }}
-        />
+        {/* Signal nodes — left entry (signal in) + right exit (alert out) */}
+        <span className="absolute left-[36px] top-1/2 h-2 w-2 -translate-y-1/2 animate-pulse rounded-full bg-[#4F8CFF]"
+          style={{ boxShadow: "0 0 8px #4F8CFF, 0 0 16px #4F8CFF44" }} />
+        <span className="absolute right-[36px] top-1/2 h-2 w-2 -translate-y-1/2 animate-pulse rounded-full bg-[#FBBF24]"
+          style={{ boxShadow: "0 0 8px #FBBF24, 0 0 16px #FBBF2444", animationDelay: "0.4s" }} />
 
-        {/* ── Cardinal monitoring nodes on inner ring ── */}
-        <span className="absolute left-1/2 top-[38px] h-2 w-2 -translate-x-1/2 animate-pulse rounded-full bg-[#4F8CFF]"
-          style={{ boxShadow: "0 0 8px #4F8CFF, 0 0 16px #4F8CFF55" }} />
-        <span className="absolute right-[38px] top-1/2 h-2 w-2 -translate-y-1/2 animate-pulse rounded-full bg-[#28D7B5]"
-          style={{ boxShadow: "0 0 8px #28D7B5, 0 0 16px #28D7B555", animationDelay: "0.5s" }} />
-        <span className="absolute bottom-[38px] left-1/2 h-2 w-2 -translate-x-1/2 animate-pulse rounded-full bg-[#A78BFF]"
-          style={{ boxShadow: "0 0 8px #A78BFF, 0 0 16px #A78BFF55", animationDelay: "1s" }} />
-        <span className="absolute left-[38px] top-1/2 h-2 w-2 -translate-y-1/2 animate-pulse rounded-full bg-[#49C6FF]"
-          style={{ boxShadow: "0 0 8px #49C6FF, 0 0 16px #49C6FF55", animationDelay: "1.5s" }} />
-
-        {/* ── Live ECG trace — runs through orb center ── */}
-        <div
-          className="absolute inset-x-[13%] top-1/2 h-[24px] -translate-y-1/2 overflow-hidden"
-          style={{ opacity: 0.55 }}
-        >
+        {/* Live ECG trace through center */}
+        <div className="absolute inset-x-[13%] top-1/2 h-[22px] -translate-y-1/2 overflow-hidden" style={{ opacity: 0.60 }}>
           <div className="flex h-full" style={{ width: "200%", animation: "ecg-scroll 4.5s linear infinite" }}>
             {[0, 1].map((k) => (
-              <svg
-                key={k}
-                viewBox="0 0 240 24"
-                preserveAspectRatio="none"
-                style={{ width: "50%", height: "100%", flexShrink: 0 }}
-                aria-hidden
-              >
+              <svg key={k} viewBox="0 0 240 24" preserveAspectRatio="none"
+                style={{ width: "50%", height: "100%", flexShrink: 0 }} aria-hidden>
                 <defs>
-                  <linearGradient id={`ob-ecg-${k}`} x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%"   stopColor="#49C6FF" stopOpacity="0"   />
-                    <stop offset="12%"  stopColor="#49C6FF" stopOpacity="1"   />
-                    <stop offset="88%"  stopColor="#4F8CFF" stopOpacity="1"   />
-                    <stop offset="100%" stopColor="#4F8CFF" stopOpacity="0"   />
+                  <linearGradient id={`ic-ecg-${k}`} x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%"   stopColor="#49C6FF" stopOpacity="0" />
+                    <stop offset="12%"  stopColor="#49C6FF" stopOpacity="1" />
+                    <stop offset="88%"  stopColor="#4F8CFF" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#4F8CFF" stopOpacity="0" />
                   </linearGradient>
                 </defs>
                 <path
                   d="M0,12 L38,12 L44,9 L48,12 L56,12 L59,17 L61,3 L63,21 L65,12 L78,12 L118,12 L124,9 L128,12 L136,12 L139,17 L141,3 L143,21 L145,12 L158,12 L198,12 L204,9 L208,12 L216,12 L219,17 L221,3 L223,21 L225,12 L240,12"
-                  stroke={`url(#ob-ecg-${k})`}
-                  strokeWidth="1.5"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  stroke={`url(#ic-ecg-${k})`} strokeWidth="1.5" fill="none"
+                  strokeLinecap="round" strokeLinejoin="round"
                 />
               </svg>
             ))}
           </div>
         </div>
 
-        {/* ── Core glow ── */}
+        {/* Core glow */}
         <div
           className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{ boxShadow: "0 0 40px rgba(255,255,255,0.28), 0 0 80px rgba(79,107,255,0.30)" }}
+          style={{ boxShadow: "0 0 38px rgba(255,255,255,0.20), 0 0 70px rgba(79,107,255,0.26)" }}
         />
 
-        {/* ── Medical cross at center ── */}
+        {/* Medical cross */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <svg className="h-[18px] w-[18px]" viewBox="0 0 18 18" fill="none" aria-hidden>
-            <rect x="6"   y="0.5" width="6" height="17" rx="2.5" fill="white" fillOpacity="0.90" />
-            <rect x="0.5" y="6"   width="17" height="6" rx="2.5" fill="white" fillOpacity="0.90" />
+          <svg className="h-[16px] w-[16px]" viewBox="0 0 18 18" fill="none" aria-hidden>
+            <rect x="6"   y="0.5" width="6" height="17" rx="2.5" fill="white" fillOpacity="0.88" />
+            <rect x="0.5" y="6"   width="17" height="6"  rx="2.5" fill="white" fillOpacity="0.88" />
           </svg>
           <div
             className="pointer-events-none absolute inset-0"
-            style={{ boxShadow: "0 0 22px rgba(255,255,255,0.9), 0 0 40px rgba(79,107,255,0.40)", borderRadius: "50%" }}
+            style={{
+              boxShadow: "0 0 20px rgba(255,255,255,0.85), 0 0 36px rgba(79,107,255,0.35)",
+              borderRadius: "50%",
+            }}
           />
         </div>
       </div>
 
-      {/* Orbital dot — brand, CCW */}
-      <div className="absolute inset-0 animate-orb-ccw rounded-full">
-        <span
-          className="absolute bottom-6 right-5 h-2 w-2 rounded-full bg-brand-400"
-          style={{ boxShadow: "0 0 10px rgba(79,107,255,0.95), 0 0 20px rgba(79,107,255,0.50)" }}
-        />
-      </div>
     </div>
   );
 }
@@ -534,7 +497,7 @@ function DataChannel({ label, value, unit, color, spark, idx, align = "left", cl
   return (
     <div className={cn("pointer-events-none select-none", className)}>
       <div
-        className="h-[2px] w-[48px] rounded-full"
+        className="h-[2px] w-[44px] rounded-full"
         style={{
           background: `linear-gradient(${isRight ? "to left" : "to right"}, ${color}, transparent)`,
           marginLeft: isRight ? "auto" : 0,
@@ -542,22 +505,27 @@ function DataChannel({ label, value, unit, color, spark, idx, align = "left", cl
       />
       <div className={cn("mt-3", isRight && "text-right")}>
         <div className={cn("flex items-center gap-1.5", isRight && "flex-row-reverse justify-start")}>
-          <span className="block h-1.5 w-1.5 flex-none rounded-full" style={{ background: color, boxShadow: `0 0 6px ${color}` }} />
-          <span className="text-[0.6rem] font-semibold uppercase tracking-[0.16em]" style={{ color: `${color}CC` }}>
+          <span className="block h-1.5 w-1.5 flex-none rounded-full"
+            style={{ background: color, boxShadow: `0 0 6px ${color}` }} />
+          <span className="text-[0.62rem] font-semibold uppercase tracking-[0.16em]"
+            style={{ color: `${color}CC` }}>
             {label}
           </span>
         </div>
         <div className={cn("mt-1.5 flex items-baseline gap-1.5", isRight && "justify-end")}>
-          <span className="text-[2.1rem] font-semibold leading-none tracking-[-0.04em]" style={{ color }}>
+          <span
+            className="font-semibold leading-none tracking-[-0.04em]"
+            style={{ color, fontSize: "clamp(1.5rem, 2.2vw, 2.2rem)" }}
+          >
             {value}
           </span>
           {unit && (
-            <span className="text-[0.7rem] font-medium" style={{ color: "rgba(240,244,255,0.50)" }}>
+            <span className="text-[0.68rem] font-medium" style={{ color: "rgba(240,244,255,0.48)" }}>
               {unit}
             </span>
           )}
         </div>
-        <div className={cn("mt-2.5 h-[14px] w-[68px]", isRight && "ml-auto")}>
+        <div className={cn("mt-2 h-[14px] w-[68px]", isRight && "ml-auto")}>
           <svg viewBox="0 0 56 16" className="h-full w-full" aria-hidden preserveAspectRatio="none">
             <defs>
               <linearGradient id={gid} x1="0" y1="0" x2="1" y2="0">
@@ -566,7 +534,8 @@ function DataChannel({ label, value, unit, color, spark, idx, align = "left", cl
                 <stop offset="100%" stopColor={color} stopOpacity="1.00" />
               </linearGradient>
             </defs>
-            <path d={SPARK[spark] ?? SPARK.sine} stroke={`url(#${gid})`} strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <path d={SPARK[spark] ?? SPARK.sine} stroke={`url(#${gid})`}
+              strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
       </div>
@@ -579,7 +548,8 @@ function ECGScrollStrip() {
   return (
     <div className="flex h-full" style={{ width: "200%", animation: "waveform-scroll 5s linear infinite" }}>
       {[0, 1].map((i) => (
-        <svg key={i} viewBox="0 0 800 30" preserveAspectRatio="none" style={{ width: "50%", height: "100%", flexShrink: 0 }} aria-hidden>
+        <svg key={i} viewBox="0 0 800 30" preserveAspectRatio="none"
+          style={{ width: "50%", height: "100%", flexShrink: 0 }} aria-hidden>
           <defs>
             <linearGradient id={`ecg-sg-${i}`} x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%"   stopColor="#4F6BFF" stopOpacity="0.0" />
@@ -589,7 +559,8 @@ function ECGScrollStrip() {
               <stop offset="100%" stopColor="#49C6FF" stopOpacity="0.0" />
             </linearGradient>
           </defs>
-          <path d={ECG_PATH} stroke={`url(#ecg-sg-${i})`} strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={ECG_PATH} stroke={`url(#ecg-sg-${i})`} strokeWidth="1.4"
+            fill="none" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ))}
     </div>
