@@ -62,22 +62,47 @@ export function Hero() {
         style={{
           paddingTop:    "clamp(64px, 7vh, 96px)",
           paddingBottom: "clamp(88px, 10vh, 120px)",
-          paddingLeft:   "clamp(12px, 2vw, 40px)",
-          paddingRight:  "clamp(12px, 2vw, 40px)",
+          paddingLeft:   "clamp(16px, 2.5vw, 48px)",
+          paddingRight:  "clamp(16px, 2.5vw, 48px)",
         }}
       >
 
-        {/* ── LEFT COLUMN: HR vital + signal source ── */}
+        {/* ── LEFT COLUMN: 3 items, justify-between ── */}
         <div
-          className="flex h-full flex-col items-start justify-center"
-          style={{ width: "clamp(180px, 26vw, 340px)", gap: "clamp(20px, 4vh, 56px)" }}
+          className="flex h-full flex-col items-start justify-between"
+          style={{
+            width:         "clamp(200px, 26vw, 340px)",
+            paddingTop:    "clamp(8px, 3vh, 40px)",
+            paddingBottom: "clamp(8px, 3vh, 40px)",
+          }}
         >
           <DataChannel {...VITALS[0]} idx={0} align="right" />
           <SignalSource />
+          <DataChannel {...VITALS[2]} idx={2} align="right" />
         </div>
 
-        {/* ── CENTER COLUMN: AI pill + orb ── */}
-        <div className="flex flex-1 flex-col items-center justify-center" style={{ gap: "clamp(12px, 2vh, 24px)" }}>
+        {/* ── CENTER COLUMN: stage flow strip + AI pill + orb ── */}
+        <div className="flex flex-1 flex-col items-center justify-center" style={{ gap: "clamp(10px, 1.6vh, 20px)" }}>
+
+          {/* Stage transformation path */}
+          <div className="flex items-center gap-2.5">
+            <span className="text-[0.52rem] font-bold uppercase tracking-[0.16em]" style={{ color: "#4F8CFF70" }}>
+              01 · Capture
+            </span>
+            <svg width="18" height="6" viewBox="0 0 18 6" fill="none" aria-hidden>
+              <path d="M0 3 L12 3 M9 1 L14 3 L9 5" stroke="rgba(73,198,255,0.28)" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="text-[0.52rem] font-bold uppercase tracking-[0.16em] text-frost/30">
+              02 · Interpret
+            </span>
+            <svg width="18" height="6" viewBox="0 0 18 6" fill="none" aria-hidden>
+              <path d="M0 3 L12 3 M9 1 L14 3 L9 5" stroke="rgba(73,198,255,0.28)" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="text-[0.52rem] font-bold uppercase tracking-[0.16em]" style={{ color: "#FBBF2470" }}>
+              03 · Escalate
+            </span>
+          </div>
+
           {/* AI active pill */}
           <div className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1.5 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
@@ -85,30 +110,28 @@ export function Hero() {
               ASTA · AI active
             </span>
           </div>
-          {/* Orb — fills center, capped by both vw and vh */}
+
+          {/* Orb */}
           <div
             className="relative"
-            style={{
-              width:       "min(38vw, 58vh, 560px)",
-              aspectRatio: "1 / 1",
-            }}
+            style={{ width: "min(38vw, 58vh, 560px)", aspectRatio: "1 / 1" }}
           >
             <IntelligenceCore />
           </div>
         </div>
 
-        {/* ── RIGHT COLUMN: SpO₂ + alert output + BP ── */}
+        {/* ── RIGHT COLUMN: 3 items, justify-between ── */}
         <div
           className="flex h-full flex-col items-end justify-between"
           style={{
-            width:         "clamp(180px, 26vw, 340px)",
+            width:         "clamp(200px, 26vw, 340px)",
             paddingTop:    "clamp(8px, 3vh, 40px)",
             paddingBottom: "clamp(8px, 3vh, 40px)",
           }}
         >
           <DataChannel {...VITALS[1]} idx={1} align="left" />
           <AlertOutput />
-          <DataChannel {...VITALS[2]} idx={2} align="left" />
+          <WardCoverage />
         </div>
 
       </div>
@@ -127,7 +150,6 @@ export function Hero() {
             <IntelligenceCore />
           </div>
         </div>
-        {/* Mobile signal → action strip */}
         <div className="flex w-full max-w-[320px] items-center justify-between gap-2">
           <div className="flex items-center gap-1.5 rounded-lg border border-white/[0.08] bg-white/[0.03] px-2.5 py-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4F8CFF]" style={{ boxShadow: "0 0 5px #4F8CFF" }} />
@@ -205,7 +227,9 @@ export function Hero() {
   );
 }
 
-// ─── Directional flow lines: Signal source → Core → Alert ─────────────────────
+// ─── Directional flow lines ────────────────────────────────────────────────────
+// Lines stop at x=33 / start at x=67 — well clear of the orb left/right edges
+// (~31–36 SVG units depending on screen ratio). No overlap with signal nodes.
 function FlowLines() {
   return (
     <svg
@@ -216,31 +240,27 @@ function FlowLines() {
     >
       <defs>
         <linearGradient id="fl-l" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%"   stopColor="#4F8CFF" stopOpacity="0.50" />
-          <stop offset="60%"  stopColor="#4F8CFF" stopOpacity="0.10" />
-          <stop offset="100%" stopColor="#4F8CFF" stopOpacity="0"    />
+          <stop offset="0%"   stopColor="#4F8CFF" stopOpacity="0.58" />
+          <stop offset="70%"  stopColor="#4F8CFF" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#4F8CFF" stopOpacity="0.06" />
         </linearGradient>
         <linearGradient id="fl-r" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%"   stopColor="#28D7B5" stopOpacity="0"    />
-          <stop offset="40%"  stopColor="#28D7B5" stopOpacity="0.10" />
-          <stop offset="100%" stopColor="#FBBF24" stopOpacity="0.48" />
+          <stop offset="0%"   stopColor="#FBBF24" stopOpacity="0.06" />
+          <stop offset="30%"  stopColor="#FBBF24" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#FBBF24" stopOpacity="0.58" />
         </linearGradient>
       </defs>
-      {/* Left: signal source → orb */}
-      <line x1="21" y1="50" x2="39" y2="50"
-        stroke="url(#fl-l)" strokeWidth="0.48" strokeDasharray="1.8 1.2"
+
+      {/* Left: signal source column → orb left edge */}
+      <line x1="22" y1="50" x2="33" y2="50"
+        stroke="url(#fl-l)" strokeWidth="0.60" strokeDasharray="1.8 1.2"
         style={{ animation: "conn-flow 2.6s linear infinite" }} />
-      {/* Arrow head at orb entry */}
-      <path d="M37.5 48.8 L39.5 50 L37.5 51.2" fill="none" stroke="#4F8CFF" strokeWidth="0.35" strokeOpacity="0.55" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Right: orb → alert output */}
-      <line x1="61" y1="50" x2="79" y2="50"
-        stroke="url(#fl-r)" strokeWidth="0.48" strokeDasharray="1.8 1.2"
+
+      {/* Right: orb right edge → alert output column */}
+      <line x1="67" y1="50" x2="78" y2="50"
+        stroke="url(#fl-r)" strokeWidth="0.60" strokeDasharray="1.8 1.2"
         style={{ animation: "conn-flow 2.6s 0.5s linear infinite" }} />
-      {/* Arrow head at alert entry */}
-      <path d="M77.5 48.8 L79.5 50 L77.5 51.2" fill="none" stroke="#FBBF24" strokeWidth="0.35" strokeOpacity="0.55" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Entry / exit ticks */}
-      <line x1="39" y1="48.5" x2="39" y2="51.5" stroke="#4F8CFF" strokeWidth="0.28" strokeOpacity="0.50" />
-      <line x1="61" y1="48.5" x2="61" y2="51.5" stroke="#28D7B5" strokeWidth="0.28" strokeOpacity="0.50" />
+  
     </svg>
   );
 }
@@ -248,53 +268,53 @@ function FlowLines() {
 // ─── Left: bedside signal source ─────────────────────────────────────────────
 function SignalSource() {
   return (
-    <div className="pointer-events-none select-none flex flex-col items-end gap-3 w-full">
+    <div className="pointer-events-none select-none flex flex-col items-start gap-3 w-full">
 
       {/* Section header */}
-      <div className="flex items-center gap-2 self-start">
-        <span className="h-px flex-1 w-8 bg-gradient-to-r from-[#4F8CFF] to-transparent" style={{ minWidth: "28px" }} />
-        <span className="text-[0.52rem] font-bold uppercase tracking-[0.22em]" style={{ color: "#4F8CFF88" }}>Signal input</span>
+      <div className="flex items-center gap-2">
+        <span className="h-px w-7 bg-gradient-to-r from-[#4F8CFF] to-transparent" />
+        <span className="text-[0.52rem] font-bold uppercase tracking-[0.22em]" style={{ color: "#4F8CFF88" }}>
+          Capture · Signal input
+        </span>
       </div>
 
-      {/* Monitor — scales with column width */}
-      <div className="relative w-full" style={{ maxWidth: "clamp(150px, 18vw, 260px)" }}>
-        <svg
-          viewBox="0 0 148 94"
-          className="w-full h-auto"
-          fill="none"
-          aria-hidden
-        >
+      {/* Monitor — fills most of the column width */}
+      <div className="relative w-full" style={{ maxWidth: "clamp(200px, 22vw, 300px)" }}>
+        <svg viewBox="0 0 148 100" className="w-full h-auto" fill="none" aria-hidden>
           {/* Body */}
           <rect x="1" y="1" width="146" height="78" rx="7"
-            stroke="rgba(79,140,255,0.32)" strokeWidth="1"
-            fill="rgba(79,140,255,0.03)" />
+            stroke="rgba(79,140,255,0.32)" strokeWidth="1" fill="rgba(79,140,255,0.03)" />
           {/* Screen */}
-          <rect x="8" y="8" width="132" height="64" rx="4"
-            fill="rgba(4,8,22,0.90)" />
-          {/* Grid lines inside screen */}
-          <line x1="8" y1="40" x2="140" y2="40" stroke="rgba(79,140,255,0.07)" strokeWidth="0.5" />
+          <rect x="8" y="8" width="132" height="64" rx="4" fill="rgba(4,8,22,0.90)" />
+          {/* Grid lines */}
+          <line x1="8"  y1="40" x2="140" y2="40" stroke="rgba(79,140,255,0.07)" strokeWidth="0.5" />
           <line x1="74" y1="8"  x2="74"  y2="72" stroke="rgba(79,140,255,0.07)" strokeWidth="0.5" />
           {/* ECG waveform */}
           <path
             d="M8,40 L24,40 L28,31 L32,40 L38,40 L41,49 L43,25 L45,55 L47,40 L70,40 L86,40 L90,31 L94,40 L100,40 L103,49 L105,25 L107,55 L109,40 L140,40"
             stroke="#4F8CFF" strokeWidth="1.5" fill="none"
             strokeLinecap="round" strokeLinejoin="round" opacity="0.82" />
-          {/* SpO2 sine inside screen */}
+          {/* SpO2 sine */}
           <path
             d="M8,58 C22,53 36,63 50,58 C64,53 78,63 92,58 C106,53 120,63 140,58"
-            stroke="#28D7B5" strokeWidth="1" fill="none"
-            strokeLinecap="round" opacity="0.42" />
-          {/* Live dot top-left */}
+            stroke="#28D7B5" strokeWidth="1" fill="none" strokeLinecap="round" opacity="0.42" />
+          {/* Live dot */}
           <circle cx="16" cy="17" r="3"   fill="#28D7B5" fillOpacity="0.85" />
           <circle cx="16" cy="17" r="5.5" fill="#28D7B5" fillOpacity="0.12" />
-          {/* HR readout top-right */}
-          <text x="126" y="21" fontSize="9" fontFamily="monospace" fill="#4F8CFF" fillOpacity="0.80" textAnchor="end">78</text>
-          <text x="140" y="21" fontSize="7" fontFamily="monospace" fill="#4F8CFF" fillOpacity="0.48" textAnchor="end">bpm</text>
+          {/* HR readout */}
+          <text x="124" y="21" fontSize="9" fontFamily="monospace" fill="#4F8CFF" fillOpacity="0.80" textAnchor="end">78</text>
+          <text x="139" y="21" fontSize="7" fontFamily="monospace" fill="#4F8CFF" fillOpacity="0.48" textAnchor="end">bpm</text>
+          {/* SpO2 readout */}
+          <text x="124" y="33" fontSize="9" fontFamily="monospace" fill="#28D7B5" fillOpacity="0.75" textAnchor="end">97%</text>
+          <text x="139" y="33" fontSize="7" fontFamily="monospace" fill="#28D7B5" fillOpacity="0.42" textAnchor="end">SpO₂</text>
           {/* Stand */}
-          <line x1="74" y1="79" x2="74" y2="88" stroke="rgba(79,140,255,0.22)" strokeWidth="1.5" />
-          <line x1="52" y1="88" x2="96" y2="88" stroke="rgba(79,140,255,0.22)" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="74" y1="79" x2="74" y2="89" stroke="rgba(79,140,255,0.22)" strokeWidth="1.5" />
+          <line x1="52" y1="89" x2="96" y2="89" stroke="rgba(79,140,255,0.22)" strokeWidth="1.5" strokeLinecap="round" />
+          {/* Monitor label */}
+          <text x="74" y="98" fontSize="5.5" fontFamily="monospace" fill="rgba(79,140,255,0.25)"
+            textAnchor="middle" letterSpacing="1">PATIENT MONITOR</text>
         </svg>
-        <div className="pointer-events-none absolute inset-0 rounded-xl blur-2xl opacity-12"
+        <div className="pointer-events-none absolute inset-0 rounded-xl blur-2xl opacity-10"
           style={{ background: "rgba(79,140,255,0.5)" }} />
       </div>
 
@@ -312,77 +332,131 @@ function SignalSource() {
 
       {/* Source label */}
       <div className="rounded-full border border-white/[0.06] bg-white/[0.02] px-3 py-1 text-[0.56rem] font-semibold uppercase tracking-[0.16em] text-frost/28">
-        Existing monitor feed
+        Existing bedside monitor · Device-agnostic
       </div>
 
     </div>
   );
 }
 
-// ─── Right: clinical action output (unified operational card) ────────────────
+// ─── Right: clinical action output ────────────────────────────────────────────
 function AlertOutput() {
   return (
     <div className="pointer-events-none select-none flex flex-col items-end gap-3 w-full">
 
       {/* Section header */}
-      <div className="flex items-center gap-2 self-end">
-        <span className="text-[0.52rem] font-bold uppercase tracking-[0.22em]" style={{ color: "#FBBF2488" }}>Clinical action</span>
-        <span className="h-px w-8 bg-gradient-to-l from-[#FBBF24] to-transparent" style={{ minWidth: "28px" }} />
+      <div className="flex items-center gap-2">
+        <span className="text-[0.52rem] font-bold uppercase tracking-[0.22em]" style={{ color: "#FBBF2488" }}>
+          Escalate · Clinical action
+        </span>
+        <span className="h-px w-7 bg-gradient-to-l from-[#FBBF24] to-transparent" />
       </div>
 
       {/* Unified alert card */}
       <div
         className="w-full overflow-hidden rounded-xl border border-amber-500/[0.30] bg-[#0a0a0f]/70 backdrop-blur-sm"
         style={{
-          maxWidth: "clamp(170px, 19vw, 252px)",
-          boxShadow: "0 0 28px rgba(251,191,36,0.08), inset 0 1px 0 rgba(251,191,36,0.10)",
+          maxWidth: "clamp(210px, 23vw, 310px)",
+          boxShadow: "0 0 32px rgba(251,191,36,0.10), inset 0 1px 0 rgba(251,191,36,0.10)",
         }}
       >
-        {/* Alert header row */}
-        <div className="flex items-center gap-2 border-b border-amber-500/[0.15] px-3 py-2">
+        {/* Header */}
+        <div className="flex items-center gap-2 border-b border-amber-500/[0.15] px-3.5 py-2.5">
           <span className="h-2 w-2 flex-none animate-pulse rounded-full bg-amber-400"
             style={{ boxShadow: "0 0 8px rgba(251,191,36,0.85)" }} />
-          <span className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-amber-400">Escalation active</span>
+          <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-amber-400">Escalation active</span>
         </div>
 
-        {/* Alert data */}
-        <div className="border-b border-white/[0.05] px-3 py-2.5">
-          <div className="flex items-center justify-between">
-            <span className="text-[0.58rem] text-frost/45">SpO₂ · Bed 04</span>
-            <span className="font-mono text-[0.70rem] font-bold text-amber-300">89%</span>
-          </div>
-          <div className="mt-1 flex items-center gap-1">
-            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden>
-              <path d="M4 1 L4 7 M1.5 4.5 L4 7 L6.5 4.5" stroke="#F87171" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span className="font-mono text-[0.56rem] text-red-400/70">Below threshold · −8%</span>
+        {/* Threshold */}
+        <div className="border-b border-white/[0.05] px-3.5 py-2.5">
+          <div className="text-[0.62rem] font-semibold text-frost/55">SpO₂ below threshold</div>
+          <div className="mt-1.5 flex items-baseline gap-2">
+            <span className="font-mono text-[0.95rem] font-bold text-amber-300">89%</span>
+            <div className="flex items-center gap-1">
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden>
+                <path d="M4 1 L4 7 M1.5 4.5 L4 7 L6.5 4.5" stroke="#F87171" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="font-mono text-[0.58rem] text-red-400/70">−8% · Bed 04</span>
+            </div>
           </div>
         </div>
 
-        {/* Routing row */}
-        <div className="border-b border-white/[0.05] px-3 py-2.5">
-          <div className="flex items-center gap-1.5">
+        {/* Routing */}
+        <div className="border-b border-white/[0.05] px-3.5 py-2.5">
+          <div className="flex items-center gap-2">
             <svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden>
               <path d="M0 4 L7 4 M5 1.5 L8.5 4 L5 6.5" stroke="#28D7B5" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="text-[0.58rem] font-semibold" style={{ color: "#28D7B5CC" }}>Nurse on duty notified</span>
+            <span className="text-[0.63rem] font-semibold" style={{ color: "#28D7B5CC" }}>Routed to Nurse on duty</span>
           </div>
-          <div className="mt-1 font-mono text-[0.54rem]" style={{ color: "#28D7B544" }}>
+          <div className="mt-1 font-mono text-[0.55rem]" style={{ color: "#28D7B544" }}>
             Ward 3 · Role-aware · Context attached
           </div>
         </div>
 
-        {/* Ward context footer */}
-        <div className="flex items-center justify-between px-3 py-2">
+        {/* Ward footer */}
+        <div className="px-3.5 py-2.5">
           <div className="flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-[#7C5CFF]"
               style={{ boxShadow: "0 0 4px #7C5CFF" }} />
-            <span className="font-mono text-[0.56rem]" style={{ color: "#7C5CFF99" }}>Zone A</span>
+            <span className="font-mono text-[0.58rem] font-semibold" style={{ color: "#7C5CFF99" }}>
+              Bed 04 · Zone A · 1 active escalation
+            </span>
           </div>
-          <span className="font-mono text-[0.56rem]" style={{ color: "#7C5CFF66" }}>24 beds monitored</span>
+          <div className="mt-0.5 font-mono text-[0.52rem]" style={{ color: "#7C5CFF55" }}>
+            24 beds monitored · Role-aware routing active
+          </div>
         </div>
       </div>
 
+    </div>
+  );
+}
+
+// ─── Right bottom: ward coverage summary (mirrors Blood Press on left) ─────────
+function WardCoverage() {
+  return (
+    <div className="pointer-events-none select-none text-right">
+      <div className="h-[2px] w-[44px] rounded-full ml-auto"
+        style={{ background: "linear-gradient(to left, #7C5CFF, transparent)" }} />
+      <div className="mt-3">
+        <div className="flex items-center gap-1.5 flex-row-reverse justify-start">
+          <span className="block h-1.5 w-1.5 flex-none rounded-full"
+            style={{ background: "#7C5CFF", boxShadow: "0 0 6px #7C5CFF" }} />
+          <span className="text-[0.62rem] font-semibold uppercase tracking-[0.16em]"
+            style={{ color: "#7C5CFFcc" }}>
+            Ward Coverage
+          </span>
+        </div>
+        <div className="mt-1.5 flex items-baseline gap-1.5 justify-end">
+          <span
+            className="font-semibold leading-none tracking-[-0.04em]"
+            style={{ color: "#7C5CFF", fontSize: "clamp(1.5rem, 2.2vw, 2.2rem)" }}
+          >
+            24
+          </span>
+          <span className="text-[0.68rem] font-medium" style={{ color: "rgba(240,244,255,0.48)" }}>
+            beds
+          </span>
+        </div>
+        <div className="mt-2 h-[14px] w-[68px] ml-auto">
+          <svg viewBox="0 0 56 16" className="h-full w-full" aria-hidden preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="dc-ward" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%"   stopColor="#7C5CFF" stopOpacity="0.05" />
+                <stop offset="30%"  stopColor="#7C5CFF" stopOpacity="0.65" />
+                <stop offset="100%" stopColor="#7C5CFF" stopOpacity="1.00" />
+              </linearGradient>
+            </defs>
+            <path d="M0,8 C7,3 14,13 21,8 C28,3 35,13 42,8 C49,3 56,13 56,8"
+              stroke="url(#dc-ward)" strokeWidth="1.6" fill="none"
+              strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <div className="mt-1 font-mono text-[0.56rem]" style={{ color: "#7C5CFF55" }}>
+          Zone A · Active
+        </div>
+      </div>
     </div>
   );
 }
@@ -407,8 +481,6 @@ function IntelligenceCore() {
           border: "1px solid rgba(255,255,255,0.13)",
         }}
       >
-        <div className="absolute inset-[36px] rounded-full" style={{ border: "1px solid rgba(73,198,255,0.13)" }} />
-
         {/* Hex grid */}
         <div
           className="absolute inset-[18%] rounded-full overflow-hidden"
@@ -424,18 +496,18 @@ function IntelligenceCore() {
           className="absolute inset-[8px] animate-scan-sweep rounded-full"
           style={{
             background:
-              "conic-gradient(from 0deg, transparent 0deg, rgba(73,198,255,0.16) 22deg, transparent 44deg)",
+              "conic-gradient(from 0deg, transparent 0deg, rgba(73,198,255,0.09) 22deg, transparent 44deg)",
           }}
         />
 
-        {/* Signal nodes — left entry (signal in) + right exit (alert out) */}
+        {/* Signal nodes: blue left = signal in, amber right = alert out */}
         <span className="absolute left-[36px] top-1/2 h-2 w-2 -translate-y-1/2 animate-pulse rounded-full bg-[#4F8CFF]"
           style={{ boxShadow: "0 0 8px #4F8CFF, 0 0 16px #4F8CFF44" }} />
         <span className="absolute right-[36px] top-1/2 h-2 w-2 -translate-y-1/2 animate-pulse rounded-full bg-[#FBBF24]"
           style={{ boxShadow: "0 0 8px #FBBF24, 0 0 16px #FBBF2444", animationDelay: "0.4s" }} />
 
-        {/* Live ECG trace through center */}
-        <div className="absolute inset-x-[13%] top-1/2 h-[22px] -translate-y-1/2 overflow-hidden" style={{ opacity: 0.60 }}>
+        {/* ECG trace through center */}
+        <div className="absolute inset-x-[13%] top-1/2 h-[22px] -translate-y-1/2 overflow-hidden" style={{ opacity: 0.55 }}>
           <div className="flex h-full" style={{ width: "200%", animation: "ecg-scroll 4.5s linear infinite" }}>
             {[0, 1].map((k) => (
               <svg key={k} viewBox="0 0 240 24" preserveAspectRatio="none"
@@ -457,12 +529,6 @@ function IntelligenceCore() {
             ))}
           </div>
         </div>
-
-        {/* Core glow */}
-        <div
-          className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{ boxShadow: "0 0 38px rgba(255,255,255,0.20), 0 0 70px rgba(79,107,255,0.26)" }}
-        />
 
         {/* Medical cross */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
