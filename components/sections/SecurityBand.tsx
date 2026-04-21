@@ -182,7 +182,7 @@ export function SecurityBand() {
                           className="font-mono text-[0.78rem] font-bold"
                           style={{ color: item.color }}
                         >
-                          {item.score}%
+                          {item.statusLabel ?? `${item.score}%`}
                         </span>
                       </div>
                       {/* Track */}

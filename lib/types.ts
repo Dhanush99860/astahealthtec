@@ -98,6 +98,7 @@ export type ComplianceMetric = {
   label: string;
   score: number;
   color: string;
+  statusLabel?: string;
 };
 
 export type SecurityMetric = {
