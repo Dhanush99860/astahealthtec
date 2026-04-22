@@ -2,7 +2,7 @@ export const BRAND = {
   name: "ASTA",
   full: "ASTA Health Tech",
   tagline: "Smart wards, built on the hospital you already have.",
-  email: "contact@asta.health",
+  email: "info@astahealthtech.com",
 } as const;
 
 export const ROUTES = {
