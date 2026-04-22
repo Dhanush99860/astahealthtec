@@ -70,22 +70,22 @@ export function PlatformSignalFlow() {
             <div className="relative hidden gap-4 px-8 pb-6 pt-8 lg:grid lg:grid-cols-5">
               <div
                 aria-hidden
-                className="pointer-events-none absolute left-[10%] right-[10%] top-[56px] h-px"
+                className="pointer-events-none absolute left-[10%] right-[10%] top-[64px] h-px"
                 style={{
                   background:
-                    "linear-gradient(to right,rgba(79,107,255,0.18),rgba(124,92,255,0.22),rgba(73,198,255,0.22),rgba(40,215,181,0.22),rgba(79,107,255,0.18))",
+                    "linear-gradient(to right,rgba(79,107,255,0.22),rgba(124,92,255,0.26),rgba(73,198,255,0.26),rgba(40,215,181,0.26),rgba(79,107,255,0.22))",
                 }}
               />
               {platformSignalFlow.steps.map((step, index) => (
                 <div key={step.step} className="relative flex min-w-0 flex-col items-center px-2 text-center">
                   <div
-                    className="flex h-14 w-14 items-center justify-center rounded-2xl text-white ring-1 ring-black/[0.06] dark:ring-white/[0.12]"
+                    className="flex h-16 w-16 items-center justify-center rounded-2xl text-white ring-1 ring-black/[0.06] dark:ring-white/[0.12]"
                     style={{
                       background: `linear-gradient(135deg,${step.color},${step.colorTo})`,
-                      boxShadow: `0 0 24px ${step.color}30`,
+                      boxShadow: `0 0 30px ${step.color}35`,
                     }}
                   >
-                    <Icon name={step.icon} className="h-5 w-5" />
+                    <Icon name={step.icon} className="h-6 w-6" />
                   </div>
                   <div
                     className="mt-4 rounded-full px-2 py-0.5 font-mono text-[0.58rem] font-bold uppercase tracking-[0.14em]"
@@ -101,20 +101,20 @@ export function PlatformSignalFlow() {
                   </p>
 
                   {index < platformSignalFlow.steps.length - 1 ? (
-                    <div className="pointer-events-none absolute right-[-16px] top-[28px] z-10 flex items-center gap-1.5">
+                    <div className="pointer-events-none absolute right-[-16px] top-[32px] z-10 flex items-center gap-1.5">
                       <div
-                        className="h-px w-8"
+                        className="h-[1.5px] w-10"
                         style={{
-                          background: `linear-gradient(to right,${step.color}55,${platformSignalFlow.steps[index + 1].color}55)`,
+                          background: `linear-gradient(to right,${step.color}60,${platformSignalFlow.steps[index + 1].color}60)`,
                         }}
                       />
-                      <svg width="6" height="10" viewBox="0 0 6 10" aria-hidden>
+                      <svg width="7" height="11" viewBox="0 0 7 11" aria-hidden>
                         <path
-                          d="M1 1 L5 5 L1 9"
+                          d="M1 1 L6 5.5 L1 10"
                           fill="none"
                           stroke={platformSignalFlow.steps[index + 1].color}
-                          strokeWidth="1.35"
-                          strokeOpacity="0.72"
+                          strokeWidth="1.5"
+                          strokeOpacity="0.75"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />

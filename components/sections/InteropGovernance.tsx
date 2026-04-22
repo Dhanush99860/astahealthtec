@@ -28,7 +28,7 @@ export function InteropGovernance() {
             backgroundSize: "52px 52px",
           }}
         />
-        <div className="absolute inset-0 hidden dark:block bg-grid-fine bg-[length:44px_44px] opacity-60" />
+        <div className="absolute inset-0 hidden bg-grid-fine bg-[length:44px_44px] opacity-60 dark:block" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-300/40 to-transparent dark:via-brand-400/25" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200/50 to-transparent dark:via-white/[0.04]" />
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/[0.03] blur-[150px] dark:bg-brand-500/[0.05]" />
@@ -46,12 +46,12 @@ export function InteropGovernance() {
             </div>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-5 text-h2 md:text-h2-lg font-semibold tracking-[-0.04em] text-balance text-ink dark:text-frost">
+            <h2 className="mt-5 text-balance text-h2 font-semibold tracking-[-0.04em] text-ink dark:text-frost md:text-h2-lg">
               {interopGovernance.heading}
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-4 text-body-lg text-pretty text-ink-muted dark:text-frost-muted">
+            <p className="mt-4 text-pretty text-body-lg text-ink-muted dark:text-frost-muted">
               {interopGovernance.sub}
             </p>
           </Reveal>
@@ -76,45 +76,48 @@ export function InteropGovernance() {
                 return (
                   <div
                     key={item.title}
-                    className="group relative flex flex-col gap-4 overflow-hidden px-7 py-7 transition-colors duration-200 hover:bg-slate-50/70 dark:hover:bg-white/[0.025]"
+                    className="group relative flex flex-col gap-5 overflow-hidden px-8 py-8 transition-colors duration-200 hover:bg-slate-50/70 dark:hover:bg-white/[0.025]"
                   >
-                    {/* Row dividers for 3-col grid rows */}
+                    {/* Row divider for second row in 3-col grid */}
                     {i >= 3 && (
                       <div className="absolute inset-x-0 top-0 h-px bg-slate-100/80 dark:bg-white/[0.06]" />
                     )}
                     {/* Hover glow */}
                     <div
                       aria-hidden
-                      className="absolute -right-6 -top-6 h-16 w-16 rounded-full blur-2xl opacity-0 transition-opacity duration-400 group-hover:opacity-100"
+                      className="absolute -right-8 -top-8 h-24 w-24 rounded-full blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                       style={{ background: acc.from + "22" }}
                     />
-                    {/* Icon + badge */}
+
+                    {/* Icon + badge row */}
                     <div className="flex items-center justify-between">
                       <div
-                        className="flex h-10 w-10 flex-none items-center justify-center rounded-xl text-white ring-1 ring-black/[0.04] dark:ring-white/[0.08]"
+                        className="flex h-12 w-12 flex-none items-center justify-center rounded-xl text-white"
                         style={{
                           background: `linear-gradient(135deg,${acc.from},${acc.to})`,
-                          boxShadow: `0 4px 14px ${acc.from}30`,
+                          boxShadow: `0 4px 16px ${acc.from}30`,
                         }}
                       >
-                        <Icon name={item.icon} className="h-4 w-4" />
+                        <Icon name={item.icon} className="h-5 w-5" />
                       </div>
                       <span
-                        className="rounded-full px-2.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-[0.10em]"
-                        style={{ background: acc.from + "12", color: acc.from }}
+                        className="rounded-full px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.10em]"
+                        style={{ background: acc.from + "14", color: acc.from }}
                       >
                         {item.badge}
                       </span>
                     </div>
+
                     {/* Text */}
                     <div className="relative">
-                      <h3 className="text-[0.90rem] font-semibold tracking-[-0.02em] text-ink dark:text-frost">
+                      <h3 className="text-[0.95rem] font-semibold tracking-[-0.02em] text-ink dark:text-frost">
                         {item.title}
                       </h3>
-                      <p className="mt-1.5 text-[0.78rem] leading-relaxed text-ink-muted dark:text-frost-subtle">
+                      <p className="mt-2 text-[0.80rem] leading-relaxed text-ink-muted dark:text-frost-subtle">
                         {item.body}
                       </p>
                     </div>
+
                     {/* Bottom hover accent */}
                     <div
                       aria-hidden
