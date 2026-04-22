@@ -3,16 +3,16 @@ import { ROUTES } from "@/lib/constants";
 
 export const solutionsHero = {
   eyebrow: "Clinical AI Platform",
-  headline: "The complete clinical intelligence platform",
-  headlineAccent: "for active wards.",
-  sub: "ASTA is a productized clinical AI platform — three integrated modules covering monitor reading, physiological reasoning, and clinical escalation. Deployed across 10+ hospitals without a new monitor fleet.",
+  headline: "Clinical intelligence for",
+  headlineAccent: "active wards.",
+  sub: "ASTA reads existing bedside monitors, structures vitals in real time, and drives role-aware escalation across active wards - without a new monitor fleet or monitor-side IT integration.",
   primaryCta: { label: "Request a walkthrough", href: ROUTES.demo },
   secondaryCta: { label: "View live deployments", href: "/#deployments" },
   proofRow: [
-    { value: "98%",  label: "CV model accuracy" },
-    { value: "<2s",  label: "Signal to action" },
-    { value: "15+",  label: "OEM brands" },
-    { value: "10+",  label: "Hospital deployments" },
+    { value: "98%", label: "CV extraction accuracy" },
+    { value: "<2s", label: "Monitor to action" },
+    { value: "15+", label: "OEM monitor brands" },
+    { value: "10+", label: "Live hospital deployments" },
   ],
 };
 
@@ -28,36 +28,38 @@ export const capabilitySuite: {
     bullets: string[];
     color: string;
     colorTo: string;
+    featured?: boolean;
   }[];
   comingSoon: { label: string; note: string };
 } = {
   eyebrow: "SAMD Capability Suite",
-  heading: "Three productized AI modules. One clinical intelligence platform.",
-  sub: "Each module is independently deployable and production-validated. Together they form a continuous pipeline from monitor reading to clinical escalation — running across every bed, on infrastructure the hospital already owns.",
+  heading: "Three productized modules. One clinical intelligence platform.",
+  sub: "Deploy monitor reading, physiological reasoning, and escalation as one continuous product flow. ASTA starts on the hospital's existing monitor estate, then layers clinical reasoning and escalation on top.",
   modules: [
     {
       icon: "camera",
       tag: "Module 01",
       title: "CV Monitor Reading",
-      body: "Computer vision trained on 100M+ labeled monitor frames reads any OEM LCD display in real time. No API, no hardware tap, no hospital IT integration required. Structured vitals at 98% accuracy.",
+      body: "Reads existing bedside monitor screens in real time and converts them into structured vitals. Works across 15+ OEM LCD monitors with no API, no hardware tap, and no hospital IT integration required for monitor reading.",
       bullets: [
-        "Any OEM brand — 15+ supported",
-        "Any lighting condition, any ward",
-        "98% extraction accuracy",
-        "Zero hospital IT dependency",
+        "Reads existing bedside monitors",
+        "Structured HR, SpO2, BP, and RR in real time",
+        "15+ OEM monitor brands supported",
+        "No API, hardware tap, or IT integration",
       ],
       color: "#4F6BFF",
       colorTo: "#7C5CFF",
+      featured: true,
     },
     {
       icon: "cpu",
       tag: "Module 02",
       title: "Physiological Pattern Learning Model",
-      body: "PPLM evaluates vital trajectories continuously — not single thresholds. It identifies deterioration signals, produces ranked clinical differentials, and attaches evidence links to every alert output.",
+      body: "Evaluates vital trajectories continuously instead of waiting for isolated threshold breaches. Surfaces deterioration patterns, ranked clinical differentials, and evidence-linked reasoning for each alert.",
       bullets: [
-        "Trajectory-based reasoning, not thresholds",
-        "Ranked clinical differentials per alert",
-        "Evidence links at every output",
+        "Trajectory-based reasoning beyond thresholds",
+        "Ranked clinical differentials",
+        "Evidence-linked outputs",
         "Continuous per-bed evaluation",
       ],
       color: "#28D7B5",
@@ -67,20 +69,20 @@ export const capabilitySuite: {
       icon: "bell",
       tag: "Module 03",
       title: "Clinical Escalation Engine",
-      body: "Role-aware alert routing delivers physiological context, vital trajectory, and recommended next steps to the right clinician — not alarm noise. Every escalation is governance-logged in the same operational flow.",
+      body: "Routes the right escalation to the right clinician with vital trend context, physiological rationale, and ward-specific next-step logic. Every acknowledgement and action stays governance logged.",
       bullets: [
-        "Role-aware routing to correct clinician",
-        "Trajectory + context at escalation point",
-        "Configurable per ward and protocol",
-        "Full governance audit trail",
+        "Role-aware routing by ward and protocol",
+        "Vital trend plus context at escalation",
+        "Recommended next-step framing",
+        "Governance logging in the same flow",
       ],
       color: "#7C5CFF",
       colorTo: "#4F6BFF",
     },
   ],
   comingSoon: {
-    label: "SAMD classification pathway — regulatory submission in preparation",
-    note: "ASTA is on a defined SAMD classification pathway. Regulatory submission documentation is in active preparation.",
+    label: "SAMD pathway in preparation",
+    note: "Regulatory documentation is being prepared for the relevant software-as-a-medical-device classification pathway.",
   },
 };
 
@@ -100,31 +102,58 @@ export const dashboardWalkthrough: {
   auditEntries: { time: string; type: "ok" | "info"; msg: string }[];
 } = {
   eyebrow: "Product Experience",
-  heading: "What clinicians actually see.",
-  sub: "A live ward dashboard across nursing, clinical leadership, and operations — every monitored bed in one view, with role-appropriate data and escalation context at every layer.",
+  heading: "The live ward view for nursing, clinical leadership, and operations.",
+  sub: "One shared product surface for the whole unit: monitored beds, structured vitals, escalation queue, and audit trail in a single ward view.",
   wardStats: [
-    { label: "Beds monitored", value: "24",   color: "#4F6BFF" },
-    { label: "Active alerts",  value: "3",    color: "#FBBF24" },
-    { label: "Escalations",    value: "1",    color: "#EF4444" },
-    { label: "Ward coverage",  value: "100%", color: "#28D7B5" },
+    { label: "Beds monitored", value: "24", color: "#4F6BFF" },
+    { label: "Beds on watch", value: "3", color: "#FBBF24" },
+    { label: "Escalations", value: "1", color: "#EF4444" },
+    { label: "Ward coverage", value: "100%", color: "#28D7B5" },
   ],
   bedRows: [
-    { bed: "B-01", hr: "76 bpm",  spo2: "98%", bp: "122/80", status: "ok"    },
-    { bed: "B-02", hr: "91 bpm",  spo2: "94%", bp: "138/88", status: "warn"  },
-    { bed: "B-03", hr: "68 bpm",  spo2: "99%", bp: "118/76", status: "ok"    },
+    { bed: "B-01", hr: "76 bpm", spo2: "98%", bp: "122/80", status: "ok" },
+    { bed: "B-02", hr: "91 bpm", spo2: "94%", bp: "138/88", status: "warn" },
+    { bed: "B-03", hr: "68 bpm", spo2: "99%", bp: "118/76", status: "ok" },
     { bed: "B-04", hr: "108 bpm", spo2: "89%", bp: "142/92", status: "alert" },
-    { bed: "B-05", hr: "72 bpm",  spo2: "97%", bp: "126/82", status: "ok"    },
-    { bed: "B-06", hr: "83 bpm",  spo2: "96%", bp: "130/84", status: "ok"    },
+    { bed: "B-05", hr: "72 bpm", spo2: "97%", bp: "126/82", status: "ok" },
+    { bed: "B-06", hr: "83 bpm", spo2: "96%", bp: "130/84", status: "ok" },
   ],
   alertQueue: [
-    { time: "09:44:12", bed: "B-04", msg: "SpO₂ 89% — threshold breach · PPLM: trajectory declining · Escalate", priority: "high"   },
-    { time: "09:41:07", bed: "B-02", msg: "HR 91 bpm — 3-min upward trend · PPLM: monitor, no escalation",        priority: "medium" },
-    { time: "09:38:55", bed: "B-07", msg: "BP 142/92 — above range · Trajectory: stable · Watchlist",             priority: "medium" },
+    {
+      time: "09:44:12",
+      bed: "B-04",
+      msg: "SpO2 89% - 6 min downward trend - PPLM flags respiratory deterioration - escalate to nurse on duty",
+      priority: "high",
+    },
+    {
+      time: "09:41:07",
+      bed: "B-02",
+      msg: "HR 91 bpm - rising over 3 min - physiological watchlist only - no escalation yet",
+      priority: "medium",
+    },
+    {
+      time: "09:38:55",
+      bed: "B-07",
+      msg: "BP 142/92 - above ward range - trend stable - continue observation",
+      priority: "medium",
+    },
   ],
   auditEntries: [
-    { time: "09:44:18", type: "ok",   msg: "Alert routed → nurse-on-duty · B-04 · consent:verified · rbac:pass" },
-    { time: "09:44:12", type: "info", msg: "PPLM escalation triggered · SpO₂ trajectory · B-04 · Ward 3"        },
-    { time: "09:41:07", type: "info", msg: "HR threshold watch active · B-02 · no escalation at this time"      },
+    {
+      time: "09:44:18",
+      type: "ok",
+      msg: "Escalation routed to nurse on duty - B-04 - role check passed - consent state verified",
+    },
+    {
+      time: "09:44:12",
+      type: "info",
+      msg: "PPLM escalation logged - SpO2 deterioration pattern - B-04 - Ward 3",
+    },
+    {
+      time: "09:41:07",
+      type: "info",
+      msg: "Ward watchlist updated - B-02 - no escalation triggered",
+    },
   ],
 };
 
@@ -135,49 +164,49 @@ export const interopGovernance: {
   items: { icon: IconName; title: string; body: string; badge: string; color: string }[];
 } = {
   eyebrow: "Interoperability & Governance",
-  heading: "Enterprise-grade from deployment day one.",
-  sub: "ASTA is designed for regulated clinical environments — HL7/FHIR-aligned, NDHM-ready, with full audit posture and hospital-controlled data governance from first deployment.",
+  heading: "Hospital-ready governance without slowing deployment.",
+  sub: "ASTA is designed for regulated clinical environments with interoperability-ready outputs, hospital-defined controls, and auditable operations from first deployment.",
   items: [
     {
       icon: "route",
       title: "HL7/FHIR aligned",
-      body: "Vital outputs are HL7/FHIR-aligned for EMR and downstream connectivity. Monitor reading requires no hospital IT integration — EMR connection is additive, not prerequisite.",
-      badge: "Supported",
+      body: "Structured vital outputs can be mapped into HL7/FHIR-aligned downstream workflows for EMR, analytics, or command-center integration. Monitor reading itself does not depend on hospital IT connectivity.",
+      badge: "Aligned",
       color: "#4F6BFF",
     },
     {
       icon: "shield",
       title: "NDHM-ready posture",
-      body: "Architecture built to NDHM/ABDM standards for national health data interoperability — ready for ABHA-linked patient record flows when hospital systems support them.",
-      badge: "Ready",
+      body: "Deployment architecture is planned with an NDHM/ABDM-ready posture so hospitals can align ASTA with broader national interoperability programs as surrounding systems mature.",
+      badge: "Ready posture",
       color: "#28D7B5",
     },
     {
       icon: "lock",
       title: "Role-based access control",
-      body: "Access enforced at every layer. Nurse, clinician, clinical leadership, and operations have role-defined data views — no over-privileged access paths at any tier.",
+      body: "Access is controlled by hospital-defined roles across nursing, clinicians, leadership, and operations. The deployment model limits who can view, acknowledge, and review each layer of data.",
       badge: "Enforced",
       color: "#7C5CFF",
     },
     {
       icon: "check",
-      title: "Full legal audit trail",
-      body: "Every access event, clinical interaction, and data operation is logged — tamper-evident, immutable, and available for legal review, governance reporting, and compliance audit.",
-      badge: "Complete",
+      title: "Legal audit trail",
+      body: "Every access, alert, acknowledgement, and review action is time-stamped into a legal audit trail suitable for governance review and deployment-specific retention policy.",
+      badge: "Auditable",
       color: "#49C6FF",
     },
     {
       icon: "server",
       title: "Hospital-controlled data residency",
-      body: "Data residency, retention policy, and access control are hospital-defined. On-prem, hybrid, or managed cloud — ASTA operates inside the hospital's IT governance posture.",
-      badge: "Institution-controlled",
+      body: "Data residency, retention, and environment choice are hospital-defined - on-prem, hybrid, or managed cloud - and enforced by the selected deployment model.",
+      badge: "Hospital-defined",
       color: "#28D7B5",
     },
     {
       icon: "eye",
       title: "No patient imagery",
-      body: "Camera faces the monitor display — not the patient. No patient biometrics, no facial data, no imagery captured or transmitted. Standard monitoring consent applies throughout.",
-      badge: "Verified",
+      body: "The camera is monitor-facing and reads the screen, not the patient. ASTA is designed to operate without patient imagery, biometric capture, or patient video in the monitoring workflow.",
+      badge: "Monitor-facing",
       color: "#4F6BFF",
     },
   ],
@@ -196,50 +225,50 @@ export const monitoringInPractice: {
   }[];
 } = {
   eyebrow: "Monitoring in Practice",
-  heading: "How ASTA operates across your ward types.",
-  sub: "ASTA adapts to the clinical demands and patient acuity of each ward type — same monitor-reading and physiological reasoning engine, configured for each deployment.",
+  heading: "How ASTA behaves across ward contexts.",
+  sub: "The same monitor-reading and physiological reasoning stack adapts to the observation pattern, escalation path, and staffing reality of each ward.",
   scenarios: [
     {
       label: "ICU",
-      title: "Intensive care: continuous vigilance at every bed.",
-      body: "Continuous vital extraction and physiological trajectory monitoring across all ICU beds — surfacing deterioration signals before threshold breaches, with escalation routing direct to the attending team.",
+      title: "ICU: continuous watch with early escalation context.",
+      body: "ASTA maintains continuous observation across every monitored bed, highlighting deterioration patterns early and routing escalation with trajectory context to the ICU care team.",
       metrics: [
         { label: "Monitoring cadence", value: "Continuous" },
-        { label: "Signal latency",     value: "<2s" },
-        { label: "Alert routing",      value: "Attending + nurse" },
+        { label: "Signal latency", value: "<2s" },
+        { label: "Escalation path", value: "ICU team" },
       ],
       color: "#4F6BFF",
     },
     {
       label: "General Ward",
-      title: "General ward: broad coverage without staffing overhead.",
-      body: "ASTA monitors every bedside monitor continuously — allowing nursing teams to maintain observational coverage across more beds without increasing rounds frequency or adding equipment.",
+      title: "General ward: broader coverage on the monitors already in place.",
+      body: "ASTA reads the bedside monitors already on the ward, helping nursing teams maintain broader visibility and spot drift earlier without deploying a second monitor system.",
       metrics: [
-        { label: "Beds per ward",   value: "Up to 30+" },
-        { label: "Coverage",        value: "100% monitored" },
-        { label: "Alert routing",   value: "Role-aware" },
+        { label: "Beds per unit", value: "Up to 30+" },
+        { label: "Coverage", value: "100% monitored" },
+        { label: "Routing model", value: "Role-aware" },
       ],
       color: "#28D7B5",
     },
     {
-      label: "Post-Op",
-      title: "Post-operative: early deterioration, structured response.",
-      body: "Post-op patients face a high-risk observation window. ASTA's trajectory-based reasoning catches gradual deterioration early — before single-threshold alerts fire — with clinical context already attached.",
+      label: "Post-op",
+      title: "Post-op: tighter oversight during the recovery window.",
+      body: "ASTA tracks the high-risk post-operative period, surfacing gradual change in oxygenation, pulse, or pressure before it becomes a threshold-only event.",
       metrics: [
-        { label: "Deterioration detection", value: "Trajectory-based" },
-        { label: "Escalation context",      value: "PPLM-linked" },
-        { label: "Audit capture",           value: "Automatic" },
+        { label: "Detection model", value: "Trajectory-based" },
+        { label: "Escalation context", value: "PPLM-linked" },
+        { label: "Audit capture", value: "Automatic" },
       ],
       color: "#7C5CFF",
     },
     {
-      label: "High-Dependency",
+      label: "High-dependency",
       title: "High-dependency: structured oversight for complex patients.",
-      body: "HDU patients require structured monitoring and documented escalation paths. ASTA provides continuous observation, PPLM-driven reasoning, and a full governance trail — compliant with HDU oversight requirements.",
+      body: "ASTA supports higher-acuity wards with continuous per-bed observation, escalation logging, and auditable review trails aligned to hospital oversight workflows.",
       metrics: [
-        { label: "Vital parameters",  value: "HR, SpO₂, BP, RR" },
-        { label: "PPLM reasoning",    value: "Per-bed continuous" },
-        { label: "Governance trail",  value: "Full audit capture" },
+        { label: "Vital set", value: "HR, SpO2, BP, RR" },
+        { label: "Reasoning", value: "Continuous" },
+        { label: "Review trail", value: "Auditable" },
       ],
       color: "#49C6FF",
     },
@@ -247,9 +276,9 @@ export const monitoringInPractice: {
 };
 
 export const solutionsCta = {
-  eyebrow: "Deploy ASTA in your hospital",
-  heading: "See ASTA running on your ward monitors.",
-  sub: "A focused 30-minute session with our clinical and engineering team — covering monitor compatibility, ward workflow fit, and deployment requirements for your unit.",
-  primaryCta:   { label: "Request a walkthrough", href: ROUTES.demo },
-  secondaryCta: { label: "Talk to our team",       href: ROUTES.contact },
+  eyebrow: "Review deployment fit",
+  heading: "Request a walkthrough of ASTA on your ward setup.",
+  sub: "Review monitor compatibility, workflow fit, escalation logic, and deployment options with ASTA's clinical and engineering team.",
+  primaryCta: { label: "Request a walkthrough", href: ROUTES.demo },
+  secondaryCta: { label: "Talk to the team", href: ROUTES.contact },
 };

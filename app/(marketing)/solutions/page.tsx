@@ -7,9 +7,9 @@ import { MonitoringInPractice } from "@/components/sections/MonitoringInPractice
 import { SolutionsCTA } from "@/components/sections/SolutionsCTA";
 
 export const metadata: Metadata = {
-  title: "Solutions · ASTA",
+  title: "Solutions | ASTA",
   description:
-    "ASTA is a productized clinical AI platform — CV monitor reading, physiological reasoning, and clinical escalation. Deployed across 10+ hospitals without a new monitor fleet.",
+    "ASTA reads existing bedside monitors, structures vitals in real time, and drives role-aware escalation without a new monitor fleet.",
 };
 
 export default function SolutionsPage() {

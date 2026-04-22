@@ -1,16 +1,30 @@
-import { Container } from "@/components/layout/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import type { Metadata } from "next";
+import { PlatformHero } from "@/components/sections/PlatformHero";
+import { PlatformIntelligenceStack } from "@/components/sections/PlatformIntelligenceStack";
+import { PlatformSignalFlow } from "@/components/sections/PlatformSignalFlow";
+import { PlatformComputerVision } from "@/components/sections/PlatformComputerVision";
+import { PlatformReasoningLayer } from "@/components/sections/PlatformReasoningLayer";
+import { PlatformDeploymentArchitecture } from "@/components/sections/PlatformDeploymentArchitecture";
+import { PlatformValidation } from "@/components/sections/PlatformValidation";
+import { PlatformCTA } from "@/components/sections/PlatformCTA";
 
-export const metadata = { title: "Platform" };
+export const metadata: Metadata = {
+  title: "Platform | ASTA",
+  description:
+    "ASTA is a device-agnostic clinical intelligence stack for monitor reading, physiological reasoning, and evidence-linked clinical output.",
+};
 
 export default function PlatformPage() {
   return (
-    <Container className="py-24 md:py-32">
-      <SectionHeading
-        eyebrow="Platform"
-        title="The intelligence layer behind ASTA."
-        sub="Phase-2 page. Will expand the ASTA platform story beyond the homepage."
-      />
-    </Container>
+    <>
+      <PlatformHero />
+      <PlatformIntelligenceStack />
+      <PlatformSignalFlow />
+      <PlatformComputerVision />
+      <PlatformReasoningLayer />
+      <PlatformDeploymentArchitecture />
+      <PlatformValidation />
+      <PlatformCTA />
+    </>
   );
 }
