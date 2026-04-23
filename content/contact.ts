@@ -26,6 +26,12 @@ type ContactChannel = {
 };
 
 export const CONTACT_EMAIL = "info@astahealthtech.com";
+const CONTACT_PHONE_RAW = "918779404951";
+export const CONTACT_PHONE_DISPLAY = "+91 87794 04951";
+export const CONTACT_PHONE_LINK = `tel:+${CONTACT_PHONE_RAW}`;
+export const CONTACT_WHATSAPP_URL =
+  `https://wa.me/${CONTACT_PHONE_RAW}?text=` +
+  encodeURIComponent("Hello ASTA team, I would like to discuss a hospital or deployment inquiry.");
 
 export const contactInquiryTypes = [
   "Product walkthrough",
@@ -38,6 +44,12 @@ export const contactInquiryTypes = [
 export type ContactInquiryType = (typeof contactInquiryTypes)[number];
 
 const liveHospitalCount = deployments.items.length;
+const liveStates = Array.from(new Set(deployments.items.map((deployment) => deployment.state))).sort(
+  (a, b) => a.localeCompare(b),
+);
+const liveCities = Array.from(new Set(deployments.items.map((deployment) => deployment.city))).sort(
+  (a, b) => a.localeCompare(b),
+);
 
 export function resolveContactInquiryType(intent?: string): ContactInquiryType {
   switch (intent) {
@@ -50,7 +62,7 @@ export function resolveContactInquiryType(intent?: string): ContactInquiryType {
     case "partner":
       return "Partnership";
     default:
-      return "Product walkthrough";
+      return "Other";
   }
 }
 
@@ -62,16 +74,16 @@ export const contactHero: {
   secondaryCta: CTA;
   microProof: string[];
 } = {
-  eyebrow: "Hospital, academic, and partner outreach",
-  headline: "Talk to ASTA about your hospital setting.",
+  eyebrow: "Contact ASTA",
+  headline: "Send one clear inquiry. Reach the right ASTA conversation fast.",
   sub:
-    "Request a walkthrough, deployment review, or institutional conversation. ASTA works on existing hospital infrastructure, and the discussion can cover product fit, deployment fit, teaching-hospital relevance, and partner scope.",
-  primaryCta: { label: "Start your inquiry", href: "#contact-form" },
-  secondaryCta: { label: "Email ASTA directly", href: `mailto:${CONTACT_EMAIL}` },
+    "This contact page is intentionally simple: the form is the main action, WhatsApp is available for faster follow-up, and the essential contact and location details stay visible without extra clutter.",
+  primaryCta: { label: "Send an inquiry", href: "#contact-form" },
+  secondaryCta: { label: "Chat on WhatsApp", href: CONTACT_WHATSAPP_URL },
   microProof: [
-    "Existing monitor infrastructure, not a new monitor fleet",
-    "For hospitals, teaching institutions, and serious partners",
-    "One contact point routed by inquiry type",
+    `${liveHospitalCount} named live hospital deployments`,
+    "WhatsApp and email contact options",
+    "Built for hospitals, academic teams, and partners",
   ],
 };
 
@@ -79,63 +91,104 @@ export const contactMain: {
   eyebrow: string;
   heading: string;
   sub: string;
-  panelTitle: string;
-  panelBody: string;
-  helpItems: ContactHelpItem[];
-  supportTags: string[];
+  channelsTitle: string;
+  channels: {
+    icon: IconName;
+    label: string;
+    value: string;
+    href: string;
+    note: string;
+  }[];
+  whatsapp: {
+    title: string;
+    body: string;
+    bullets: string[];
+    ctaLabel: string;
+    href: string;
+  };
+  presence: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    stats: { value: string; label: string }[];
+    states: string[];
+    cities: string[];
+    note: string;
+  };
 } = {
-  eyebrow: "Structured outreach",
-  heading: "Start with the context ASTA needs to review.",
+  eyebrow: "Direct contact",
+  heading: "The form is the main path. The rest stays focused and useful.",
   sub:
-    "Use this page when you want a serious conversation about ward fit, deployment posture, teaching-hospital relevance, or institutional partnership. ASTA can route the discussion faster when the hospital or institutional context is clear from the start.",
-  panelTitle: "What we can help with",
-  panelBody:
-    "The first conversation is designed to clarify whether ASTA fits your monitored environment, operational model, and institutional goals before any deeper review.",
-  helpItems: [
+    "Use the form for demos, deployment reviews, academic conversations, or partnerships. If you want faster back-and-forth, the WhatsApp line is available from the same panel.",
+  channelsTitle: "Reach ASTA directly",
+  channels: [
     {
-      icon: "dashboard",
-      title: "Product walkthrough",
-      body:
-        "Review the monitoring experience, clinical surfaces, and operating model for wards already running bedside monitors.",
+      icon: "mail",
+      label: "Email",
+      value: CONTACT_EMAIL,
+      href: `mailto:${CONTACT_EMAIL}`,
+      note: "Best for structured introductions, product walkthrough requests, and institutional outreach.",
     },
     {
-      icon: "hospital",
-      title: "Deployment review",
-      body:
-        "Discuss existing infrastructure, ward mix, escalation pathways, rollout posture, and what a practical deployment path looks like.",
-    },
-    {
-      icon: "layers",
-      title: "Teaching hospital or research conversation",
-      body:
-        "Explore clinical education, protocol review, research, validation, and publication-oriented relevance for academic institutions.",
-    },
-    {
-      icon: "compass",
-      title: "Partnership or institutional inquiry",
-      body:
-        "Start conversations around collaboration, program design, channel alignment, or institution-facing partnership scope.",
+      icon: "phone",
+      label: "Phone / WhatsApp",
+      value: CONTACT_PHONE_DISPLAY,
+      href: CONTACT_PHONE_LINK,
+      note: "Call directly or save the number for quick WhatsApp coordination with the ASTA team.",
     },
   ],
-  supportTags: [
-    "Dedicated clinical partner approach",
-    "Device-agnostic deployment model",
-    "NDHM-aligned and data-sovereign posture",
-    "Practical rollout on existing infrastructure",
-  ],
+  whatsapp: {
+    title: "Need a faster response?",
+    body:
+      "Use WhatsApp for quick scheduling, deployment follow-up, and back-and-forth questions after your first inquiry.",
+    bullets: [
+      "Demo scheduling and follow-up",
+      "Hospital deployment discussions",
+      "Partnership and institutional coordination",
+    ],
+    ctaLabel: "Open WhatsApp chat",
+    href: CONTACT_WHATSAPP_URL,
+  },
+  presence: {
+    eyebrow: "Location and live footprint",
+    title: "ASTA is already active across real hospital environments.",
+    body:
+      "Use the contact page for central outreach, but note that ASTA's live footprint already spans named hospital deployments across multiple cities in Tamil Nadu and Karnataka.",
+    stats: [
+      { value: String(liveHospitalCount), label: "Named live hospitals" },
+      { value: String(liveStates.length), label: "States represented" },
+    ],
+    states: liveStates,
+    cities: liveCities,
+    note: "Current public footprint: Chennai, Bangalore, Chitradurga, and Kumbakonam.",
+  },
 };
 
 export const contactForm = {
   eyebrow: "Inquiry form",
-  heading: "Share enough detail for ASTA to route the right conversation.",
+  heading: "Keep the form simple. Send the essentials.",
   sub:
-    "Submitting this form drafts an email to ASTA with your details prefilled, so hospitals, academic teams, and partners can send a structured inquiry without waiting on a separate portal.",
-  inquiryTypes: contactInquiryTypes,
+    "Name, work email, institution, phone or WhatsApp number, and a short message are enough. The form drafts an email to ASTA with your details prefilled.",
+  labels: {
+    fullName: "Full name",
+    workEmail: "Work email",
+    institution: "Hospital / institution",
+    phone: "Phone or WhatsApp number",
+    message: "What would you like to discuss?",
+  },
+  placeholders: {
+    fullName: "Your full name",
+    workEmail: "name@hospital.org",
+    institution: "Hospital, institution, or organization",
+    phone: "Optional",
+    message:
+      "Tell us about your ward, monitored environment, deployment goal, or the question you want to discuss.",
+  },
   consentLabel:
     "I consent to ASTA using these details to respond to this inquiry and coordinate the next conversation.",
   helper:
-    "If your mail client does not open, send the same details directly to info@astahealthtech.com.",
-  submitLabel: "Draft ASTA inquiry",
+    "If your mail client does not open, send the same details directly by email or continue the conversation on WhatsApp.",
+  submitLabel: "Draft inquiry email",
 };
 
 export const contactProofStrip: {

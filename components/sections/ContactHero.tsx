@@ -6,12 +6,12 @@ import { contactHero } from "@/content/contact";
 
 export function ContactHero() {
   return (
-    <section className="relative overflow-hidden bg-[#060816] pb-20 pt-32 md:pb-24 md:pt-36">
+    <section className="relative overflow-hidden bg-[#060816] pb-14 pt-32 md:pb-16 md:pt-36">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-grid-fine bg-[length:44px_44px] opacity-50" />
-        <div className="absolute left-1/2 top-1/3 h-[520px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/[0.11] blur-[160px]" />
-        <div className="absolute right-[10%] top-1/4 h-[280px] w-[280px] rounded-full bg-violet-500/[0.08] blur-[120px]" />
-        <div className="absolute left-[12%] bottom-1/4 h-[240px] w-[240px] rounded-full bg-cyan-400/[0.06] blur-[100px]" />
+        <div className="absolute left-1/2 top-1/3 h-[560px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/[0.11] blur-[170px]" />
+        <div className="absolute right-[10%] top-1/4 h-[300px] w-[300px] rounded-full bg-violet-500/[0.08] blur-[120px]" />
+        <div className="absolute left-[12%] bottom-1/4 h-[260px] w-[260px] rounded-full bg-cyan-400/[0.06] blur-[100px]" />
         <div
           className="absolute inset-0"
           style={{
@@ -48,7 +48,13 @@ export function ContactHero() {
               <Button href={contactHero.primaryCta.href} variant="glow" size="xl" trailingIcon>
                 {contactHero.primaryCta.label}
               </Button>
-              <Button href={contactHero.secondaryCta.href} variant="outline-white" size="xl">
+              <Button
+                href={contactHero.secondaryCta.href}
+                target="_blank"
+                rel="noreferrer"
+                variant="outline-white"
+                size="xl"
+              >
                 {contactHero.secondaryCta.label}
               </Button>
             </div>

@@ -52,6 +52,25 @@ export function Icon({ name, className, strokeWidth = 1.5 }: Props) {
           <path d="M10 21a2 2 0 0 0 4 0" />
         </svg>
       );
+    case "mail":
+      return (
+        <svg {...common}>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m4 7 8 6 8-6" />
+        </svg>
+      );
+    case "phone":
+      return (
+        <svg {...common}>
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.32 1.7.59 2.5a2 2 0 0 1-.45 2.11L8 9.94a16 16 0 0 0 6.06 6.06l1.61-1.2a2 2 0 0 1 2.11-.45c.8.27 1.64.47 2.5.59A2 2 0 0 1 22 16.92Z" />
+        </svg>
+      );
+    case "message-circle":
+      return (
+        <svg {...common}>
+          <path d="M21 11.5A8.5 8.5 0 0 1 12.5 20a8.4 8.4 0 0 1-3.44-.72L3 21l1.72-6.06A8.4 8.4 0 0 1 4 11.5a8.5 8.5 0 1 1 17 0Z" />
+        </svg>
+      );
     case "eye":
       return (
         <svg {...common}>
