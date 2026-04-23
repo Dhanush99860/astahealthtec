@@ -50,7 +50,7 @@ export function AboutAdvisoryBoard() {
 
         {/* ══ SINGLE DARK PANEL ══ */}
         <Reveal delay={0.14}>
-          <div className="relative mt-14 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810]">
+          <div className="relative mt-14 overflow-hidden rounded-2xl border border-slate-200/80 bg-[#040810] shadow-[0_8px_40px_-12px_rgba(10,22,40,0.18)] dark:border-white/[0.07] dark:shadow-none">
 
             {/* Glow */}
             <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">

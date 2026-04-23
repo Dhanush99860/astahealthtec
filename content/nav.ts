@@ -15,7 +15,6 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
       { label: "Solutions",   href: ROUTES.solutions },
       { label: "Platform",    href: ROUTES.platform },
       { label: "Use Cases",   href: ROUTES.useCases },
-      { label: "Deployments", href: "/deployments" },
     ],
   },
   {

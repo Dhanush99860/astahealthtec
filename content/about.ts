@@ -90,7 +90,7 @@ const leadershipMembers: Person[] = [
     initials: "VS",
     photo: "/team/varun.jpeg",
     linkedin: "https://www.linkedin.com/in/varunxiphias/",
-    title: "Chief Business Officer",
+    title: "Co-Founder & Chief Business Officer",
     badge: "Commercial execution",
     headline: "Translates ASTA from technical capability into institutional relationships and deployment motion.",
     body:

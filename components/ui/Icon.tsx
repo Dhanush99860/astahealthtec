@@ -71,6 +71,43 @@ export function Icon({ name, className, strokeWidth = 1.5 }: Props) {
           <path d="M21 11.5A8.5 8.5 0 0 1 12.5 20a8.4 8.4 0 0 1-3.44-.72L3 21l1.72-6.06A8.4 8.4 0 0 1 4 11.5a8.5 8.5 0 1 1 17 0Z" />
         </svg>
       );
+    case "user":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 20a8 8 0 0 1 16 0" />
+        </svg>
+      );
+    case "building":
+      return (
+        <svg {...common}>
+          <path d="M4 21V7.5A1.5 1.5 0 0 1 5.5 6H10v15" />
+          <path d="M10 21V4.5A1.5 1.5 0 0 1 11.5 3h7A1.5 1.5 0 0 1 20 4.5V21" />
+          <path d="M7 10h.01M7 14h.01M13 7h.01M13 11h.01M17 7h.01M17 11h.01M15 21v-4h-2v4" />
+        </svg>
+      );
+    case "globe":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18" />
+          <path d="M12 3a14.5 14.5 0 0 1 0 18" />
+          <path d="M12 3a14.5 14.5 0 0 0 0 18" />
+        </svg>
+      );
+    case "search":
+      return (
+        <svg {...common}>
+          <circle cx="11" cy="11" r="6.5" />
+          <path d="m16 16 4 4" />
+        </svg>
+      );
+    case "chevron-down":
+      return (
+        <svg {...common}>
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      );
     case "eye":
       return (
         <svg {...common}>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { UseCasesHero } from "@/components/sections/UseCasesHero";
 import { UseCaseClusters } from "@/components/sections/UseCaseClusters";
 import { UseCasesAcademicValue } from "@/components/sections/UseCasesAcademicValue";
-import { UseCasesProof } from "@/components/sections/UseCasesProof";
 import { UseCasesOutcomes } from "@/components/sections/UseCasesOutcomes";
 import { UseCasesCTA } from "@/components/sections/UseCasesCTA";
 
@@ -18,7 +17,6 @@ export default function UseCasesPage() {
       <UseCasesHero />
       <UseCaseClusters />
       <UseCasesAcademicValue />
-      <UseCasesProof />
       <UseCasesOutcomes />
       <UseCasesCTA />
     </>

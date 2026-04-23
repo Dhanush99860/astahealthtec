@@ -123,7 +123,7 @@ export const useCasesHero: {
   sub:
     "ASTA fits general wards, step-down beds, ICU/HCU oversight, peripheral centers, hospital-at-home pathways, and academic programs by reading the monitors already in place and adding continuous clinical visibility without a new monitor fleet.",
   primaryCta: { label: "Review ASTA for your ward type", href: ROUTES.demo },
-  secondaryCta: { label: "See live hospital proof", href: "#live-hospital-proof" },
+  secondaryCta: { label: "Talk to the ASTA team", href: ROUTES.contact },
   microProof: [
     "Built for existing hospital infrastructure",
     "Starts on the monitors already on the ward",

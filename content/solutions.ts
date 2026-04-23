@@ -7,7 +7,7 @@ export const solutionsHero = {
   headlineAccent: "active wards.",
   sub: "ASTA reads existing bedside monitors, structures vitals in real time, and drives role-aware escalation across active wards - without a new monitor fleet or monitor-side IT integration.",
   primaryCta: { label: "Request a walkthrough", href: ROUTES.demo },
-  secondaryCta: { label: "View live deployments", href: "/#deployments" },
+  secondaryCta: { label: "Talk to the team", href: ROUTES.contact },
   proofRow: [
     { value: "98%", label: "CV extraction accuracy" },
     { value: "<2s", label: "Monitor to action" },
