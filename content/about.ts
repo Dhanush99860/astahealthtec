@@ -17,6 +17,7 @@ type FoundingPressure = {
 type Person = {
   name: string;
   initials: string;
+  photo: string;
   title: string;
   badge: string;
   headline: string;
@@ -24,6 +25,8 @@ type Person = {
   contribution: string;
   accent: string;
   accentTo: string;
+  linkedin?: string;
+  scholar?: string;
 };
 
 type PedigreeItem = {
@@ -40,6 +43,8 @@ const leadershipMembers: Person[] = [
   {
     name: "Vikram Paramasivan",
     initials: "VP",
+    photo: "/team/vikram.jpeg",
+    linkedin: "https://www.linkedin.com/in/vikramparamasivan/",
     title: "CEO & Co-Founder",
     badge: "Enterprise technology",
     headline: "Brings product and engineering discipline from large-scale software systems.",
@@ -53,6 +58,8 @@ const leadershipMembers: Person[] = [
   {
     name: "Dr. Kumaresh Krishnamoorthy",
     initials: "DK",
+    photo: "/team/kumaresh.jpeg",
+    linkedin: "https://www.linkedin.com/in/drkumaresh/",
     title: "CMO & Co-Founder",
     badge: "Clinical leadership",
     headline: "Keeps the company anchored in the bedside problem — not an abstract AI thesis.",
@@ -66,6 +73,8 @@ const leadershipMembers: Person[] = [
   {
     name: "Adyanta Dubey",
     initials: "AD",
+    photo: "/team/adyanta.jpeg",
+    linkedin: "https://www.linkedin.com/in/adyanta-dubey-a57895225/",
     title: "CTO & Co-Founder",
     badge: "AI, robotics, and ML",
     headline: "Leads the technical build from monitor reading to the product systems around it.",
@@ -79,6 +88,8 @@ const leadershipMembers: Person[] = [
   {
     name: "Varun Singh",
     initials: "VS",
+    photo: "/team/varun.jpeg",
+    linkedin: "https://www.linkedin.com/in/varunxiphias/",
     title: "Chief Business Officer",
     badge: "Commercial execution",
     headline: "Translates ASTA from technical capability into institutional relationships and deployment motion.",
@@ -95,6 +106,8 @@ const advisoryMembers: Person[] = [
   {
     name: "Dr. Karthick Seshadri",
     initials: "KS",
+    photo: "/team/karthick.webp",
+    scholar: "https://scholar.google.co.in/citations?user=7KmAy8AAAAAJ",
     title: "Advisor",
     badge: "Distributed ML and AI systems",
     headline: "Extends ASTA's research depth in scalable, real-world machine learning.",
@@ -108,6 +121,9 @@ const advisoryMembers: Person[] = [
   {
     name: "Dr. Balaraman Ravindran",
     initials: "BR",
+    photo: "/team/balaraman.jpeg",
+    linkedin: "https://www.linkedin.com/in/balaraman-ravindran-427a307/",
+    scholar: "https://scholar.google.co.in/citations?user=nGUcGrYAAAAJ&hl=en",
     title: "Advisor",
     badge: "AI academic depth",
     headline: "Provides one of the strongest scientific AI perspectives in the country.",
@@ -121,6 +137,8 @@ const advisoryMembers: Person[] = [
   {
     name: "Krishnakumar Srinivasan",
     initials: "KS",
+    photo: "/team/krishnakumar.jpeg",
+    linkedin: "https://www.linkedin.com/in/krishnakumar-srinivasan-32b1b51b/",
     title: "Advisor",
     badge: "Enterprise strategy and governance",
     headline: "Brings board-level perspective on execution, governance, and strategic scale.",
@@ -134,6 +152,8 @@ const advisoryMembers: Person[] = [
   {
     name: "Dr. Sandeep Murali",
     initials: "SM",
+    photo: "/team/sandeep.png",
+    linkedin: "https://www.linkedin.com/in/sandeep-murali-2080714/",
     title: "Advisor",
     badge: "Clinical judgment and administration",
     headline: "Keeps the hospital operator's lens close to product and adoption decisions.",

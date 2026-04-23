@@ -2,105 +2,94 @@ import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { platformVisionLayer } from "@/content/platform";
 
-function CVPanel() {
+function MonitorPanel() {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden bg-[#040810] px-7 py-8">
+    <div className="relative flex h-full flex-col overflow-hidden bg-[#040810] p-7">
+      {/* Glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-8 top-0 h-48 w-48 rounded-full bg-brand-500/[0.10] blur-[70px]" />
-        <div className="absolute bottom-0 right-0 h-40 w-40 rounded-full bg-teal-400/[0.07] blur-[60px]" />
+        <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-teal-400/[0.06] blur-[60px]" />
       </div>
 
-      {/* Panel label */}
-      <div className="relative mb-5 flex items-center gap-2">
-        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-400" />
-        <span className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-white/30">
-          ASTA · CV Monitor Reading
+      {/* Label */}
+      <div className="relative mb-5 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-400" />
+          <span className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-white/28">
+            ASTA · CV Monitor Reading
+          </span>
+        </div>
+        <span className="flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/[0.08] px-2 py-0.5 font-mono text-[0.48rem] font-bold text-emerald-400">
+          <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-400" />
+          LIVE
         </span>
       </div>
 
-      {/* Monitor visual */}
-      <div className="relative mx-auto mb-5 w-full" style={{ maxWidth: 340 }}>
-        <div className="overflow-hidden rounded-xl border border-white/[0.08] bg-[#030712]">
-          <div className="flex items-center gap-1.5 border-b border-white/[0.06] px-3 py-2">
-            <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
-            <span className="h-2 w-2 rounded-full bg-[#FEBC2E]" />
-            <span className="h-2 w-2 rounded-full bg-[#28C840]" />
-            <span className="ml-2 font-mono text-[0.52rem] uppercase tracking-[0.14em] text-white/25">PATIENT MONITOR</span>
-            <span className="ml-auto flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/[0.08] px-1.5 py-0.5 font-mono text-[0.46rem] font-bold text-emerald-400">
-              <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-400" />
-              READING
-            </span>
-          </div>
-          <div className="p-4">
-            <svg viewBox="0 0 220 96" width="100%" className="block">
-              <rect x="0" y="0" width="110" height="96" rx="3" fill="#040f1e" />
-              {/* ECG waveform */}
-              <polyline
-                points="5,48 17,48 20,32 24,58 28,48 41,48 44,32 48,58 52,48 68,48 71,32 75,58 79,48 105,48"
-                fill="none" stroke="#4F6BFF" strokeWidth="1.3" strokeOpacity="0.9"
-              />
-              {/* SpO2 curve */}
-              <path
-                d="M5,72 C14,67 24,77 34,72 C44,67 54,77 64,72 C74,67 84,77 94,72 C101,69 105,71 105,72"
-                fill="none" stroke="#28D7B5" strokeWidth="1.1" strokeOpacity="0.78"
-              />
-              <line x1="0" y1="48" x2="110" y2="48" stroke="#ffffff" strokeWidth="0.3" strokeOpacity="0.05" />
-              <line x1="0" y1="72" x2="110" y2="72" stroke="#ffffff" strokeWidth="0.3" strokeOpacity="0.05" />
-              <circle cx="9" cy="9" r="3" fill="#28D7B5" opacity="0.9" />
-              <text x="16" y="12" fontSize="6" fontFamily="monospace" fill="#ffffff" opacity="0.28" letterSpacing="1">LIVE</text>
-              <line x1="112" y1="0" x2="112" y2="96" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.06" />
-              {/* HR */}
-              <text x="119" y="26" fontSize="15" fontFamily="monospace" fontWeight="bold" fill="#4F6BFF" opacity="0.92">72</text>
-              <text x="117" y="34" fontSize="6" fontFamily="monospace" fill="#ffffff" opacity="0.30">HR  bpm</text>
-              {/* SpO2 */}
-              <text x="170" y="26" fontSize="15" fontFamily="monospace" fontWeight="bold" fill="#28D7B5" opacity="0.90">98</text>
-              <text x="165" y="34" fontSize="6" fontFamily="monospace" fill="#ffffff" opacity="0.30">SpO₂  %</text>
-              {/* BP */}
-              <text x="115" y="65" fontSize="12" fontFamily="monospace" fontWeight="bold" fill="#49C6FF" opacity="0.88">120/80</text>
-              <text x="117" y="73" fontSize="6" fontFamily="monospace" fill="#ffffff" opacity="0.30">BP  mmHg</text>
-              {/* RR */}
-              <text x="176" y="65" fontSize="15" fontFamily="monospace" fontWeight="bold" fill="#7C5CFF" opacity="0.88">16</text>
-              <text x="170" y="73" fontSize="6" fontFamily="monospace" fill="#ffffff" opacity="0.30">RR  /min</text>
-            </svg>
-          </div>
+      {/* Vitals card */}
+      <div className="relative flex-1 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#030712]">
+        {/* macOS bar */}
+        <div className="flex items-center gap-1.5 border-b border-white/[0.05] px-4 py-2.5">
+          <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
+          <span className="h-2 w-2 rounded-full bg-[#FEBC2E]" />
+          <span className="h-2 w-2 rounded-full bg-[#28C840]" />
+          <span className="ml-3 font-mono text-[0.5rem] uppercase tracking-[0.16em] text-white/20">
+            PATIENT MONITOR · WARD 3 · BED 7
+          </span>
         </div>
-      </div>
 
-      {/* Pipeline steps */}
-      <div className="relative mb-5">
-        <div className="mb-3 flex items-center gap-2">
-          <span className="h-px flex-1 bg-white/[0.05]" />
-          <span className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-white/22">Reading pipeline</span>
-          <span className="h-px flex-1 bg-white/[0.05]" />
-        </div>
-        <div className="space-y-3">
-          {platformVisionLayer.pipeline.map((step, i) => (
-            <div key={step.title} className="flex items-start gap-3">
-              <span
-                className="flex h-5 w-5 flex-none items-center justify-center rounded-md font-mono text-[0.56rem] font-bold"
-                style={{ background: "#4F6BFF14", color: "#4F6BFF" }}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div className="flex-1">
-                <span className="text-[0.82rem] font-semibold text-frost">{step.title} · </span>
-                <span className="text-[0.73rem] text-white/38">{step.body}</span>
-              </div>
+        <div className="p-4">
+          {/* HR + SpO₂ — waveform cards */}
+          <div className="mb-3 grid grid-cols-2 gap-3">
+            {/* HR */}
+            <div className="overflow-hidden rounded-xl border border-white/[0.05] bg-[#04102a] p-3">
+              <div className="mb-2 font-mono text-[0.52rem] uppercase tracking-[0.14em] text-white/28">HR bpm</div>
+              <svg viewBox="0 0 110 36" width="100%" className="mb-2 block">
+                <polyline
+                  points="0,18 10,18 13,6 17,28 21,18 32,18 35,6 39,28 43,18 58,18 61,6 65,28 69,18 90,18 93,6 97,28 101,18 110,18"
+                  fill="none" stroke="#4F6BFF" strokeWidth="1.4" strokeOpacity="0.9"
+                />
+              </svg>
+              <div className="font-mono text-[1.7rem] font-bold leading-none" style={{ color: "#4F6BFF" }}>72</div>
             </div>
-          ))}
+
+            {/* SpO₂ */}
+            <div className="overflow-hidden rounded-xl border border-white/[0.05] bg-[#04102a] p-3">
+              <div className="mb-2 font-mono text-[0.52rem] uppercase tracking-[0.14em] text-white/28">SpO₂ %</div>
+              <svg viewBox="0 0 110 36" width="100%" className="mb-2 block">
+                <path
+                  d="M0,18 C14,10 28,26 42,18 C56,10 70,26 84,18 C98,10 105,24 110,18"
+                  fill="none" stroke="#28D7B5" strokeWidth="1.4" strokeOpacity="0.88"
+                />
+              </svg>
+              <div className="font-mono text-[1.7rem] font-bold leading-none" style={{ color: "#28D7B5" }}>98</div>
+            </div>
+          </div>
+
+          {/* BP + RR — compact strip */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="flex flex-col gap-0.5 rounded-xl border border-white/[0.05] bg-[#04102a] px-3 py-2.5">
+              <div className="font-mono text-[0.52rem] uppercase tracking-[0.12em] text-white/28">BP mmHg</div>
+              <div className="font-mono text-[1.1rem] font-bold leading-none" style={{ color: "#49C6FF" }}>120/80</div>
+            </div>
+            <div className="flex flex-col gap-0.5 rounded-xl border border-white/[0.05] bg-[#04102a] px-3 py-2.5">
+              <div className="font-mono text-[0.52rem] uppercase tracking-[0.12em] text-white/28">RR /min</div>
+              <div className="font-mono text-[1.1rem] font-bold leading-none" style={{ color: "#7C5CFF" }}>16</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Metrics 2×2 */}
-      <div className="relative mt-auto grid grid-cols-2 gap-2.5">
+      {/* Metrics strip */}
+      <div className="relative mt-4 grid grid-cols-2 gap-2.5">
         {platformVisionLayer.metrics.map((m) => (
-          <div key={m.label} className="rounded-xl border border-white/[0.06] bg-white/[0.025] p-3">
-            <div className="font-mono text-[1.1rem] font-bold leading-none" style={{ color: m.color }}>
+          <div
+            key={m.label}
+            className="flex items-center gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.025] px-3 py-2.5"
+          >
+            <span className="font-mono text-[1rem] font-bold leading-none" style={{ color: m.color }}>
               {m.value}
-            </div>
-            <div className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/42">
-              {m.label}
-            </div>
+            </span>
+            <span className="text-[0.62rem] font-medium leading-tight text-white/40">{m.label}</span>
           </div>
         ))}
       </div>
@@ -149,7 +138,7 @@ export function PlatformComputerVision() {
           </Reveal>
         </div>
 
-        {/* ══ FEATURED SPLIT ══ */}
+        {/* ══ SPLIT ══ */}
         <Reveal delay={0.14}>
           <div className="relative mt-14 overflow-hidden rounded-2xl border border-slate-200/80 dark:border-brand-400/[0.14]">
             <div
@@ -162,35 +151,35 @@ export function PlatformComputerVision() {
             />
             <div className="grid lg:grid-cols-2">
 
-              {/* Left — numbered points */}
+              {/* Left — 4 compact numbered points */}
               <div className="flex flex-col justify-center bg-white p-8 dark:bg-white/[0.02] lg:p-10">
-                <div className="divide-y divide-slate-100/80 dark:divide-white/[0.05]">
+                <div className="space-y-6">
                   {platformVisionLayer.points.map((point, i) => (
-                    <div key={point.title} className="flex items-start gap-4 py-5 first:pt-0 last:pb-0">
+                    <div key={point.title} className="flex gap-4">
                       <span
-                        className="flex h-8 w-8 flex-none items-center justify-center rounded-lg font-mono text-[0.68rem] font-bold"
+                        className="flex h-7 w-7 flex-none items-center justify-center rounded-lg font-mono text-[0.65rem] font-bold"
                         style={{ background: "#4F6BFF14", color: "#4F6BFF" }}
                       >
                         0{i + 1}
                       </span>
                       <div>
-                        <h3 className="text-[0.96rem] font-semibold tracking-[-0.02em] text-ink dark:text-frost">
+                        <div className="text-[0.94rem] font-semibold tracking-[-0.02em] text-ink dark:text-frost">
                           {point.title}
-                        </h3>
-                        <p className="mt-1.5 text-[0.80rem] leading-relaxed text-ink-muted dark:text-frost-subtle">
+                        </div>
+                        <p className="mt-1 text-[0.78rem] leading-relaxed text-ink-muted dark:text-frost-subtle">
                           {point.body}
                         </p>
                       </div>
                     </div>
                   ))}
                 </div>
-                <p className="mt-5 border-t border-slate-100/80 pt-5 text-[0.76rem] leading-relaxed text-ink-muted dark:border-white/[0.05] dark:text-frost-subtle">
+                <p className="mt-7 border-t border-slate-100/80 pt-6 text-[0.74rem] leading-relaxed text-ink-muted dark:border-white/[0.05] dark:text-frost-subtle">
                   {platformVisionLayer.footer}
                 </p>
               </div>
 
-              {/* Right — CV pipeline visual */}
-              <CVPanel />
+              {/* Right — monitor visual */}
+              <MonitorPanel />
             </div>
           </div>
         </Reveal>

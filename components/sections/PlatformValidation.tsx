@@ -19,7 +19,6 @@ export function PlatformValidation() {
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-300/40 to-transparent dark:via-brand-400/25" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200/50 to-transparent dark:via-white/[0.04]" />
         <div className="absolute right-0 top-1/3 h-[420px] w-[420px] rounded-full bg-violet-500/[0.03] blur-[130px] dark:bg-violet-500/[0.05]" />
-        <div className="absolute -left-20 bottom-1/4 h-[350px] w-[350px] rounded-full bg-brand-500/[0.02] blur-[110px] dark:bg-brand-500/[0.04]" />
       </div>
 
       <Container className="relative">
@@ -44,57 +43,76 @@ export function PlatformValidation() {
           </Reveal>
         </div>
 
-        {/* ══ 6 METRIC TILES ══ */}
+        {/* ══ STATS PANEL ══ */}
         <Reveal delay={0.14}>
-          <div className="mt-14 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {platformValidation.metrics.map((metric) => (
-              <div
-                key={metric.label}
-                className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810] p-7"
-              >
-                <div
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-px"
-                  style={{
-                    background: `linear-gradient(to right,${metric.color}60,${metric.color}25,transparent)`,
-                  }}
-                />
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -right-6 -top-6 h-28 w-28 rounded-full blur-2xl"
-                  style={{ background: metric.color + "14" }}
-                />
-                <div
-                  className="font-mono text-[2.4rem] font-bold leading-none tracking-[-0.04em]"
-                  style={{ color: metric.color }}
-                >
-                  {metric.value}
-                </div>
-                <div className="mt-3 text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-white/60">
-                  {metric.label}
-                </div>
-                <p className="mt-2 text-[0.76rem] leading-relaxed text-white/40">{metric.note}</p>
-                <div
-                  aria-hidden
-                  className="absolute inset-x-0 bottom-0 h-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{
-                    background: `linear-gradient(to right,transparent,${metric.color}45,transparent)`,
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </Reveal>
+          <div className="relative mt-14 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810]">
 
-        {/* ══ FOOTER NOTE ══ */}
-        <Reveal delay={0.2}>
-          <div className="mt-4 overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.015] px-5 py-3.5">
-            <div className="flex items-center gap-3 text-[0.78rem] text-ink-muted dark:text-frost-subtle">
-              <span className="rounded-full border border-brand-400/20 bg-brand-400/[0.08] px-2.5 py-0.5 font-mono text-[0.58rem] font-bold uppercase tracking-[0.14em] text-brand-300 dark:text-cyan-300">
-                Benchmark
-              </span>
-              <span>{platformValidation.footer}</span>
+            {/* Glow */}
+            <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+              <div className="absolute -left-12 top-0 h-52 w-52 rounded-full bg-brand-500/[0.09] blur-[80px]" />
+              <div className="absolute bottom-0 right-0 h-44 w-44 rounded-full bg-violet-500/[0.06] blur-[70px]" />
             </div>
+
+            {/* Top shine */}
+            <div
+              aria-hidden
+              className="absolute inset-x-[5%] top-0 h-px"
+              style={{
+                background:
+                  "linear-gradient(to right,transparent,rgba(79,107,255,0.50),rgba(124,92,255,0.35),rgba(40,215,181,0.25),transparent)",
+              }}
+            />
+
+            {/* Panel label */}
+            <div className="relative flex items-center justify-between border-b border-white/[0.05] px-7 py-4">
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-500" />
+                <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-white/28">
+                  Validation benchmarks
+                </span>
+              </div>
+              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/[0.08] px-2.5 py-0.5 font-mono text-[8px] font-bold text-emerald-400">
+                Field validated
+              </span>
+            </div>
+
+            {/* 6 metric cells — unified grid, no individual card boxes */}
+            <div className="relative grid grid-cols-2 divide-x divide-y divide-white/[0.05] sm:grid-cols-3">
+              {platformValidation.metrics.map((metric) => (
+                <div key={metric.label} className="group relative flex flex-col gap-3 p-7 lg:p-8">
+                  {/* Per-cell top color hint */}
+                  <div
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-[1.5px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    style={{
+                      background: `linear-gradient(to right,${metric.color}60,transparent)`,
+                    }}
+                  />
+                  <div
+                    className="font-mono text-[2.8rem] font-bold leading-none tracking-[-0.04em]"
+                    style={{ color: metric.color }}
+                  >
+                    {metric.value}
+                  </div>
+                  <div>
+                    <div className="text-[0.76rem] font-semibold uppercase tracking-[0.10em] text-white/55">
+                      {metric.label}
+                    </div>
+                    <p className="mt-1 text-[0.71rem] leading-relaxed text-white/32">
+                      {metric.note}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Footer */}
+            <div className="relative border-t border-white/[0.05] px-7 py-4">
+              <p className="text-[0.73rem] leading-relaxed text-white/30">
+                {platformValidation.footer}
+              </p>
+            </div>
+
           </div>
         </Reveal>
 

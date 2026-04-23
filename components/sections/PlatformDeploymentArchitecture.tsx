@@ -44,79 +44,120 @@ export function PlatformDeploymentArchitecture() {
           </Reveal>
         </div>
 
-        {/* ══ STAGE CARDS ══ */}
+        {/* ══ SINGLE PANEL ══ */}
         <Reveal delay={0.14}>
-          <div className="mt-14 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810] p-6 md:p-8">
-            {/* Glow blobs */}
+          <div className="relative mt-14 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810]">
+
+            {/* Glow */}
             <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-              <div className="absolute -left-12 top-0 h-52 w-52 rounded-full bg-brand-500/[0.08] blur-[90px]" />
-              <div className="absolute bottom-0 right-0 h-44 w-44 rounded-full bg-teal-400/[0.05] blur-[80px]" />
+              <div className="absolute -left-10 top-0 h-52 w-52 rounded-full bg-brand-500/[0.09] blur-[80px]" />
+              <div className="absolute bottom-0 right-0 h-44 w-44 rounded-full bg-teal-400/[0.05] blur-[70px]" />
             </div>
+
             {/* Top shine */}
             <div
               aria-hidden
               className="absolute inset-x-[5%] top-0 h-px"
               style={{
                 background:
-                  "linear-gradient(to right,transparent,rgba(79,107,255,0.40),rgba(40,215,181,0.25),transparent)",
+                  "linear-gradient(to right,transparent,rgba(79,107,255,0.45),rgba(40,215,181,0.28),transparent)",
               }}
             />
 
-            <div className="relative grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {platformDeploymentArchitecture.stages.map((stage) => (
-                <div
-                  key={stage.title}
-                  className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6"
-                >
-                  <div
-                    aria-hidden
-                    className="absolute inset-x-0 top-0 h-px"
-                    style={{
-                      background: `linear-gradient(to right,transparent,${stage.color}60,${stage.colorTo}35,transparent)`,
-                    }}
-                  />
-                  <div
-                    className="flex h-12 w-12 items-center justify-center rounded-xl text-white"
-                    style={{
-                      background: `linear-gradient(135deg,${stage.color},${stage.colorTo})`,
-                      boxShadow: `0 0 22px ${stage.color}28`,
-                    }}
-                  >
-                    <Icon name={stage.icon} className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-5 text-[0.96rem] font-semibold tracking-[-0.02em] text-frost">
-                    {stage.title}
-                  </h3>
-                  <p className="mt-2.5 text-[0.78rem] leading-relaxed text-white/45">{stage.body}</p>
-                </div>
-              ))}
-            </div>
+            <div className="relative grid lg:grid-cols-[1fr_1px_1fr]">
 
-            <div className="relative mt-6 rounded-xl border border-cyan-400/10 bg-cyan-400/[0.04] px-5 py-3.5 text-[0.76rem] leading-relaxed text-white/50">
-              {platformDeploymentArchitecture.footer}
-            </div>
-          </div>
-        </Reveal>
-
-        {/* ══ PRINCIPLE CARDS ══ */}
-        <Reveal delay={0.2}>
-          <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {platformDeploymentArchitecture.principles.map((principle) => (
-              <div
-                key={principle.title}
-                className="rounded-2xl border border-slate-200/80 bg-white p-7 dark:border-white/[0.07] dark:bg-white/[0.02]"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-ink dark:border-white/[0.08] dark:bg-white/[0.04] dark:text-frost">
-                  <Icon name={principle.icon} className="h-5 w-5" />
+              {/* Left — deployment pipeline (stages as vertical flow) */}
+              <div className="flex flex-col justify-center gap-0 p-8 lg:p-10">
+                <div className="mb-6 flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+                  <span className="font-mono text-[9px] uppercase tracking-[0.20em] text-white/28">
+                    Deployment stages
+                  </span>
                 </div>
-                <h3 className="mt-5 text-[0.96rem] font-semibold tracking-[-0.02em] text-ink dark:text-frost">
-                  {principle.title}
-                </h3>
-                <p className="mt-2.5 text-[0.80rem] leading-relaxed text-ink-muted dark:text-frost-subtle">
-                  {principle.body}
-                </p>
+
+                {platformDeploymentArchitecture.stages.map((stage, i) => {
+                  const next = platformDeploymentArchitecture.stages[i + 1];
+                  return (
+                    <div key={stage.title} className="flex gap-4">
+                      {/* Icon + connector */}
+                      <div className="flex flex-col items-center">
+                         <div
+                      className="flex h-12 w-12 items-center justify-center rounded-xl text-white"
+                      style={{
+                        background: `linear-gradient(135deg,${stage.color},${stage.colorTo})`,
+                        boxShadow: `0 4px 20px ${stage.color}32`,
+                      }}
+                    >
+                      <Icon name={stage.icon} className="h-5 w-5" />
+                    </div>
+                        {next && (
+                          <div
+                            className="my-1.5 w-px"
+                            style={{
+                              height: 28,
+                              background: `linear-gradient(to bottom,${stage.color}40,${next.color}20)`,
+                            }}
+                          />
+                        )}
+                      </div>
+
+                      {/* Text */}
+                      <div className={next ? "pb-5" : ""}>
+                        <h3 className="text-[0.96rem] font-semibold tracking-[-0.02em] text-frost">
+                          {stage.title}
+                        </h3>
+                        <p className="mt-1 text-[0.78rem] leading-relaxed text-white/42">
+                          {stage.body}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            ))}
+
+              {/* Divider */}
+              <div className="hidden bg-white/[0.05] lg:block" />
+
+              {/* Right — 4 governance principles 2×2 */}
+              <div className="border-t border-white/[0.05] p-8 lg:border-t-0 lg:p-10">
+                <div className="mb-6 flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
+                  <span className="font-mono text-[9px] uppercase tracking-[0.20em] text-white/28">
+                    Governance principles
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  {platformDeploymentArchitecture.principles.map((principle) => (
+                    <div
+                      key={principle.title}
+                      className="flex flex-col gap-3.5 rounded-xl border border-white/[0.06] bg-white/[0.025] p-4"
+                    >
+                      <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] text-frost">
+                        <Icon name={principle.icon} className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <h3 className="text-[0.84rem] font-semibold leading-snug tracking-[-0.01em] text-frost">
+                          {principle.title}
+                        </h3>
+                        <p className="mt-1.5 text-[0.72rem] leading-relaxed text-white/38">
+                          {principle.body}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+            {/* Footer note */}
+            <div className="relative border-t border-white/[0.05] px-8 py-4 lg:px-10">
+              <p className="text-[0.74rem] leading-relaxed text-white/35">
+                {platformDeploymentArchitecture.footer}
+              </p>
+            </div>
+
           </div>
         </Reveal>
 

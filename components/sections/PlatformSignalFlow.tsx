@@ -54,6 +54,7 @@ export function PlatformSignalFlow() {
               }}
             />
 
+            {/* Panel header */}
             <div className="flex items-center justify-between border-b border-slate-100/80 px-6 py-3 dark:border-white/[0.05]">
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-500" />
@@ -67,64 +68,75 @@ export function PlatformSignalFlow() {
               </div>
             </div>
 
-            <div className="relative hidden gap-4 px-8 pb-6 pt-8 lg:grid lg:grid-cols-5">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute left-[10%] right-[10%] top-[64px] h-px"
-                style={{
-                  background:
-                    "linear-gradient(to right,rgba(79,107,255,0.22),rgba(124,92,255,0.26),rgba(73,198,255,0.26),rgba(40,215,181,0.26),rgba(79,107,255,0.22))",
-                }}
-              />
-              {platformSignalFlow.steps.map((step, index) => (
-                <div key={step.step} className="relative flex min-w-0 flex-col items-center px-2 text-center">
+            {/* Desktop: 9-col grid (5 steps + 4 connectors) — no crossing center line */}
+            <div className="hidden px-8 pb-8 pt-10 lg:grid lg:grid-cols-[1fr_44px_1fr_44px_1fr_44px_1fr_44px_1fr]">
+              {platformSignalFlow.steps.flatMap((step, index) => {
+                const next = platformSignalFlow.steps[index + 1];
+                return [
+                  /* ── Step column ── */
                   <div
-                    className="flex h-16 w-16 items-center justify-center rounded-2xl text-white ring-1 ring-black/[0.06] dark:ring-white/[0.12]"
-                    style={{
-                      background: `linear-gradient(135deg,${step.color},${step.colorTo})`,
-                      boxShadow: `0 0 30px ${step.color}35`,
-                    }}
+                    key={`step-${step.step}`}
+                    className="flex min-w-0 flex-col items-center px-2 text-center"
                   >
-                    <Icon name={step.icon} className="h-6 w-6" />
-                  </div>
-                  <div
-                    className="mt-4 rounded-full px-2 py-0.5 font-mono text-[0.58rem] font-bold uppercase tracking-[0.14em]"
-                    style={{ background: step.color + "14", color: step.color }}
-                  >
-                    Step {step.step}
-                  </div>
-                  <h3 className="mt-3 text-[0.92rem] font-semibold tracking-[-0.02em] text-ink dark:text-frost">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 max-w-[14rem] text-[0.74rem] leading-relaxed text-ink-muted dark:text-frost-subtle">
-                    {step.body}
-                  </p>
-
-                  {index < platformSignalFlow.steps.length - 1 ? (
-                    <div className="pointer-events-none absolute right-[-16px] top-[32px] z-10 flex items-center gap-1.5">
-                      <div
-                        className="h-[1.5px] w-10"
-                        style={{
-                          background: `linear-gradient(to right,${step.color}60,${platformSignalFlow.steps[index + 1].color}60)`,
-                        }}
-                      />
-                      <svg width="7" height="11" viewBox="0 0 7 11" aria-hidden>
-                        <path
-                          d="M1 1 L6 5.5 L1 10"
-                          fill="none"
-                          stroke={platformSignalFlow.steps[index + 1].color}
-                          strokeWidth="1.5"
-                          strokeOpacity="0.75"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                    <div
+                      className="flex h-16 w-16 items-center justify-center rounded-2xl text-white ring-1 ring-black/[0.06] dark:ring-white/[0.12]"
+                      style={{
+                        background: `linear-gradient(135deg,${step.color},${step.colorTo})`,
+                        boxShadow: `0 0 30px ${step.color}35`,
+                      }}
+                    >
+                      <Icon name={step.icon} className="h-6 w-6" />
                     </div>
-                  ) : null}
-                </div>
-              ))}
+                    <div
+                      className="mt-4 rounded-full px-2 py-0.5 font-mono text-[0.58rem] font-bold uppercase tracking-[0.14em]"
+                      style={{ background: step.color + "14", color: step.color }}
+                    >
+                      Step {step.step}
+                    </div>
+                    <h3 className="mt-3 text-[0.92rem] font-semibold tracking-[-0.02em] text-ink dark:text-frost">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-[0.74rem] leading-relaxed text-ink-muted dark:text-frost-subtle">
+                      {step.body}
+                    </p>
+                  </div>,
+
+                  /* ── Connector column (skip after last step) ── */
+                  ...(next
+                    ? [
+                        <div
+                          key={`conn-${index}`}
+                          className="flex flex-col items-center"
+                        >
+                          {/* h-16 spacer aligns connector with icon center */}
+                          <div className="flex h-16 items-center justify-center">
+                            <div className="flex items-center gap-1">
+                              <div
+                                className="h-[1.5px] w-5"
+                                style={{
+                                  background: `linear-gradient(to right,${step.color}55,${next.color}55)`,
+                                }}
+                              />
+                              <svg width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden>
+                                <path
+                                  d="M1 1 L6 5.5 L1 10"
+                                  stroke={next.color}
+                                  strokeWidth="1.5"
+                                  strokeOpacity="0.65"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>,
+                      ]
+                    : []),
+                ];
+              })}
             </div>
 
+            {/* Mobile: vertical list */}
             <div className="flex flex-col divide-y divide-slate-100/80 lg:hidden dark:divide-white/[0.04]">
               {platformSignalFlow.steps.map((step) => (
                 <div key={step.step} className="flex items-start gap-4 px-5 py-4">
@@ -135,7 +147,7 @@ export function PlatformSignalFlow() {
                       boxShadow: `0 0 14px ${step.color}28`,
                     }}
                   >
-                    <Icon name={step.icon} className="h-4.5 w-4.5" />
+                    <Icon name={step.icon} className="h-5 w-5" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">

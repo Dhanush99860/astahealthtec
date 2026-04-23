@@ -20,8 +20,7 @@ export function PlatformReasoningLayer() {
         <div className="absolute inset-0 hidden bg-grid-fine bg-[length:44px_44px] opacity-60 dark:block" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-300/40 to-transparent dark:via-brand-400/25" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200/50 to-transparent dark:via-white/[0.04]" />
-        <div className="absolute -left-24 top-1/3 h-[420px] w-[420px] rounded-full bg-violet-500/[0.03] blur-[130px] dark:bg-violet-500/[0.05]" />
-        <div className="absolute right-0 bottom-0 h-[320px] w-[320px] rounded-full bg-brand-500/[0.02] blur-[110px] dark:bg-brand-500/[0.04]" />
+        <div className="absolute -left-24 top-1/3 h-[400px] w-[400px] rounded-full bg-violet-500/[0.03] blur-[130px] dark:bg-violet-500/[0.05]" />
       </div>
 
       <Container className="relative">
@@ -46,89 +45,110 @@ export function PlatformReasoningLayer() {
           </Reveal>
         </div>
 
-        {/* ══ MAIN GRID ══ */}
+        {/* ══ SINGLE DARK PANEL ══ */}
         <Reveal delay={0.14}>
-          <div className="mt-14 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative mt-14 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810]">
 
-            {/* Left — 4 pillar cards 2×2 */}
-            <div className="grid gap-4 sm:grid-cols-2">
-              {platformReasoningLayer.pillars.map((pillar, i) => (
-                <div
-                  key={pillar.title}
-                  className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810] p-7"
-                >
-                  <div
-                    aria-hidden
-                    className="absolute inset-x-0 top-0 h-px"
-                    style={{
-                      background: `linear-gradient(to right,${pillar.color}55,${pillar.color}20,transparent)`,
-                    }}
-                  />
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full blur-2xl"
-                    style={{ background: pillar.color + "14" }}
-                  />
-                  <span
-                    className="mb-5 flex h-9 w-9 items-center justify-center rounded-lg font-mono text-[0.7rem] font-bold"
-                    style={{ background: pillar.color + "14", color: pillar.color }}
-                  >
-                    {PILLAR_NUMS[i]}
-                  </span>
-                  <h3 className="text-[1rem] font-semibold tracking-[-0.02em] text-frost">
-                    {pillar.title}
-                  </h3>
-                  <p className="mt-2.5 text-[0.82rem] leading-relaxed text-white/48">{pillar.body}</p>
-                </div>
-              ))}
+            {/* Glow */}
+            <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+              <div className="absolute -right-12 top-0 h-48 w-48 rounded-full bg-brand-500/[0.10] blur-[80px]" />
+              <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-violet-500/[0.06] blur-[70px]" />
             </div>
 
-            {/* Right — comparison panel */}
-            <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810] p-7">
-              <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute -right-8 top-0 h-44 w-44 rounded-full bg-brand-500/[0.10] blur-[80px]" />
-                <div className="absolute bottom-0 left-0 h-36 w-36 rounded-full bg-violet-500/[0.06] blur-[70px]" />
-              </div>
-              <div className="relative">
-                <div className="mb-5 flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/32">
-                    Why this changes the output
-                  </span>
-                </div>
-                <div className="space-y-3">
-                  {platformReasoningLayer.comparisons.map((row) => (
+            {/* Top shine */}
+            <div
+              aria-hidden
+              className="absolute inset-x-[5%] top-0 h-px"
+              style={{
+                background:
+                  "linear-gradient(to right,transparent,rgba(79,107,255,0.45),rgba(124,92,255,0.30),transparent)",
+              }}
+            />
+
+            <div className="relative grid lg:grid-cols-[1.1fr_0.9fr] lg:divide-x lg:divide-white/[0.05]">
+
+              {/* Left — 4 compact pillars 2×2 */}
+              <div className="grid grid-cols-2 divide-x divide-y divide-white/[0.05]">
+                {platformReasoningLayer.pillars.map((pillar, i) => (
+                  <div key={pillar.title} className="relative flex flex-col gap-5 p-7">
                     <div
-                      key={row.label}
-                      className={`rounded-xl border px-5 py-4 ${
-                        row.highlight
-                          ? "border-brand-400/25 bg-brand-500/[0.12]"
-                          : "border-white/[0.06] bg-white/[0.03]"
-                      }`}
+                      aria-hidden
+                      className="absolute inset-x-0 top-0 h-[2px]"
+                      style={{
+                        background: `linear-gradient(to right,${pillar.color}55,transparent)`,
+                      }}
+                    />
+                    <span
+                      className="flex h-8 w-8 items-center justify-center rounded-lg font-mono text-[0.68rem] font-bold"
+                      style={{ background: pillar.color + "14", color: pillar.color }}
                     >
-                      <div
-                        className={`text-[0.82rem] font-semibold tracking-[-0.01em] ${
-                          row.highlight ? "text-brand-300" : "text-white/58"
-                        }`}
-                      >
-                        {row.label}
-                      </div>
-                      <p
-                        className={`mt-2 text-[0.78rem] leading-relaxed ${
-                          row.highlight ? "text-white/65" : "text-white/40"
-                        }`}
-                      >
-                        {row.body}
+                      {PILLAR_NUMS[i]}
+                    </span>
+                    <div>
+                      <h3 className="text-[0.95rem] font-semibold tracking-[-0.02em] text-frost">
+                        {pillar.title}
+                      </h3>
+                      <p className="mt-2 text-[0.78rem] leading-relaxed text-white/45">
+                        {pillar.body}
                       </p>
                     </div>
-                  ))}
-                </div>
-                <div className="mt-5 rounded-xl border border-cyan-400/10 bg-cyan-400/[0.04] px-4 py-3 text-[0.76rem] leading-relaxed text-white/52">
-                  {platformReasoningLayer.footer}
-                </div>
+                  </div>
+                ))}
               </div>
-            </div>
 
+              {/* Right — what PPLM changes */}
+              <div className="flex flex-col gap-4 p-7">
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+                  <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/28">
+                    What changes with PPLM
+                  </span>
+                </div>
+
+                {/* Without */}
+                <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-5">
+                  <div className="mb-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white/35">
+                    Without trajectory reasoning
+                  </div>
+                  <div className="space-y-2.5">
+                    {[
+                      "Alerts fire only when a single value crosses a threshold",
+                      "No context on how the pattern shifted over time",
+                      "Raw alert without evidence or reasoning",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-2.5 text-[0.76rem] leading-snug text-white/35">
+                        <span className="mt-1.5 h-1 w-1 flex-none rounded-full bg-white/18" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* ASTA PPLM */}
+                <div className="rounded-xl border border-brand-400/25 bg-brand-500/[0.10] p-5">
+                  <div className="mb-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-brand-300">
+                    ASTA PPLM
+                  </div>
+                  <div className="space-y-2.5">
+                    {[
+                      "Interprets trajectory change across continuous vital windows",
+                      "Surfaces deterioration context before threshold breach",
+                      "Evidence-linked output at the point of escalation",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-2.5 text-[0.78rem] leading-snug text-white/62">
+                        <span className="mt-1.5 h-1 w-1 flex-none rounded-full bg-brand-400" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <p className="mt-auto text-[0.72rem] leading-relaxed text-white/35">
+                  {platformReasoningLayer.footer}
+                </p>
+              </div>
+
+            </div>
           </div>
         </Reveal>
 

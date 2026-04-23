@@ -175,7 +175,7 @@ export function PlatformIntelligenceStack() {
         <Reveal delay={0.19}>
           <div className="relative mt-4 overflow-hidden rounded-xl border border-slate-200/80 bg-white/50 px-5 py-3.5 dark:border-white/[0.07] dark:bg-white/[0.015]">
             <div className="flex items-center gap-3 text-[0.78rem] text-ink-muted dark:text-frost-subtle">
-              <span className="rounded-full border border-cyan-400/20 bg-cyan-400/[0.08] px-2.5 py-0.5 font-mono text-[0.58rem] font-bold uppercase tracking-[0.14em] text-cyan-300 dark:text-cyan-300">
+              <span className="rounded-full border border-cyan-600/25 bg-cyan-50 px-2.5 py-0.5 font-mono text-[0.58rem] font-bold uppercase tracking-[0.14em] text-cyan-700 dark:border-cyan-400/20 dark:bg-cyan-400/[0.08] dark:text-cyan-300">
                 Clinical loop
               </span>
               <span>{platformStack.footer}</span>
