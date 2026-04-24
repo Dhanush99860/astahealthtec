@@ -1,7 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
-import { ContactInquiryForm } from "@/components/sections/ContactInquiryForm";
+import { ContactInquiryForm } from "@/components/sections/contact/ContactInquiryForm";
 import {
   contactForm,
   contactMain,

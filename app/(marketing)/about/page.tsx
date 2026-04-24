@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { AboutHero } from "@/components/sections/AboutHero";
-import { AboutFoundingThesis } from "@/components/sections/AboutFoundingThesis";
-import { AboutLeadership } from "@/components/sections/AboutLeadership";
-import { AboutAdvisoryBoard } from "@/components/sections/AboutAdvisoryBoard";
-import { AboutInstitutionalPedigree } from "@/components/sections/AboutInstitutionalPedigree";
-import { AboutCTA } from "@/components/sections/AboutCTA";
+import { AboutHero } from "@/components/sections/about/AboutHero";
+import { AboutFoundingThesis } from "@/components/sections/about/AboutFoundingThesis";
+import { AboutLeadership } from "@/components/sections/about/AboutLeadership";
+import { AboutAdvisoryBoard } from "@/components/sections/about/AboutAdvisoryBoard";
+import { AboutInstitutionalPedigree } from "@/components/sections/about/AboutInstitutionalPedigree";
+import { AboutCTA } from "@/components/sections/about/AboutCTA";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({

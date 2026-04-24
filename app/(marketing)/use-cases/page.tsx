@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { UseCasesHero } from "@/components/sections/UseCasesHero";
-import { UseCaseClusters } from "@/components/sections/UseCaseClusters";
-import { UseCasesAcademicValue } from "@/components/sections/UseCasesAcademicValue";
-import { UseCasesOutcomes } from "@/components/sections/UseCasesOutcomes";
-import { UseCasesCTA } from "@/components/sections/UseCasesCTA";
+import { UseCasesHero } from "@/components/sections/use-cases/UseCasesHero";
+import { UseCaseClusters } from "@/components/sections/use-cases/UseCaseClusters";
+import { UseCasesAcademicValue } from "@/components/sections/use-cases/UseCasesAcademicValue";
+import { UseCasesOutcomes } from "@/components/sections/use-cases/UseCasesOutcomes";
+import { UseCasesCTA } from "@/components/sections/use-cases/UseCasesCTA";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({

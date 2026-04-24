@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/sections/Hero";
-import { ClinicalAiInAction } from "@/components/sections/ClinicalAiInAction";
-import { InstitutionalTrust } from "@/components/sections/InstitutionalTrust";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Capabilities } from "@/components/sections/Capabilities";
-import { Outcomes } from "@/components/sections/Outcomes";
-import { SecurityBand } from "@/components/sections/SecurityBand";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+import { Hero } from "@/components/sections/home/Hero";
+import { ClinicalAiInAction } from "@/components/sections/home/ClinicalAiInAction";
+import { InstitutionalTrust } from "@/components/sections/home/InstitutionalTrust";
+import { HowItWorks } from "@/components/sections/home/HowItWorks";
+import { Capabilities } from "@/components/sections/home/Capabilities";
+import { Outcomes } from "@/components/sections/home/Outcomes";
+import { SecurityBand } from "@/components/sections/home/SecurityBand";
+import { FinalCTA } from "@/components/sections/home/FinalCTA";
 import {
   DEFAULT_OG_IMAGE,
   SITE_DESCRIPTION,

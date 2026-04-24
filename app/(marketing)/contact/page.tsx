@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { ContactHero } from "@/components/sections/ContactHero";
-import { ContactMainSection } from "@/components/sections/ContactMainSection";
+import { ContactHero } from "@/components/sections/contact/ContactHero";
+import { ContactMainSection } from "@/components/sections/contact/ContactMainSection";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({

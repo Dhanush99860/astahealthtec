@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { PlatformHero } from "@/components/sections/PlatformHero";
-import { PlatformIntelligenceStack } from "@/components/sections/PlatformIntelligenceStack";
-import { PlatformSignalFlow } from "@/components/sections/PlatformSignalFlow";
-import { PlatformComputerVision } from "@/components/sections/PlatformComputerVision";
-import { PlatformReasoningLayer } from "@/components/sections/PlatformReasoningLayer";
-import { PlatformDeploymentArchitecture } from "@/components/sections/PlatformDeploymentArchitecture";
-import { PlatformValidation } from "@/components/sections/PlatformValidation";
-import { PlatformCTA } from "@/components/sections/PlatformCTA";
+import { PlatformHero } from "@/components/sections/platform/PlatformHero";
+import { PlatformIntelligenceStack } from "@/components/sections/platform/PlatformIntelligenceStack";
+import { PlatformSignalFlow } from "@/components/sections/platform/PlatformSignalFlow";
+import { PlatformComputerVision } from "@/components/sections/platform/PlatformComputerVision";
+import { PlatformReasoningLayer } from "@/components/sections/platform/PlatformReasoningLayer";
+import { PlatformDeploymentArchitecture } from "@/components/sections/platform/PlatformDeploymentArchitecture";
+import { PlatformValidation } from "@/components/sections/platform/PlatformValidation";
+import { PlatformCTA } from "@/components/sections/platform/PlatformCTA";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({

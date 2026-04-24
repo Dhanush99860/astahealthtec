@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { SolutionsHero } from "@/components/sections/SolutionsHero";
-import { CapabilitySuite } from "@/components/sections/CapabilitySuite";
-import { DashboardWalkthrough } from "@/components/sections/DashboardWalkthrough";
-import { InteropGovernance } from "@/components/sections/InteropGovernance";
-import { MonitoringInPractice } from "@/components/sections/MonitoringInPractice";
-import { SolutionsCTA } from "@/components/sections/SolutionsCTA";
+import { SolutionsHero } from "@/components/sections/solutions/SolutionsHero";
+import { CapabilitySuite } from "@/components/sections/solutions/CapabilitySuite";
+import { DashboardWalkthrough } from "@/components/sections/solutions/DashboardWalkthrough";
+import { InteropGovernance } from "@/components/sections/solutions/InteropGovernance";
+import { MonitoringInPractice } from "@/components/sections/solutions/MonitoringInPractice";
+import { SolutionsCTA } from "@/components/sections/solutions/SolutionsCTA";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
