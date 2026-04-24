@@ -62,7 +62,7 @@ const leadershipMembers: Person[] = [
     linkedin: "https://www.linkedin.com/in/drkumaresh/",
     title: "CMO & Co-Founder",
     badge: "Clinical leadership",
-    headline: "Keeps the company anchored in the bedside problem — not an abstract AI thesis.",
+    headline: "Keeps the company anchored in the bedside problem, not an abstract AI thesis.",
     body:
       "A practicing ENT surgeon and health-tech innovator with 20+ years of clinical experience, Dr. Kumaresh brings the realities of ward workflows, missed deterioration, and clinician burden directly into product decisions.",
     contribution:
@@ -223,7 +223,7 @@ export const aboutHero: {
   headline: "Building the intelligence layer for",
   headlineAccent: "real hospital wards.",
   sub:
-    "ASTA is building device-agnostic smart wards with practical, affordable, clinical-grade intelligence — led by a team spanning medicine, AI, enterprise technology, and hospital operations.",
+    "ASTA is building device-agnostic smart wards with practical, affordable, clinical-grade intelligence, led by a team spanning medicine, AI, enterprise technology, and hospital operations.",
   primaryCta: { label: "Talk to the ASTA team", href: ROUTES.contact },
   secondaryCta: { label: "See institutional backing", href: "#institutional-pedigree" },
   microProof: [
@@ -254,7 +254,7 @@ export const aboutFoundingThesis: {
     "ASTA began with a clinician-led realization: real wards already had vital signals at the bedside, but those signals were still too often trapped inside fragmented screens, noisy alarm logic, and overstretched workflows.",
   narrative: [
     "Alarm fatigue makes it harder to distinguish the signal that matters. Mixed monitor brands make it harder to standardize visibility across a hospital. And between intermittent observation windows, meaningful deterioration can still be missed.",
-    "Dr. Kumaresh's experience helped shape a sharper founding thesis: hospitals needed a practical system that could work on the monitor fleet already in place, surface deterioration earlier, and stay affordable enough for broad institutional adoption — including teaching hospitals and public-health environments.",
+    "Dr. Kumaresh's experience helped shape a sharper founding thesis: hospitals needed a practical system that could work on the monitor fleet already in place, surface deterioration earlier, and stay affordable enough for broad institutional adoption, including teaching hospitals and public-health environments.",
   ],
   pressures: [
     {
@@ -318,18 +318,18 @@ export const aboutAdvisoryBoard = {
     "Strategic execution",
   ],
   supportNote:
-    "The board helps keep ASTA credible across research rigor, clinical judgment, and institutional decision-making — the exact areas serious hospital buyers care about.",
+    "The board helps keep ASTA credible across research rigor, clinical judgment, and institutional decision-making: the exact areas serious hospital buyers care about.",
   members: advisoryMembers,
 };
 
 export const aboutInstitutionalPedigree = {
   eyebrow: "Institutional pedigree",
-  heading: "Grounded in serious institutions — not built in isolation.",
+  heading: "Grounded in serious institutions, not built in isolation.",
   sub:
     "ASTA's credibility comes from more than product claims. The company is shaped by national innovation programs, research institutions, and institute-linked engineering depth around a real hospital deployment journey.",
   partners: pedigreeItems,
   footer:
-    "For hospitals, this means ASTA shows up as a company shaped by clinical reality, research seriousness, and institution-facing execution — not just demo-stage ambition.",
+    "For hospitals, this means ASTA shows up as a company shaped by clinical reality, research seriousness, and institution-facing execution. Not just demo-stage ambition.",
 };
 
 export const aboutCta: {

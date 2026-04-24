@@ -242,6 +242,20 @@ export function Icon({ name, className, strokeWidth = 1.5 }: Props) {
           <circle cx="12" cy="9" r="2.5" />
         </svg>
       );
+    case "linkedin":
+      return (
+        <svg {...common}>
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+          <rect width="4" height="12" x="2" y="9" />
+          <circle cx="4" cy="4" r="2" />
+        </svg>
+      );
+    case "twitter":
+      return (
+        <svg {...common}>
+          <path d="M4 4l16 16M20 4 4 20" />
+        </svg>
+      );
     default:
       return null;
   }

@@ -36,7 +36,9 @@ export type IconName =
   | "bar-chart"
   | "compass"
   | "spark"
-  | "map-pin";
+  | "map-pin"
+  | "linkedin"
+  | "twitter";
 
 export type Capability = {
   icon: IconName;

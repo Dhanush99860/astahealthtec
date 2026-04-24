@@ -119,14 +119,13 @@ export function AboutAdvisoryBoard() {
                           background: `linear-gradient(135deg,${member.accent},${member.accentTo})`,
                         }}
                       >
-                        <div className="h-full w-full overflow-hidden rounded-[10px] bg-[#040810]">
+                        <div className="relative h-full w-full overflow-hidden rounded-[10px] bg-[#040810]">
                           <Image
                             src={member.photo}
                             alt={member.name}
-                            width={57}
-                            height={57}
-                            className="h-full w-full object-cover object-top"
-                            unoptimized
+                            fill
+                            className="object-cover object-top"
+                            sizes="60px"
                           />
                         </div>
                         {/* Scan-line overlay */}

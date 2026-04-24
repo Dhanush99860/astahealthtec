@@ -128,14 +128,13 @@ export function AboutLeadership() {
                           background: `linear-gradient(135deg,${member.accent},${member.accentTo})`,
                         }}
                       >
-                        <div className="h-full w-full overflow-hidden rounded-[13px] bg-[#040810]">
+                        <div className="relative h-full w-full overflow-hidden rounded-[13px] bg-[#040810]">
                           <Image
                             src={member.photo}
                             alt={member.name}
-                            width={77}
-                            height={77}
-                            className="h-full w-full object-cover object-top"
-                            unoptimized
+                            fill
+                            className="object-cover object-top"
+                            sizes="80px"
                           />
                         </div>
                         {/* Scan-line overlay */}

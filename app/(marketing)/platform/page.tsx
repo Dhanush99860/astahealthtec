@@ -7,12 +7,20 @@ import { PlatformReasoningLayer } from "@/components/sections/PlatformReasoningL
 import { PlatformDeploymentArchitecture } from "@/components/sections/PlatformDeploymentArchitecture";
 import { PlatformValidation } from "@/components/sections/PlatformValidation";
 import { PlatformCTA } from "@/components/sections/PlatformCTA";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Platform | ASTA",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Platform",
   description:
     "ASTA is a device-agnostic clinical intelligence stack for monitor reading, physiological reasoning, and evidence-linked clinical output.",
-};
+  path: "/platform",
+  keywords: [
+    "clinical intelligence platform",
+    "physiological reasoning",
+    "computer vision monitor reading",
+    "hospital AI platform",
+  ],
+});
 
 export default function PlatformPage() {
   return (

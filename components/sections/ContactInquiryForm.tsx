@@ -145,6 +145,7 @@ export function ContactInquiryForm() {
                 key={type}
                 type="button"
                 onClick={() => setSelectedInquiryType(type)}
+                aria-pressed={isActive}
                 className="rounded-full border px-3 py-1.5 text-[0.72rem] font-medium transition-all duration-150"
                 style={
                   isActive
@@ -237,6 +238,7 @@ export function ContactInquiryForm() {
                   fieldShellClass,
                   "flex h-12 w-full items-center justify-between px-3.5 text-left"
                 )}
+                aria-label="Select country calling code"
                 aria-haspopup="listbox"
                 aria-expanded={countryMenuOpen}
               >
@@ -275,11 +277,16 @@ export function ContactInquiryForm() {
                         value={countrySearch}
                         onChange={(e) => setCountrySearch(e.target.value)}
                         placeholder="Search country or code"
+                        aria-label="Search country calling code"
                         className={cn(inputClass, "h-11 text-[0.86rem]")}
                       />
                     </div>
                   </div>
-                  <div className="max-h-64 overflow-y-auto py-2">
+                  <div
+                    className="max-h-64 overflow-y-auto py-2"
+                    role="listbox"
+                    aria-label="Country calling codes"
+                  >
                     {filteredCountries.length > 0 ? (
                       filteredCountries.map((country) => (
                         <button
@@ -290,6 +297,8 @@ export function ContactInquiryForm() {
                             setCountryMenuOpen(false);
                             setCountrySearch("");
                           }}
+                          role="option"
+                          aria-selected={selectedCountryIso === country.iso2}
                           className={cn(
                             "flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left transition-colors duration-150",
                             selectedCountryIso === country.iso2
@@ -328,6 +337,7 @@ export function ContactInquiryForm() {
                 name="phone"
                 type="tel"
                 autoComplete="tel"
+                aria-label={contactForm.labels.phone}
                 placeholder={contactForm.placeholders.phone}
                 className={inputClass}
               />
@@ -382,7 +392,7 @@ export function ContactInquiryForm() {
       </div>
 
       {statusMessage && (
-        <p className="mt-3 text-[0.76rem] leading-relaxed text-cyan-300/70">
+        <p aria-live="polite" className="mt-3 text-[0.76rem] leading-relaxed text-cyan-300/70">
           {statusMessage}
         </p>
       )}

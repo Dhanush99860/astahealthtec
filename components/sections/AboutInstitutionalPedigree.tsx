@@ -118,14 +118,13 @@ export function AboutInstitutionalPedigree() {
                   </span>
 
                   {/* Logo */}
-                  <div className="flex h-[88px] items-center justify-center overflow-hidden rounded-2xl border border-white/[0.08] bg-white px-5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.28)]">
+                  <div className="relative flex h-[88px] items-center justify-center overflow-hidden rounded-2xl border border-white/[0.08] bg-white px-5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.28)]">
                     <Image
                       src={partner.logo}
                       alt={partner.name}
-                      width={180}
-                      height={72}
-                      className="h-12 w-auto max-w-full object-contain"
-                      unoptimized
+                      fill
+                      className="object-contain p-5"
+                      sizes="180px"
                     />
                   </div>
 

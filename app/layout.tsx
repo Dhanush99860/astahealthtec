@@ -1,6 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import {
+  organizationJsonLd,
+  rootMetadata,
+  websiteJsonLd,
+} from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,34 +21,20 @@ const display = Instrument_Serif({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://asta.health"),
-  title: {
-    default: "ASTA - Smart wards, built on the hospital you already have.",
-    template: "%s · ASTA Health Tech",
-  },
-  description:
-    "ASTA turns existing hospital wards into smart wards with device-agnostic AI - real-time vitals, intelligent alerts, and clinical visibility without new monitors.",
-  openGraph: {
-    title: "ASTA Health Tech",
-    description:
-      "Device-agnostic AI for hospital wards. Real-time vitals and intelligent alerts on your existing infrastructure.",
-    type: "website",
-  },
-  robots: { index: true, follow: true },
+export const metadata: Metadata = rootMetadata;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
+    { media: "(prefers-color-scheme: dark)", color: "#060816" },
+  ],
 };
 
-const themeScript = `
-  try {
-    var stored = localStorage.getItem('asta-theme');
-    var theme = stored === 'light' ? 'light' : 'dark';
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(theme);
-  } catch(e) {
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add('dark');
-  }
-`;
+const themeScript =
+  '!function(){try{var t="light"===localStorage.getItem("asta-theme")?"light":"dark";document.documentElement.classList.remove("light","dark"),document.documentElement.classList.add(t)}catch(t){document.documentElement.classList.remove("light","dark"),document.documentElement.classList.add("dark")}}();';
 
 export default function RootLayout({
   children,
@@ -60,6 +51,14 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

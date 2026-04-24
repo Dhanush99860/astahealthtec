@@ -19,7 +19,7 @@ export const hero = {
   headline: "Turn any existing ward into",
   headlineAccent: "a smart ward.",
   sub:
-    "ASTA reads any bedside monitor, extracts structured vitals continuously, and turns physiological signals into role-aware clinical action — without a new monitor fleet.",
+    "ASTA reads any bedside monitor, extracts structured vitals continuously, and turns physiological signals into role-aware clinical action, without a new monitor fleet.",
   primaryCta: { label: "Request a demo", href: ROUTES.demo },
   secondaryCta: { label: "Explore platform", href: ROUTES.platform },
   microProof: [
@@ -43,28 +43,28 @@ export const clinicalAiInAction: {
   eyebrow: "From pixels to clinical action",
   heading: "Monitor reading. Physiological reasoning. Evidence-linked output.",
   sub:
-    "ASTA mounts a camera on the bedside monitor — not the patient — and reads the display. Structured vitals flow continuously into a physiological reasoning layer, and the output becomes role-aware clinical action: context-rich alerts routed to the right clinician, with trajectory and evidence attached.",
+    "ASTA mounts a camera on the bedside monitor, not the patient, and reads the display. Structured vitals flow continuously into a physiological reasoning layer, and the output becomes role-aware clinical action: context-rich alerts routed to the right clinician, with trajectory and evidence attached.",
   mediaLabel: "Live product walkthrough",
   mediaTitle: "Computer vision reads any monitor. Physiological reasoning drives clinical action.",
   mediaCaption:
-    "Live walkthrough — monitor display reading, structured vital extraction, and evidence-linked alert routing across an active ward deployment.",
+    "Live walkthrough: monitor display reading, structured vital extraction, and evidence-linked alert routing across an active ward deployment.",
   primaryCta: { label: "Request a walkthrough", href: ROUTES.demo },
   bullets: [
     {
       title: "Computer vision reads any monitor",
-      body: "A camera mounts on the bedside monitor — not the patient — and reads any LCD display from any OEM brand. No API. No hardware tap. No hospital IT integration required for the monitoring layer.",
+      body: "A camera mounts on the bedside monitor, not the patient, and reads any LCD display from any OEM brand. No API. No hardware tap. No hospital IT integration required for the monitoring layer.",
     },
     {
       title: "Structured vital extraction",
-      body: "Raw display data becomes structured, time-stamped vitals — heart rate, SpO₂, blood pressure, respiratory rate — extracted at 98% CV accuracy across 15+ OEM brands.",
+      body: "Raw display data becomes structured, time-stamped vitals: heart rate, SpO₂, blood pressure, respiratory rate, extracted at 98% CV accuracy across 15+ OEM brands.",
     },
     {
       title: "Physiological reasoning layer",
-      body: "A Physiological Pattern Learning Model evaluates vital trajectories, identifies deterioration signals, and produces evidence-linked clinical context — going beyond threshold alerting.",
+      body: "A Physiological Pattern Learning Model evaluates vital trajectories, identifies deterioration signals, and produces evidence-linked clinical context, going beyond threshold alerting.",
     },
     {
       title: "Role-aware clinical action",
-      body: "Alerts reach the right clinician with physiological context and trajectory attached — not just a threshold trigger. The governance trail is captured in the same operational flow.",
+      body: "Alerts reach the right clinician with physiological context and trajectory attached, not a bare threshold trigger. The governance trail is captured in the same operational flow.",
     },
   ],
   metrics: [
@@ -83,12 +83,12 @@ export const institutionalTrust: {
   eyebrow: "Institutional backing",
   heading: "National innovation backing and research institution support.",
   sub:
-    "ASTA is supported by government-recognised innovation programs and research institutions — grounding a clinical AI product in translational validation and institutional credibility.",
+    "ASTA is supported by government-recognised innovation programs and research institutions, grounding a clinical AI product in translational validation and institutional credibility.",
   items: [
     {
       name: "AIC-SEED",
       descriptor: "Atal Incubation Centre - SEED",
-      note: "Translational healthcare innovation support — incubation, validation, and early-stage clinical deployment backing.",
+      note: "Translational healthcare innovation support: incubation, validation, and early-stage clinical deployment backing.",
     },
     {
       name: "MeitY Startup Hub",
@@ -117,7 +117,7 @@ export const trust: {
   sub:
     "Numerical vitals only. No patient imagery. Standard monitoring consent. Engineered for regulated clinical environments and hospital governance requirements.",
   postures: [
-    "Numerical data only — no patient imagery",
+    "Numerical data only. No patient imagery.",
     "Standard monitoring consent",
     "NDHM-ready posture",
     "Legal audit trail",
@@ -134,36 +134,36 @@ export const howItWorks: {
   eyebrow: "How ASTA works",
   heading: "From monitor reading to clinical action in five continuous steps.",
   sub:
-    "Signal capture to clinical escalation — running continuously across every bed, on infrastructure the hospital already operates.",
+    "Signal capture to clinical escalation, running continuously across every bed, on infrastructure the hospital already operates.",
   steps: [
     {
       step: "01",
       title: "Capture",
-      body: "A camera mounts on the bedside monitor — not the patient. ASTA reads any LCD display from any OEM brand, in any lighting condition, with no API, no hardware tap, and no hospital IT dependency.",
+      body: "A camera mounts on the bedside monitor, not the patient. ASTA reads any LCD display from any OEM brand, in any lighting condition, with no API, no hardware tap, and no hospital IT dependency.",
       icon: "camera",
     },
     {
       step: "02",
       title: "Extract",
-      body: "Computer vision trained on 100M+ labeled monitor frames across 15+ OEM brands extracts structured vitals from the display in real time — heart rate, SpO₂, blood pressure, respiratory rate — at 98% accuracy.",
+      body: "Computer vision trained on 100M+ labeled monitor frames across 15+ OEM brands extracts structured vitals from the display in real time: heart rate, SpO₂, blood pressure, respiratory rate, at 98% accuracy.",
       icon: "eye",
     },
     {
       step: "03",
       title: "Reason",
-      body: "A Physiological Pattern Learning Model evaluates vital trajectories continuously, detects deterioration signals, and produces ranked clinical differentials with evidence links — beyond threshold logic.",
+      body: "A Physiological Pattern Learning Model evaluates vital trajectories continuously, detects deterioration signals, and produces ranked clinical differentials with evidence links, going beyond threshold logic.",
       icon: "cpu",
     },
     {
       step: "04",
       title: "Alert",
-      body: "The right alert reaches the right clinician at the right threshold — with physiological trajectory, ranked differentials, and recommended next steps attached. Not alarm noise.",
+      body: "The right alert reaches the right clinician at the right threshold, with physiological trajectory, ranked differentials, and recommended next steps attached. Not alarm noise.",
       icon: "bell",
     },
     {
       step: "05",
       title: "Review",
-      body: "Nursing and clinical leadership gain a structured, real-time view of every monitored bed across the ward — for handover, continuous oversight, and escalation decisions.",
+      body: "Nursing and clinical leadership gain a structured, real-time view of every monitored bed across the ward, for handover, continuous oversight, and escalation decisions.",
       icon: "bar-chart",
     },
   ],
@@ -176,24 +176,24 @@ export const capabilities: {
   items: Capability[];
 } = {
   eyebrow: "Platform capabilities",
-  heading: "A productized monitoring platform — built for hospital deployment.",
+  heading: "A productized monitoring platform, built for hospital deployment.",
   sub:
-    "Every module is engineered to operate inside real hospital workflows — reliable, observable, and operable by clinical staff without specialist technical support.",
+    "Every module is engineered to operate inside real hospital workflows: reliable, observable, and operable by clinical staff without specialist technical support.",
   items: [
     {
       icon: "activity",
       title: "Real-time vital extraction",
-      body: "Structured vitals extracted continuously from any OEM monitor display — heart rate, SpO₂, blood pressure, respiratory rate — at clinical cadence, across every bed in the ward.",
+      body: "Structured vitals extracted continuously from any OEM monitor display: heart rate, SpO₂, blood pressure, respiratory rate, at clinical cadence across every bed in the ward.",
     },
     {
       icon: "bell",
       title: "Trajectory-aware alerts",
-      body: "Context-enriched alerting built on physiological trajectory — engineered to reduce alarm fatigue while surfacing the signals that demand clinical attention.",
+      body: "Context-enriched alerting built on physiological trajectory, engineered to reduce alarm fatigue while surfacing the signals that demand clinical attention.",
     },
     {
       icon: "dashboard",
       title: "Ward-level visibility",
-      body: "Unit, ward, and patient-level dashboards built for nursing and clinical leadership — real-time across all monitored beds, not just the IT team.",
+      body: "Unit, ward, and patient-level dashboards built for nursing and clinical leadership, real-time across all monitored beds, not just the IT team.",
     },
     {
       icon: "shield",
@@ -203,12 +203,12 @@ export const capabilities: {
     {
       icon: "route",
       title: "Workflow compatibility",
-      body: "HL7/FHIR-aligned. Connects with existing EMR, escalation protocols, and ward workflows. No hospital IT integration is required for monitor reading — connection is additive, not prerequisite.",
+      body: "HL7/FHIR-aligned. Connects with existing EMR, escalation protocols, and ward workflows. No hospital IT integration is required for monitor reading; connection is additive, not a prerequisite.",
     },
     {
       icon: "cloud",
       title: "Deployment flexibility",
-      body: "Camera on the monitor, not the patient. Same-day deployment on existing infrastructure. On-prem, hybrid, or managed cloud — matched to the hospital's IT posture and data governance requirements.",
+      body: "Camera on the monitor, not the patient. Same-day deployment on existing infrastructure. On-prem, hybrid, or managed cloud, matched to the hospital's IT posture and data governance requirements.",
     },
   ],
 };
@@ -223,7 +223,7 @@ export const deployments: {
   eyebrow: "Live hospital deployments",
   heading: "10+ hospital deployments, including named live sites across Tamil Nadu and Karnataka.",
   sub:
-    "Named, verified deployments in active patient-care environments — not pilots, not proof-of-concept installations.",
+    "Named, verified deployments in active patient-care environments. Not pilots, not proof-of-concept installations.",
   publicNote:
     "Each deployment is operational in an active patient-care environment, in partnership with hospital clinical and technical teams. Public website references included where available.",
   items: [
@@ -252,7 +252,7 @@ export const deployments: {
       status: "Live",
       liveSince: "2025",
       website: "https://akshahospital.in",
-      note: "Multi-ward deployment — real-time vital monitoring across clinical, nursing, and operational teams in an active hospital environment.",
+      note: "Multi-ward deployment with real-time vital monitoring across clinical, nursing, and operational teams in an active hospital environment.",
     },
     {
       name: "Seethapathy Clinic",
@@ -270,7 +270,7 @@ export const deployments: {
       status: "Live",
       liveSince: "2025",
       website: "https://kshospital.co.in",
-      note: "Bedside monitor reading configured to existing equipment and ward layout — no infrastructure change required at deployment.",
+      note: "Bedside monitor reading configured to existing equipment and ward layout. No infrastructure change required at deployment.",
     },
     {
       name: "Sugam Hospital",
@@ -288,7 +288,7 @@ export const deployments: {
       status: "Live",
       liveSince: "2026",
       website: "https://anbuhospital.org",
-      note: "Active ward deployment — vital monitoring and clinical escalation in partnership with hospital clinical and operations teams.",
+      note: "Active ward deployment with vital monitoring and clinical escalation in partnership with hospital clinical and operations teams.",
     },
   ],
 };
@@ -302,13 +302,13 @@ export const outcomes: {
   eyebrow: "Deployment model",
   heading: "A practical operating model. Not a demo-stage AI promise.",
   sub:
-    "ASTA delivers structured value across clinical, operational, and governance dimensions — with a deployment model designed for how hospitals actually buy and operate technology.",
+    "ASTA delivers structured value across clinical, operational, and governance dimensions, with a deployment model designed for how hospitals actually buy and operate technology.",
   items: [
     {
       icon: "server",
       audience: "Operating model",
       title: "Zero hardware capex. Predictable operating cost.",
-      body: "Runs on the monitors and infrastructure hospitals already own. A camera per monitor, a per-bed operating model, and ASTA's clinical and technical team guiding deployment from day one — no device fleet to procure, no refresh program required.",
+      body: "Runs on the monitors and infrastructure hospitals already own. A camera per monitor, a per-bed operating model, and ASTA's clinical and technical team guiding deployment from day one. No device fleet to procure, no refresh program required.",
       metric: "No new monitor fleet capex",
       proof: "Same-day deployment available",
     },
@@ -316,7 +316,7 @@ export const outcomes: {
       icon: "heart-pulse",
       audience: "Clinical safety",
       title: "Continuous monitoring without disruption.",
-      body: "ASTA adds real-time vital extraction and physiological reasoning to existing bedside workflows — improving signal continuity and deterioration visibility without forcing monitor changeover or clinical retraining.",
+      body: "ASTA adds real-time vital extraction and physiological reasoning to existing bedside workflows, improving signal continuity and deterioration visibility without forcing monitor changeover or clinical retraining.",
       metric: "24/7 signal continuity",
       proof: "Works on existing monitor fleet",
     },
@@ -324,7 +324,7 @@ export const outcomes: {
       icon: "stethoscope",
       audience: "Escalation quality",
       title: "Evidence-linked alerts. Not alarm noise.",
-      body: "Threshold-driven routing delivers physiological context, vital trajectory, and ranked differentials to the right clinician — designed to reduce alarm fatigue while ensuring deteriorating patients are not missed.",
+      body: "Threshold-driven routing delivers physiological context, vital trajectory, and ranked differentials to the right clinician, designed to reduce alarm fatigue while ensuring deteriorating patients are not missed.",
       metric: "Role-aware alert routing",
       proof: "Physiological context at escalation",
     },
@@ -332,7 +332,7 @@ export const outcomes: {
       icon: "lock",
       audience: "Governance",
       title: "Hospital-owned. Institutionally controlled.",
-      body: "Numerical vitals only. No patient imagery. Standard monitoring consent. Data residency, retention policy, access control, and audit posture remain under hospital ownership — not vendor-defined defaults.",
+      body: "Numerical vitals only. No patient imagery. Standard monitoring consent. Data residency, retention policy, access control, and audit posture remain under hospital ownership, not vendor-defined defaults.",
       metric: "Full audit trail",
       proof: "No patient imagery captured",
     },
@@ -351,7 +351,7 @@ export const security: {
   eyebrow: "Compliance posture",
   heading: "Numerical data only. Hospital-controlled. Institutionally auditable.",
   sub:
-    "ASTA reads LCD display numerics — not patients. No patient imagery is captured or transmitted. Standard monitoring consent applies. NDHM-ready architecture, HL7/FHIR-aligned interoperability, role-based access, and full audit trail — with deployment posture under hospital control.",
+    "ASTA reads LCD display numerics, not patients. No patient imagery is captured or transmitted. Standard monitoring consent applies. NDHM-ready architecture, HL7/FHIR-aligned interoperability, role-based access, and full audit trail, with deployment posture under hospital control.",
   quickMetrics: [
     { val: "NDHM", label: "Ready posture", color: "#4F6BFF" },
     { val: "RBAC", label: "Role-based access", color: "#28D7B5" },
@@ -367,8 +367,8 @@ export const security: {
   proofItems: [
     {
       icon: "lock",
-      title: "Numerical data only — no patient imagery",
-      body: "ASTA reads LCD display numerics only. A camera mounts on the monitor, not the patient. No patient imagery is captured, stored, or transmitted. Standard monitoring consent applies — no special patient data protocols required.",
+      title: "Numerical data only. No patient imagery.",
+      body: "ASTA reads LCD display numerics only. A camera mounts on the monitor, not the patient. No patient imagery is captured, stored, or transmitted. Standard monitoring consent applies. No special patient data protocols required.",
     },
     {
       icon: "shield",
@@ -383,7 +383,7 @@ export const security: {
     {
       icon: "server",
       title: "No IT integration required for monitor reading",
-      body: "ASTA reads monitor displays via computer vision — no hospital IT integration, no HL7 feed, no API required for the monitoring layer. HL7/FHIR-aligned EMR connectivity is available. On-prem, hybrid, or managed cloud — hospital-controlled throughout.",
+      body: "ASTA reads monitor displays via computer vision. No hospital IT integration, no HL7 feed, no API required for the monitoring layer. HL7/FHIR-aligned EMR connectivity is available. On-prem, hybrid, or managed cloud, hospital-controlled throughout.",
     },
   ],
   auditEvents: [
@@ -399,7 +399,7 @@ export const finalCta = {
   eyebrow: "Review deployment fit",
   heading: "See ASTA reading live ward monitors.",
   sub:
-    "A focused 30-minute session with our clinical and engineering team — covering monitor compatibility, ward workflow fit, and deployment requirements for your unit.",
+    "A focused 30-minute session with our clinical and engineering team, covering monitor compatibility, ward workflow fit, and deployment requirements for your unit.",
   primaryCta: { label: "Request a demo", href: ROUTES.demo },
   secondaryCta: { label: "Talk to our team", href: ROUTES.contact },
 };

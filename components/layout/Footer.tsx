@@ -1,92 +1,132 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./Container";
-import { footerNav } from "@/content/nav";
 import { BRAND, ROUTES } from "@/lib/constants";
+import { Icon } from "@/components/ui/Icon";
+import { NewsletterForm } from "@/components/ui/NewsletterForm";
+
+const QUICK_LINKS = [
+  { label: "Solutions",  href: ROUTES.solutions },
+  { label: "Platform",   href: ROUTES.platform },
+  { label: "Use Cases",  href: ROUTES.useCases },
+  { label: "Blog",       href: "/blog" },
+  { label: "About",      href: ROUTES.about },
+  { label: "Careers",    href: "/careers" },
+  { label: "Press",      href: "/press" },
+  { label: "Contact",    href: ROUTES.contact },
+];
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-line bg-surface dark:border-line-dark dark:bg-night-deep">
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-200/60 to-transparent dark:via-brand-400/30" />
-        <div className="absolute left-0 top-0 h-[300px] w-[300px] rounded-full bg-brand-500/[0.03] blur-[100px] dark:bg-brand-500/[0.05]" />
-        <div className="absolute right-0 bottom-0 h-[250px] w-[250px] rounded-full bg-cyan-400/[0.03] blur-[90px] dark:bg-cyan-400/[0.04]" />
-        <div className="absolute inset-0 bg-grid-light bg-[length:52px_52px] opacity-30 dark:bg-grid-fine dark:opacity-60" />
+    <footer className="relative overflow-hidden border-t border-white/[0.06] bg-[#040810]">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px"
+        style={{
+          background:
+            "linear-gradient(to right,transparent,rgba(79,107,255,0.28),rgba(40,215,181,0.18),transparent)",
+        }}
+      />
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-20 bottom-0 h-[260px] w-[260px] rounded-full bg-brand-500/[0.05] blur-[100px]" />
+        <div className="absolute -right-10 top-0 h-[200px] w-[200px] rounded-full bg-cyan-400/[0.04] blur-[90px]" />
       </div>
 
-      <Container className="relative py-16">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Link href={ROUTES.home} className="inline-flex items-center gap-2.5 group" aria-label="ASTA home">
-              <div className="relative rounded-[16px] bg-white px-3 py-2 shadow-[0_10px_30px_-18px_rgba(10,22,40,0.35)] ring-1 ring-black/[0.04] transition-transform duration-300 group-hover:-translate-y-0.5 dark:bg-transparent dark:px-0 dark:py-0 dark:shadow-none dark:ring-0">
-                <Image
-                  src="/logo/logo-asta.png"
-                  alt="ASTA Health Tech"
-                  width={1280}
-                  height={723}
-                  className="h-auto w-[142px] md:w-[156px] dark:brightness-0 dark:invert"
-                />
-              </div>
+      <Container className="relative py-10 md:py-12">
+        <div className="grid gap-8 md:grid-cols-[200px_1fr_280px] md:gap-12">
+
+          {/* Brand */}
+          <div className="flex flex-col">
+            <Link href={ROUTES.home} aria-label="ASTA home">
+              <Image
+                src="/logo/logo-asta.png"
+                alt={BRAND.name}
+                width={1280}
+                height={723}
+                sizes="108px"
+                className="h-auto w-[108px] brightness-0 invert"
+              />
             </Link>
-
-            <p className="mt-5 max-w-xs text-body text-ink-muted dark:text-frost-muted">
-              {BRAND.full} builds device-agnostic clinical AI - turning existing hospital wards
-              into smart wards.
+            <p className="mt-3 max-w-[178px] text-[0.74rem] leading-relaxed text-white/68">
+              Smart wards on the hospital you already have.
             </p>
-
-            <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-line bg-white/70 px-3 py-1.5 text-[0.72rem] font-medium text-ink-muted dark:border-line-dark dark:bg-white/[0.04] dark:text-frost-muted">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
-              Platform live - 24/7 uptime maintained
+            <div className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-2.5 py-1 font-mono text-[0.59rem] uppercase tracking-[0.14em] text-emerald-400/80">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-50" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              </span>
+              Platform live · 24/7
             </div>
-
-            <p className="mt-5 text-label text-ink-subtle dark:text-frost-subtle">
-              Enterprise inquiries:{" "}
-              <a
-                href={`mailto:${BRAND.email}`}
-                className="text-ink-muted underline-offset-2 transition-colors hover:text-ink hover:underline dark:text-frost-muted dark:hover:text-frost"
-              >
-                {BRAND.email}
-              </a>
-            </p>
           </div>
 
-          <div className="md:col-span-7 grid grid-cols-2 gap-8 sm:grid-cols-3">
-            {footerNav.map((col) => (
-              <div key={col.title}>
-                <div className="text-eyebrow uppercase tracking-widest text-ink-subtle dark:text-frost-subtle">
-                  {col.title}
-                </div>
-                <ul className="mt-4 space-y-3">
-                  {col.items.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        className="text-label text-ink-muted transition-colors hover:text-ink dark:text-frost-muted dark:hover:text-frost"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* Quick links */}
+          <div>
+            <p className="mb-3.5 font-mono text-[0.58rem] uppercase tracking-[0.20em] text-white/48">
+              Navigate
+            </p>
+            <div className="grid grid-cols-2 gap-x-8 gap-y-2.5 sm:grid-cols-4">
+              {QUICK_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[0.78rem] text-white/70 transition-colors duration-150 hover:text-white/92"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <p className="mb-3.5 font-mono text-[0.58rem] uppercase tracking-[0.20em] text-white/48">
+              Stay updated
+            </p>
+            <p className="mb-3 text-[0.74rem] leading-snug text-white/68">
+              Clinical AI insights and ASTA deployment updates.
+            </p>
+            <NewsletterForm />
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-line pt-8 dark:border-line-dark sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-ink-subtle dark:text-frost-subtle">
-            © {new Date().getFullYear()} {BRAND.full}. All rights reserved.
+        {/* Bottom bar */}
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-white/[0.05] pt-5">
+          <p className="text-[0.67rem] text-white/52">
+            © {new Date().getFullYear()} ASTA Healthtech Private Limited. All rights reserved.
           </p>
-
-          <div className="flex flex-wrap gap-2">
-            {["HIPAA-aware", "SOC 2 roadmap", "On-prem ready", "Device-agnostic"].map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-line bg-canvas/80 px-2.5 py-1 text-[0.65rem] font-medium text-ink-subtle dark:border-line-dark dark:bg-white/[0.03] dark:text-frost-subtle"
+          <div className="flex items-center gap-5">
+            <Link
+              href="/privacy"
+              className="text-[0.67rem] text-white/60 transition-colors hover:text-white/88"
+            >
+              Privacy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-[0.67rem] text-white/60 transition-colors hover:text-white/88"
+            >
+              Terms
+            </Link>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.linkedin.com/company/astahealthtech"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="ASTA on LinkedIn"
+                className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] text-white/62 transition-all hover:border-white/[0.15] hover:bg-white/[0.07] hover:text-white/88"
               >
-                {t}
-              </span>
-            ))}
+                <Icon name="linkedin" className="h-3.5 w-3.5" />
+              </a>
+              <a
+                href="https://twitter.com/astahealthtech"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="ASTA on X"
+                className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] text-white/62 transition-all hover:border-white/[0.15] hover:bg-white/[0.07] hover:text-white/88"
+              >
+                <Icon name="twitter" className="h-3.5 w-3.5" />
+              </a>
+            </div>
           </div>
         </div>
       </Container>

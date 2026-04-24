@@ -212,10 +212,9 @@ function PartnerCard({
           <Image
             src={partner.logo}
             alt={partner.name}
-            width={160}
-            height={60}
-            className="h-11 w-auto max-w-[148px] object-contain"
-            unoptimized
+            fill
+            className="object-contain p-4"
+            sizes="148px"
           />
         </div>
 
