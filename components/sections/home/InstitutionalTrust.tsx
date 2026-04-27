@@ -43,7 +43,7 @@ const PARTNERS = [
 ] as const;
 
 const POSTURES = [
-  "NDHM-ready",
+  "DPDP-aligned",
   "Legal audit logs",
   "Role-based access",
   "Data residency",

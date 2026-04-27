@@ -53,10 +53,10 @@ export const platformStack: {
       icon: "cpu",
       tag: "Layer 02",
       title: "PPLM Reasoning Layer",
-      body: "Reasons over continuous physiological trajectories to surface deterioration context before a simple threshold breach.",
+      body: "A 10–20B parameter physiological language model reasons over continuous vital trajectories to surface deterioration context. Live deployment integration coming soon.",
       bullets: [
-        "Trajectory-aware physiological reasoning",
-        "Pattern detection across continuous windows",
+        "10–20B parameter physiological language model",
+        "Trajectory-aware reasoning over continuous windows",
         "Ranked deterioration context",
         "Evidence-linked interpretation before output",
       ],
@@ -126,7 +126,7 @@ export const platformSignalFlow: {
       icon: "activity",
       step: "04",
       title: "Deterioration interpretation",
-      body: "PPLM interprets change over time and ranks deterioration context.",
+      body: "Alerts trigger on vitals exceeding threshold and on camera obstruction detection. PPLM ranks deterioration context above the raw alert.",
       color: "#28D7B5",
       colorTo: "#4F6BFF",
     },
@@ -134,7 +134,7 @@ export const platformSignalFlow: {
       icon: "bell",
       step: "05",
       title: "Clinical output",
-      body: "Output is framed for escalation and bedside action by the receiving role.",
+      body: "Vitals are captured continuously every 5 seconds, not static snapshots. Output reflects current patient trajectory, framed for the receiving clinical role.",
       color: "#4F6BFF",
       colorTo: "#49C6FF",
     },
@@ -172,10 +172,10 @@ export const platformVisionLayer: {
     },
   ],
   metrics: [
-    { value: "15+", label: "OEM brands", note: "Device-agnostic monitor coverage", color: "#4F6BFF" },
-    { value: "98%", label: "CV accuracy", note: "Monitor-reading extraction accuracy", color: "#28D7B5" },
-    { value: "100M+", label: "Frames", note: "Labeled monitor frames used in training", color: "#49C6FF" },
-    { value: "0", label: "API dependency", note: "No API required for monitor reading", color: "#7C5CFF" },
+    { value: "15+",   label: "OEM brands",      note: "Device-agnostic monitor coverage",         color: "#4F6BFF" },
+    { value: "98%",   label: "CV accuracy",     note: "Monitor-reading extraction accuracy",       color: "#28D7B5" },
+    { value: "5s",    label: "Capture cadence", note: "Continuous vital capture every 5 seconds",  color: "#49C6FF" },
+    { value: "0",     label: "API dependency",  note: "No API required for monitor reading",        color: "#7C5CFF" },
   ],
   pipeline: [
     {
@@ -208,7 +208,7 @@ export const platformReasoningLayer: {
 } = {
   eyebrow: "PPLM Reasoning Layer",
   heading: "Physiological reasoning beyond threshold-only monitoring.",
-  sub: "PPLM is what turns monitor reading into clinical intelligence. It reasons over trajectories and pattern shifts so output reflects deterioration context, not just a line crossing or a static score.",
+  sub: "PPLM is what turns monitor reading into clinical intelligence. A 10–20B parameter physiological language model reasons over continuous trajectories and pattern shifts so output reflects deterioration context, not just a line crossing or a static score. Live deployment integration is coming soon.",
   pillars: [
     {
       title: "Continuous trajectories",

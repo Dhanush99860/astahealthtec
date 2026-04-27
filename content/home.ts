@@ -119,7 +119,7 @@ export const trust: {
   postures: [
     "Numerical data only. No patient imagery.",
     "Standard monitoring consent",
-    "NDHM-ready posture",
+    "DPDP-aligned posture",
     "Legal audit trail",
     "Role-based access control",
   ],
@@ -198,7 +198,7 @@ export const capabilities: {
     {
       icon: "shield",
       title: "Compliance-ready posture",
-      body: "Numerical vitals only. No patient imagery. Standard monitoring consent. NDHM-ready architecture, full audit trail, and role-based access aligned to hospital governance.",
+      body: "Numerical vitals only. No patient imagery. Standard monitoring consent. DPDP-aligned architecture, full audit trail, and role-based access aligned to hospital governance.",
     },
     {
       icon: "route",
@@ -351,18 +351,20 @@ export const security: {
   eyebrow: "Compliance posture",
   heading: "Numerical data only. Hospital-controlled. Institutionally auditable.",
   sub:
-    "ASTA reads LCD display numerics, not patients. No patient imagery is captured or transmitted. Standard monitoring consent applies. NDHM-ready architecture, HL7/FHIR-aligned interoperability, role-based access, and full audit trail, with deployment posture under hospital control.",
+    "ASTA reads LCD display numerics, not patients. No patient imagery is captured or transmitted. Standard monitoring consent applies. DPDP-aligned architecture, ISO 13485-certified quality management, HL7/FHIR-aligned interoperability, role-based access, and full audit trail, with deployment posture under hospital control.",
   quickMetrics: [
-    { val: "NDHM", label: "Ready posture", color: "#4F6BFF" },
-    { val: "RBAC", label: "Role-based access", color: "#28D7B5" },
-    { val: "E2E", label: "Encryption standards", color: "#7C5CFF" },
+    { val: "ISO 13485", label: "Certified", color: "#28D7B5" },
+    { val: "DPDP",      label: "Aligned",   color: "#4F6BFF" },
+    { val: "E2E",       label: "Encryption", color: "#7C5CFF" },
   ],
   scorecard: [
-    { label: "Consent tracking",         score: 100, color: "#28D7B5", statusLabel: "Active"                  },
-    { label: "Legal audit trail",         score: 100, color: "#4F6BFF", statusLabel: "Complete"                },
-    { label: "NDHM posture",              score:  96, color: "#49C6FF", statusLabel: "Ready"                   },
-    { label: "Data residency control",    score:  94, color: "#7C5CFF", statusLabel: "Institution-controlled"  },
-    { label: "HL7/FHIR interoperability", score:  88, color: "#4F6BFF", statusLabel: "Supported"              },
+    { label: "ISO 13485 (Medical device QMS)", score: 100, color: "#28D7B5", statusLabel: "Certified"              },
+    { label: "Consent tracking",               score: 100, color: "#4F6BFF", statusLabel: "Active"                 },
+    { label: "Legal audit trail",              score: 100, color: "#4F6BFF", statusLabel: "Complete"               },
+    { label: "DPDP alignment",                 score:  96, color: "#49C6FF", statusLabel: "Aligned"                },
+    { label: "Data residency control",         score:  94, color: "#7C5CFF", statusLabel: "Institution-controlled" },
+    { label: "HL7/FHIR interoperability",      score:  88, color: "#4F6BFF", statusLabel: "Supported"             },
+    { label: "CDSCO (SaMD registration)",      score:  45, color: "#F59E0B", statusLabel: "In progress"           },
   ],
   proofItems: [
     {
@@ -372,8 +374,8 @@ export const security: {
     },
     {
       icon: "shield",
-      title: "Standard consent. No new privacy burden.",
-      body: "Monitor-facing camera reads display data only. No patient biometrics, no facial data, no imagery leaves the bedside environment. Compatible with standard hospital monitoring consent and existing data governance frameworks.",
+      title: "Standard consent. DPDP-aligned. ISO 13485 certified.",
+      body: "Monitor-facing camera reads display data only. No patient biometrics, no facial data, no imagery leaves the bedside environment. DPDP-aligned architecture, ISO 13485-certified quality management, CDSCO SaMD registration in progress.",
     },
     {
       icon: "check",

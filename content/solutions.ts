@@ -176,8 +176,8 @@ export const interopGovernance: {
     },
     {
       icon: "shield",
-      title: "NDHM-ready posture",
-      body: "Deployment architecture is planned with an NDHM/ABDM-ready posture so hospitals can align ASTA with broader national interoperability programs as surrounding systems mature.",
+      title: "DPDP-aligned posture",
+      body: "Deployment architecture is aligned with India's Digital Personal Data Protection Act 2023 and ABDM interoperability programs, so hospitals can integrate ASTA into their broader digital health posture as surrounding systems mature.",
       badge: "Ready posture",
       color: "#28D7B5",
     },
