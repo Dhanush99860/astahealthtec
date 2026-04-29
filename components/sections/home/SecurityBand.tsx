@@ -125,7 +125,7 @@ export function SecurityBand() {
             One unified container, no inner card boxes.
         ══ */}
         <Reveal delay={0.17}>
-          <div className="relative mt-4 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810]">
+          <div className="relative mt-4 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810] text-white">
             {/* Panel internal glow blobs */}
             <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
               <div className="absolute -left-20 top-0 h-56 w-56 rounded-full bg-brand-500/[0.10] blur-[90px]" />
@@ -149,7 +149,7 @@ export function SecurityBand() {
                 <span className="h-3 w-3 rounded-full bg-[#FEBC2E]" />
                 <span className="h-3 w-3 rounded-full bg-[#28C840]" />
                 <span className="mx-3 h-4 w-px bg-white/[0.10]" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/48">
                   ASTA · Security &amp; Compliance Center
                 </span>
               </div>
@@ -166,7 +166,7 @@ export function SecurityBand() {
               <div className="relative border-b border-white/[0.06] px-6 py-6 lg:border-b-0 lg:border-r">
                 <div className="mb-5 flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  <span className="font-mono text-[9px] uppercase tracking-[0.20em] text-white/30">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.20em] text-white/48">
                     Compliance Posture
                   </span>
                 </div>
@@ -208,7 +208,7 @@ export function SecurityBand() {
                       Compliant posture active
                     </span>
                   </div>
-                  <p className="mt-1 font-mono text-[0.7rem] text-white/30">
+                  <p className="mt-1 font-mono text-[0.7rem] text-white/48">
                     Consent tracked · Residency options · Audit-ready
                   </p>
                 </div>
@@ -219,7 +219,7 @@ export function SecurityBand() {
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-400" />
-                    <span className="font-mono text-[9px] uppercase tracking-[0.20em] text-white/30">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.20em] text-white/48">
                       Legal Audit Trail
                     </span>
                   </div>
@@ -236,7 +236,7 @@ export function SecurityBand() {
                       className="group flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/[0.03]"
                     >
                       {/* Timestamp */}
-                      <span className="w-16 flex-none text-right text-[10px] text-white/22">
+                      <span className="w-16 flex-none text-right text-[10px] text-white/48">
                         {event.time}
                       </span>
                       {/* Status badge */}
@@ -250,7 +250,7 @@ export function SecurityBand() {
                         {event.type === "ok" ? "OK" : "INF"}
                       </span>
                       {/* Message */}
-                      <span className="min-w-0 flex-1 text-[10px] leading-5 text-white/50">
+                      <span className="min-w-0 flex-1 text-[10px] leading-5 text-white/62">
                         {event.msg}
                       </span>
                     </div>
@@ -258,7 +258,7 @@ export function SecurityBand() {
                 </div>
 
                 {/* Log footer */}
-                <div className="mt-3 border-t border-white/[0.05] pt-3 font-mono text-[9px] text-white/22">
+                <div className="mt-3 border-t border-white/[0.08] pt-3 font-mono text-[9px] text-white/45">
                   tamper-evident log · immutable · hospital-controlled retention policy
                 </div>
               </div>

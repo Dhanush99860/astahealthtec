@@ -194,7 +194,7 @@ export function ClinicalAiInAction() {
 /* ─── Monitor Panel ─────────────────────────────────────── */
 function MonitorPanel() {
   return (
-    <div className="relative overflow-hidden rounded-[26px] border border-white/[0.10] bg-[#050810] shadow-[0_60px_200px_-60px_rgba(4,8,24,0.95),0_0_0_1px_rgba(255,255,255,0.04)]">
+    <div className="relative overflow-hidden rounded-[26px] border border-white/[0.10] bg-[#050810] text-white shadow-[0_60px_200px_-60px_rgba(4,8,24,0.95),0_0_0_1px_rgba(255,255,255,0.04)]">
       {/* Internal ambient glows */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-16 top-16 h-64 w-64 rounded-full bg-brand-500/[0.12] blur-[80px]" />
@@ -429,7 +429,7 @@ function VitalCard({ vital, idx }: { vital: (typeof VITALS)[number]; idx: number
         >
           {vital.val}
         </span>
-        <span className="text-[0.65rem] text-white/35">{vital.unit}</span>
+        <span className="text-[0.65rem] text-white/60">{vital.unit}</span>
       </div>
 
       {/* Sparkline */}
@@ -456,7 +456,7 @@ function VitalCard({ vital, idx }: { vital: (typeof VITALS)[number]; idx: number
       </svg>
 
       {/* Range label */}
-      <div className="mt-1 text-[8px] text-white/22">{vital.range}</div>
+      <div className="mt-1 text-[8px] text-white/48">{vital.range}</div>
     </div>
   );
 }
@@ -555,7 +555,7 @@ function SystemStatusPanel() {
         <div className="space-y-1.5 font-mono">
           {AUDIT.map((l) => (
             <div key={l.t} className="flex items-start gap-2">
-              <span className="w-14 flex-none text-right text-[8.5px] text-white/22">{l.t}</span>
+              <span className="w-14 flex-none text-right text-[8.5px] text-white/45">{l.t}</span>
               <span className="text-[8.5px] text-white/40">{l.msg}</span>
             </div>
           ))}

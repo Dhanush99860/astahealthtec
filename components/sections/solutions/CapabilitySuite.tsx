@@ -6,7 +6,7 @@ import { capabilitySuite } from "@/content/solutions";
 /* ─── Monitor reading visual for featured card right side ─────────────────── */
 function MonitorReadingVisual() {
   return (
-    <div className="relative flex h-full flex-col items-center justify-center gap-6 overflow-hidden bg-[#040810] px-8 py-10 lg:px-12">
+    <div className="relative flex h-full flex-col items-center justify-center gap-6 overflow-hidden bg-[#040810] px-8 py-10 text-white lg:px-12">
       {/* Glow blobs */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-16 -top-8 h-48 w-48 rounded-full bg-brand-500/[0.13] blur-[70px]" />
@@ -227,7 +227,7 @@ export function CapabilitySuite() {
             {[mod1, mod2].map((mod) => (
               <div
                 key={mod.tag}
-                className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810] p-8 lg:p-10"
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810] p-8 text-white lg:p-10"
               >
                 {/* Top accent */}
                 <div

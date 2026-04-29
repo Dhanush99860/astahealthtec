@@ -12,7 +12,7 @@ const HERO_STATS = [
 
 export function ContactHero() {
   return (
-    <section className="relative overflow-hidden bg-[#060816] pb-0 pt-28 md:pt-32">
+    <section className="relative overflow-hidden bg-[#060816] pb-0 pt-28 text-white md:pt-32">
       {/* BG */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-grid-fine bg-[length:44px_44px] opacity-40" />

@@ -34,7 +34,7 @@ export function Hero() {
   return (
     <section
       data-hero-root
-      className="relative min-h-dvh overflow-hidden bg-night-deep"
+      className="relative min-h-dvh overflow-hidden bg-night-deep text-white"
       aria-label="Hero"
     >
       {/* ── BG glows ── */}
@@ -331,7 +331,7 @@ function SignalSource() {
       </div>
 
       {/* Source label */}
-      <div className="rounded-full border border-white/[0.06] bg-white/[0.02] px-3 py-1 text-[0.56rem] font-semibold uppercase tracking-[0.16em] text-frost/28">
+      <div className="rounded-full border border-white/[0.12] bg-white/[0.06] px-3 py-1 text-[0.56rem] font-semibold uppercase tracking-[0.16em] text-white/55">
         Existing bedside monitor · Device-agnostic
       </div>
 

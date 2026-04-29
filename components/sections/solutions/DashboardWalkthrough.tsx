@@ -56,7 +56,7 @@ export function DashboardWalkthrough() {
 
         {/* ══ DASHBOARD PANEL ══ */}
         <Reveal delay={0.15}>
-          <div className="relative mt-16 overflow-hidden rounded-2xl border border-brand-400/[0.10] bg-[#040810] shadow-[0_28px_90px_rgba(3,7,18,0.42)]">
+          <div className="relative mt-16 overflow-hidden rounded-2xl border border-brand-400/[0.10] bg-[#040810] text-white shadow-[0_28px_90px_rgba(3,7,18,0.42)]">
 
             {/* Glow blobs */}
             <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">

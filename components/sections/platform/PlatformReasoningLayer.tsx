@@ -47,7 +47,7 @@ export function PlatformReasoningLayer() {
 
         {/* ══ SINGLE DARK PANEL ══ */}
         <Reveal delay={0.14}>
-          <div className="relative mt-14 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810]">
+          <div className="relative mt-14 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810] text-white">
 
             {/* Glow */}
             <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">

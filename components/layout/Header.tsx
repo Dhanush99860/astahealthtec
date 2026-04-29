@@ -83,6 +83,7 @@ export function Header() {
       <header
         className={cn(
           "fixed top-0 z-50 w-full transition-all duration-500",
+          chromeDark ? "text-white" : "text-ink",
           solidHeader
             ? isDark
               ? "border-b border-white/[0.06] bg-[rgba(7,10,24,0.95)] backdrop-blur-md shadow-[0_10px_28px_-16px_rgba(4,8,24,0.55)]"

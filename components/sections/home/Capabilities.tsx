@@ -149,7 +149,7 @@ export function Capabilities() {
               </div>
 
               {/* Right — live monitor visual */}
-              <div className="relative overflow-hidden bg-[#040810]">
+              <div className="relative overflow-hidden bg-[#040810] text-white">
                 {/* Internal glow blobs */}
                 <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
                   <div className="absolute -left-16 top-8 h-48 w-48 rounded-full bg-brand-500/[0.12] blur-[70px]" />

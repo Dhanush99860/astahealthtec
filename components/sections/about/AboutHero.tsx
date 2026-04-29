@@ -8,7 +8,7 @@ export function AboutHero() {
   return (
     <section
       data-hero-root
-      className="relative overflow-hidden bg-[#060816] pb-24 pt-36 md:pb-32 md:pt-44"
+      className="relative overflow-hidden bg-[#060816] pb-24 pt-36 text-white md:pb-32 md:pt-44"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-grid-fine bg-[length:44px_44px] opacity-50" />

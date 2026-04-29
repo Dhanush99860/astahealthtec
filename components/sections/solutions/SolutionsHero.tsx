@@ -7,7 +7,7 @@ import { solutionsHero } from "@/content/solutions";
 export function SolutionsHero() {
   return (
     <section
-      className="relative overflow-hidden bg-[#060816] pt-36 pb-24 md:pt-44 md:pb-32"
+      className="relative overflow-hidden bg-[#060816] pt-36 pb-24 text-white md:pt-44 md:pb-32"
     >
       {/* ── Background ── */}
       <div aria-hidden className="pointer-events-none absolute inset-0">

@@ -30,7 +30,7 @@ export function AboutFoundingThesis() {
 
       <Container className="relative">
         <Reveal>
-          <div className="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-[#040810] shadow-[0_8px_40px_-12px_rgba(10,22,40,0.18)] dark:border-white/[0.07] dark:shadow-none">
+          <div className="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-[#040810] text-white shadow-[0_8px_40px_-12px_rgba(10,22,40,0.18)] dark:border-white/[0.07] dark:shadow-none">
 
             {/* Glow */}
             <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">

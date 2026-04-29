@@ -51,7 +51,7 @@ export function UseCaseClusters() {
         <div className="mt-14 grid gap-4 lg:grid-cols-2">
           {useCaseClusters.clusters.map((cluster, i) => (
             <Reveal key={cluster.title} delay={0.08 + i * 0.04}>
-              <article className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810]">
+              <article className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.07] bg-[#040810] text-white">
 
                 {/* Glow */}
                 <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">

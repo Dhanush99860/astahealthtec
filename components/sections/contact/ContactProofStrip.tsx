@@ -4,7 +4,7 @@ import { contactProofStrip } from "@/content/contact";
 
 export function ContactProofStrip() {
   return (
-    <section className="relative overflow-hidden bg-[#060816] py-12 md:py-14">
+    <section className="relative overflow-hidden bg-[#060816] py-12 text-white md:py-14">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-grid-fine bg-[length:44px_44px] opacity-45" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />

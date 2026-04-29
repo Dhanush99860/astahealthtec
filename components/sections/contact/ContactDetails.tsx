@@ -6,7 +6,7 @@ import { contactDetails } from "@/content/contact";
 
 export function ContactDetails() {
   return (
-    <section className="relative overflow-hidden bg-[#060816] py-20 md:py-24">
+    <section className="relative overflow-hidden bg-[#060816] py-20 text-white md:py-24">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-grid-fine bg-[length:44px_44px] opacity-50" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-400/25 to-transparent" />

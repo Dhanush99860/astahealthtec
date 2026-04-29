@@ -18,7 +18,7 @@ const QUICK_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/[0.06] bg-[#040810]">
+    <footer className="relative overflow-hidden border-t border-black/[0.10] bg-[#040810] text-white dark:border-white/[0.06]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-px"
@@ -47,7 +47,7 @@ export function Footer() {
                 className="h-auto w-[108px] brightness-0 invert"
               />
             </Link>
-            <p className="mt-3 max-w-[178px] text-[0.74rem] leading-relaxed text-white/68">
+            <p className="mt-3 max-w-[178px] text-[0.74rem] leading-relaxed text-white/80">
               Smart wards on the hospital you already have.
             </p>
             <div className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-2.5 py-1 font-mono text-[0.59rem] uppercase tracking-[0.14em] text-emerald-400/80">
@@ -61,7 +61,7 @@ export function Footer() {
 
           {/* Quick links */}
           <div>
-            <p className="mb-3.5 font-mono text-[0.58rem] uppercase tracking-[0.20em] text-white/48">
+            <p className="mb-3.5 font-mono text-[0.58rem] uppercase tracking-[0.20em] text-white/62">
               Navigate
             </p>
             <div className="grid grid-cols-2 gap-x-8 gap-y-2.5 sm:grid-cols-4">
@@ -79,10 +79,10 @@ export function Footer() {
 
           {/* Newsletter */}
           <div>
-            <p className="mb-3.5 font-mono text-[0.58rem] uppercase tracking-[0.20em] text-white/48">
+            <p className="mb-3.5 font-mono text-[0.58rem] uppercase tracking-[0.20em] text-white/62">
               Stay updated
             </p>
-            <p className="mb-3 text-[0.74rem] leading-snug text-white/68">
+            <p className="mb-3 text-[0.74rem] leading-snug text-white/80">
               Clinical AI insights and ASTA deployment updates.
             </p>
             <NewsletterForm />
@@ -91,19 +91,19 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-white/[0.05] pt-5">
-          <p className="text-[0.67rem] text-white/52">
+          <p className="text-[0.67rem] text-white/68">
             © {new Date().getFullYear()} ASTA Healthtech Private Limited. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link
               href="/privacy"
-              className="text-[0.67rem] text-white/60 transition-colors hover:text-white/88"
+              className="text-[0.67rem] text-white/72 transition-colors hover:text-white/92"
             >
               Privacy
             </Link>
             <Link
               href="/terms"
-              className="text-[0.67rem] text-white/60 transition-colors hover:text-white/88"
+              className="text-[0.67rem] text-white/72 transition-colors hover:text-white/92"
             >
               Terms
             </Link>
@@ -113,7 +113,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="ASTA on LinkedIn"
-                className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] text-white/62 transition-all hover:border-white/[0.15] hover:bg-white/[0.07] hover:text-white/88"
+                className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/[0.18] bg-white/[0.08] text-white/75 transition-all hover:border-white/[0.28] hover:bg-white/[0.12] hover:text-white"
               >
                 <Icon name="linkedin" className="h-3.5 w-3.5" />
               </a>
@@ -122,7 +122,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="ASTA on X"
-                className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] text-white/62 transition-all hover:border-white/[0.15] hover:bg-white/[0.07] hover:text-white/88"
+                className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/[0.18] bg-white/[0.08] text-white/75 transition-all hover:border-white/[0.28] hover:bg-white/[0.12] hover:text-white"
               >
                 <Icon name="twitter" className="h-3.5 w-3.5" />
               </a>

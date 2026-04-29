@@ -4,7 +4,7 @@ import { platformVisionLayer } from "@/content/platform";
 
 function MonitorPanel() {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden bg-[#040810] p-7">
+    <div className="relative flex h-full flex-col overflow-hidden bg-[#040810] p-7 text-white">
       {/* Glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-8 top-0 h-48 w-48 rounded-full bg-brand-500/[0.10] blur-[70px]" />

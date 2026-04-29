@@ -31,7 +31,7 @@ export function ContactNextSteps() {
         <div className="mx-auto mt-10 grid max-w-6xl gap-4 md:grid-cols-2 xl:grid-cols-4">
           {contactNextSteps.steps.map((item, index) => (
             <Reveal key={item.step} delay={0.12 + index * 0.04}>
-              <article className="relative h-full overflow-hidden rounded-[26px] border border-white/[0.08] bg-[#040810] p-5">
+              <article className="relative h-full overflow-hidden rounded-[26px] border border-white/[0.08] bg-[#040810] p-5 text-white">
                 <div
                   aria-hidden
                   className="absolute inset-x-0 top-0 h-px"
